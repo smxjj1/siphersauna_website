@@ -1,0 +1,1072 @@
+{
+  "generatedAt": "2026-05-21T17:01:02.434Z",
+  "totalProducts": 26,
+  "categories": [
+    {
+      "name": "outdoor sauna",
+      "slug": "outdoor-sauna",
+      "count": 11,
+      "subcategories": []
+    },
+    {
+      "name": "indoor sauna",
+      "slug": "indoor-sauna",
+      "count": 15,
+      "subcategories": [
+        "Traditional sauna room",
+        "Far",
+        "Dry"
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": 0,
+      "itemNo": "SIP-SQ",
+      "name": "Outdoor Sauna Room - Square Shape",
+      "description": "wood： spruce/hemlock/redcedar/               \nSauna stove: Choose from multiple brands\nSauna standard accessories: wooden bucket, wooden spoon, hourglass, thermometer, explosion-proof lamp (without light source), lampshade，Other lighting configurations need to be purchased separately.Selection of asphalt shingles and waterproofing fabric.",
+      "material": "",
+      "capacity": "",
+      "subcategory": "",
+      "category": "outdoor sauna",
+      "categorySlug": "outdoor-sauna",
+      "mainImage": "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-1.webp",
+      "gallery": [
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-1.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-2.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-3.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-4.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-5.webp"
+      ],
+      "images": [
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-1.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-2.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-3.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-4.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-5.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 520,
+        "gw": 550,
+        "ctnSize": "245x 198x70",
+        "length": 240,
+        "width": 180,
+        "height": 210,
+        "pcs20gp": 6,
+        "pcs40hq": 12,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": 3.4,
+        "remark": ""
+      }
+    },
+    {
+      "id": 1,
+      "itemNo": "SIP-LY",
+      "name": "Outdoor Sauna Room - Luxury Edition",
+      "description": "wood： spruce/hemlock/redcedar/               \nSauna stove: Choose from multiple brands\nSauna standard accessories: wooden bucket, wooden spoon, hourglass, thermometer, explosion-proof lamp (without light source), lampshade，Other lighting configurations need to be purchased separately.Selection of asphalt shingles and waterproofing fabric.",
+      "material": "",
+      "capacity": "",
+      "subcategory": "",
+      "category": "outdoor sauna",
+      "categorySlug": "outdoor-sauna",
+      "mainImage": "/images/products/outdoor-sauna/SIP-LY/SIP-LY-1.webp",
+      "gallery": [
+        "/images/products/outdoor-sauna/SIP-LY/SIP-LY-1.webp",
+        "/images/products/outdoor-sauna/SIP-LY/SIP-LY-2.webp",
+        "/images/products/outdoor-sauna/SIP-LY/SIP-LY-3.webp",
+        "/images/products/outdoor-sauna/SIP-LY/SIP-LY-4.webp",
+        "/images/products/outdoor-sauna/SIP-LY/SIP-LY-5.webp"
+      ],
+      "images": [
+        "/images/products/outdoor-sauna/SIP-LY/SIP-LY-1.webp",
+        "/images/products/outdoor-sauna/SIP-LY/SIP-LY-2.webp",
+        "/images/products/outdoor-sauna/SIP-LY/SIP-LY-3.webp",
+        "/images/products/outdoor-sauna/SIP-LY/SIP-LY-4.webp",
+        "/images/products/outdoor-sauna/SIP-LY/SIP-LY-5.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 620,
+        "gw": 680,
+        "ctnSize": "265x 198x85",
+        "length": 260,
+        "width": 150,
+        "height": 210,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": 3.5,
+        "remark": ""
+      }
+    },
+    {
+      "id": 2,
+      "itemNo": "SIP-SQ",
+      "name": "Outdoor Sauna Room - Square Shape",
+      "description": "wood： spruce/hemlock/redcedar/               \nSauna stove: Choose from multiple brands\nSauna standard accessories: wooden bucket, wooden spoon, hourglass, thermometer, explosion-proof lamp (without light source), lampshade，Other lighting configurations need to be purchased separately.Selection of asphalt shingles and waterproofing fabric.",
+      "material": "",
+      "capacity": "",
+      "subcategory": "",
+      "category": "outdoor sauna",
+      "categorySlug": "outdoor-sauna",
+      "mainImage": "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-1.webp",
+      "gallery": [
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-1.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-2.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-3.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-4.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-5.webp"
+      ],
+      "images": [
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-1.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-2.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-3.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-4.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-5.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 460,
+        "gw": 490,
+        "ctnSize": "217x135x62",
+        "length": 135,
+        "width": 129,
+        "height": 226,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    },
+    {
+      "id": 3,
+      "itemNo": "SIP-SQ",
+      "name": "Outdoor Sauna Room - Square Shape",
+      "description": "wood： spruce/hemlock/redcedar/               \nSauna stove: Choose from multiple brands\nSauna standard accessories: wooden bucket, wooden spoon, hourglass, thermometer, explosion-proof lamp (without light source), lampshade，Other lighting configurations need to be purchased separately.Selection of asphalt shingles and waterproofing fabric.\nWall thickness: 39MM",
+      "material": "",
+      "capacity": "",
+      "subcategory": "",
+      "category": "outdoor sauna",
+      "categorySlug": "outdoor-sauna",
+      "mainImage": "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-1.webp",
+      "gallery": [
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-1.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-2.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-3.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-4.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-5.webp"
+      ],
+      "images": [
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-1.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-2.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-3.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-4.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-5.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 620,
+        "gw": 690,
+        "ctnSize": "",
+        "length": 220,
+        "width": 180,
+        "height": 210,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    },
+    {
+      "id": 4,
+      "itemNo": "SIP-SQ",
+      "name": "Outdoor Sauna Room - Square Shape",
+      "description": "wood： spruce/hemlock/redcedar/               \nSauna stove: Choose from multiple brands\nSauna standard accessories: wooden bucket, wooden spoon, hourglass, thermometer, explosion-proof lamp (without light source), lampshade，Other lighting configurations need to be purchased separately.Selection of asphalt shingles and waterproofing fabric.\nWall thickness: 39MM / Base thickness: 120MM",
+      "material": "",
+      "capacity": "",
+      "subcategory": "",
+      "category": "outdoor sauna",
+      "categorySlug": "outdoor-sauna",
+      "mainImage": "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-1.webp",
+      "gallery": [
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-1.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-2.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-3.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-4.webp"
+      ],
+      "images": [
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-1.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-2.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-3.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 460,
+        "gw": 490,
+        "ctnSize": "181x114x80",
+        "length": 180,
+        "width": 180,
+        "height": 186,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    },
+    {
+      "id": 5,
+      "itemNo": "SIP-WG",
+      "name": "Outdoor Sauna Room - Wide Glass Edition",
+      "description": "wood： spruce/hemlock/redcedar/               \nSauna stove: Choose from multiple brands\nSauna standard accessories: wooden bucket, wooden spoon, hourglass, thermometer, explosion-proof lamp (without light source), lampshade，Other lighting configurations need to be purchased separately.Selection of asphalt shingles and waterproofing fabric.\nWall thickness: 39MM / Base thickness: 120MM",
+      "material": "",
+      "capacity": "",
+      "subcategory": "",
+      "category": "outdoor sauna",
+      "categorySlug": "outdoor-sauna",
+      "mainImage": "/images/products/outdoor-sauna/SIP-WG/SIP-WG-1.webp",
+      "gallery": [
+        "/images/products/outdoor-sauna/SIP-WG/SIP-WG-1.webp",
+        "/images/products/outdoor-sauna/SIP-WG/SIP-WG-2.webp",
+        "/images/products/outdoor-sauna/SIP-WG/SIP-WG-3.webp",
+        "/images/products/outdoor-sauna/SIP-WG/SIP-WG-4.webp"
+      ],
+      "images": [
+        "/images/products/outdoor-sauna/SIP-WG/SIP-WG-1.webp",
+        "/images/products/outdoor-sauna/SIP-WG/SIP-WG-2.webp",
+        "/images/products/outdoor-sauna/SIP-WG/SIP-WG-3.webp",
+        "/images/products/outdoor-sauna/SIP-WG/SIP-WG-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 640,
+        "gw": 680,
+        "ctnSize": "241x114x80",
+        "length": 180,
+        "width": 240,
+        "height": 186,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    },
+    {
+      "id": 6,
+      "itemNo": "SIP-WG",
+      "name": "Outdoor Sauna Room - Wide Glass Edition",
+      "description": "wood： spruce/hemlock/redcedar/               \nSauna stove: Choose from multiple brands\nSauna standard accessories: wooden bucket, wooden spoon, hourglass, thermometer, explosion-proof lamp (without light source), lampshade，Other lighting configurations need to be purchased separately.Selection of asphalt shingles and waterproofing fabric.\nWall thickness: 39MM / Base thickness: 120MM",
+      "material": "",
+      "capacity": "",
+      "subcategory": "",
+      "category": "outdoor sauna",
+      "categorySlug": "outdoor-sauna",
+      "mainImage": "/images/products/outdoor-sauna/SIP-WG/SIP-WG-1.webp",
+      "gallery": [
+        "/images/products/outdoor-sauna/SIP-WG/SIP-WG-1.webp",
+        "/images/products/outdoor-sauna/SIP-WG/SIP-WG-2.webp",
+        "/images/products/outdoor-sauna/SIP-WG/SIP-WG-3.webp",
+        "/images/products/outdoor-sauna/SIP-WG/SIP-WG-4.webp"
+      ],
+      "images": [
+        "/images/products/outdoor-sauna/SIP-WG/SIP-WG-1.webp",
+        "/images/products/outdoor-sauna/SIP-WG/SIP-WG-2.webp",
+        "/images/products/outdoor-sauna/SIP-WG/SIP-WG-3.webp",
+        "/images/products/outdoor-sauna/SIP-WG/SIP-WG-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 460,
+        "gw": 490,
+        "ctnSize": "181x114x80",
+        "length": 180,
+        "width": 180,
+        "height": 186,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    },
+    {
+      "id": 7,
+      "itemNo": "SIP-NEW",
+      "name": "Outdoor Sauna Room - New Design",
+      "description": "wood： spruce/hemlock/redcedar/               \nSauna stove: Choose from multiple brands\nSauna standard accessories: wooden bucket, wooden spoon, hourglass, thermometer, explosion-proof lamp (without light source), lampshade，Other lighting configurations need to be purchased separately.Selection of asphalt shingles and waterproofing fabric.\nWall thickness: 39MM",
+      "material": "",
+      "capacity": "",
+      "subcategory": "",
+      "category": "outdoor sauna",
+      "categorySlug": "outdoor-sauna",
+      "mainImage": "/images/products/outdoor-sauna/SIP-NEW/SIP-NEW-1.webp",
+      "gallery": [
+        "/images/products/outdoor-sauna/SIP-NEW/SIP-NEW-1.webp",
+        "/images/products/outdoor-sauna/SIP-NEW/SIP-NEW-2.webp",
+        "/images/products/outdoor-sauna/SIP-NEW/SIP-NEW-3.webp",
+        "/images/products/outdoor-sauna/SIP-NEW/SIP-NEW-4.webp"
+      ],
+      "images": [
+        "/images/products/outdoor-sauna/SIP-NEW/SIP-NEW-1.webp",
+        "/images/products/outdoor-sauna/SIP-NEW/SIP-NEW-2.webp",
+        "/images/products/outdoor-sauna/SIP-NEW/SIP-NEW-3.webp",
+        "/images/products/outdoor-sauna/SIP-NEW/SIP-NEW-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": null,
+        "gw": null,
+        "ctnSize": "",
+        "length": null,
+        "width": null,
+        "height": null,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    },
+    {
+      "id": 8,
+      "itemNo": "SIP-SQ",
+      "name": "Outdoor Sauna Room - Square Shape",
+      "description": "wood： spruce/hemlock/redcedar/               \nSauna stove: Choose from multiple brands\nSauna standard accessories: wooden bucket, wooden spoon, hourglass, thermometer, explosion-proof lamp (without light source), lampshade，Other lighting configurations need to be purchased separately.Selection of asphalt shingles and waterproofing fabric.\nWall thickness: 39MM",
+      "material": "",
+      "capacity": "",
+      "subcategory": "",
+      "category": "outdoor sauna",
+      "categorySlug": "outdoor-sauna",
+      "mainImage": "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-1.webp",
+      "gallery": [
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-1.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-2.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-3.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-4.webp"
+      ],
+      "images": [
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-1.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-2.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-3.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 560,
+        "gw": 590,
+        "ctnSize": "181x115x98",
+        "length": 180,
+        "width": 180,
+        "height": 185,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    },
+    {
+      "id": 9,
+      "itemNo": "SIP-SQ",
+      "name": "Outdoor Sauna Room - Square Shape",
+      "description": "wood： spruce/hemlock/redcedar/               \nSauna stove: Choose from multiple brands\nSauna standard accessories: wooden bucket, wooden spoon, hourglass, thermometer, explosion-proof lamp (without light source), lampshade，Other lighting configurations need to be purchased separately.Selection of asphalt shingles and waterproofing fabric.",
+      "material": "",
+      "capacity": "",
+      "subcategory": "",
+      "category": "outdoor sauna",
+      "categorySlug": "outdoor-sauna",
+      "mainImage": "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-1.webp",
+      "gallery": [
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-1.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-2.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-3.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-4.webp"
+      ],
+      "images": [
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-1.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-2.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-3.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 560,
+        "gw": 590,
+        "ctnSize": "215x213x81",
+        "length": 205,
+        "width": 175,
+        "height": 210,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    },
+    {
+      "id": 10,
+      "itemNo": "SIP-SQ",
+      "name": "Outdoor Sauna Room - Square Shape",
+      "description": "wood： spruce/hemlock/redcedar/               \nSauna stove: Choose from multiple brands\nSauna standard accessories: wooden bucket, wooden spoon, hourglass, thermometer, explosion-proof lamp (without light source), lampshade，Other lighting configurations need to be purchased separately.Selection of asphalt shingles and waterproofing fabric.",
+      "material": "",
+      "capacity": "",
+      "subcategory": "",
+      "category": "outdoor sauna",
+      "categorySlug": "outdoor-sauna",
+      "mainImage": "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-1.webp",
+      "gallery": [
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-1.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-2.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-3.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-4.webp"
+      ],
+      "images": [
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-1.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-2.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-3.webp",
+        "/images/products/outdoor-sauna/SIP-SQ/SIP-SQ-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 690,
+        "gw": 720,
+        "ctnSize": "215x205x81",
+        "length": 200,
+        "width": 200,
+        "height": 210,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    },
+    {
+      "id": 11,
+      "itemNo": "SIP-I054",
+      "name": "Indoor Traditional Sauna Room",
+      "description": "wood： spruce/hemlock/redcedar/               \nSauna stove: Choose from multiple brands\nSauna standard accessories: wooden bucket, wooden spoon, hourglass, thermometer, explosion-proof lamp (without light source), LED lights，Other lighting configurations need to be purchased separately.",
+      "material": "",
+      "capacity": "",
+      "subcategory": "Traditional sauna room",
+      "category": "indoor sauna",
+      "categorySlug": "indoor-sauna",
+      "mainImage": "/images/products/indoor-sauna/SIP-I054/SIP-I054-1.webp",
+      "gallery": [
+        "/images/products/indoor-sauna/SIP-I054/SIP-I054-1.webp",
+        "/images/products/indoor-sauna/SIP-I054/SIP-I054-2.webp",
+        "/images/products/indoor-sauna/SIP-I054/SIP-I054-3.webp",
+        "/images/products/indoor-sauna/SIP-I054/SIP-I054-4.webp"
+      ],
+      "images": [
+        "/images/products/indoor-sauna/SIP-I054/SIP-I054-1.webp",
+        "/images/products/indoor-sauna/SIP-I054/SIP-I054-2.webp",
+        "/images/products/indoor-sauna/SIP-I054/SIP-I054-3.webp",
+        "/images/products/indoor-sauna/SIP-I054/SIP-I054-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 175,
+        "gw": 195,
+        "ctnSize": "195x95x55",
+        "length": 90,
+        "width": 90,
+        "height": 190,
+        "pcs20gp": null,
+        "pcs40hq": 44,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": 1,
+        "remark": ""
+      }
+    },
+    {
+      "id": 12,
+      "itemNo": "SIP-I064",
+      "name": "Indoor Traditional Sauna Room",
+      "description": "wood： spruce/hemlock/redcedar/               \nSauna stove: Choose from multiple brands\nSauna standard accessories: wooden bucket, wooden spoon, hourglass, thermometer, explosion-proof lamp (without light source), LED lights，Other lighting configurations need to be purchased separately.",
+      "material": "",
+      "capacity": "",
+      "subcategory": "Traditional sauna room",
+      "category": "indoor sauna",
+      "categorySlug": "indoor-sauna",
+      "mainImage": "/images/products/indoor-sauna/SIP-I064/SIP-I064-1.webp",
+      "gallery": [
+        "/images/products/indoor-sauna/SIP-I064/SIP-I064-1.webp",
+        "/images/products/indoor-sauna/SIP-I064/SIP-I064-2.webp",
+        "/images/products/indoor-sauna/SIP-I064/SIP-I064-3.webp",
+        "/images/products/indoor-sauna/SIP-I064/SIP-I064-4.webp"
+      ],
+      "images": [
+        "/images/products/indoor-sauna/SIP-I064/SIP-I064-1.webp",
+        "/images/products/indoor-sauna/SIP-I064/SIP-I064-2.webp",
+        "/images/products/indoor-sauna/SIP-I064/SIP-I064-3.webp",
+        "/images/products/indoor-sauna/SIP-I064/SIP-I064-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": null,
+        "gw": null,
+        "ctnSize": "195x185x65",
+        "length": 180,
+        "width": 140,
+        "height": 190,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    },
+    {
+      "id": 13,
+      "itemNo": "SIP-I044",
+      "name": "Indoor Traditional Sauna Room",
+      "description": "wood： spruce/hemlock/redcedar/               \nSauna stove: Choose from multiple brands\nSauna standard accessories: wooden bucket, wooden spoon, hourglass, thermometer, explosion-proof lamp (without light source), LED lights，Other lighting configurations need to be purchased separately.",
+      "material": "",
+      "capacity": "",
+      "subcategory": "Traditional sauna room",
+      "category": "indoor sauna",
+      "categorySlug": "indoor-sauna",
+      "mainImage": "/images/products/indoor-sauna/SIP-I044/SIP-I044-1.webp",
+      "gallery": [
+        "/images/products/indoor-sauna/SIP-I044/SIP-I044-1.webp",
+        "/images/products/indoor-sauna/SIP-I044/SIP-I044-2.webp",
+        "/images/products/indoor-sauna/SIP-I044/SIP-I044-3.webp",
+        "/images/products/indoor-sauna/SIP-I044/SIP-I044-4.webp"
+      ],
+      "images": [
+        "/images/products/indoor-sauna/SIP-I044/SIP-I044-1.webp",
+        "/images/products/indoor-sauna/SIP-I044/SIP-I044-2.webp",
+        "/images/products/indoor-sauna/SIP-I044/SIP-I044-3.webp",
+        "/images/products/indoor-sauna/SIP-I044/SIP-I044-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 275,
+        "gw": 285,
+        "ctnSize": "215x155x65",
+        "length": 150,
+        "width": 90,
+        "height": 210,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": 2.17,
+        "remark": ""
+      }
+    },
+    {
+      "id": 14,
+      "itemNo": "SIP-I077",
+      "name": "Indoor Traditional Sauna Room",
+      "description": "wood： spruce/hemlock/redcedar/               \nSauna stove: Choose from multiple brands\nSauna standard accessories: wooden bucket, wooden spoon, hourglass, thermometer, explosion-proof lamp (without light source), LED lights，Other lighting configurations need to be purchased separately.",
+      "material": "",
+      "capacity": "",
+      "subcategory": "Traditional sauna room",
+      "category": "indoor sauna",
+      "categorySlug": "indoor-sauna",
+      "mainImage": "/images/products/indoor-sauna/SIP-I077/SIP-I077-1.webp",
+      "gallery": [
+        "/images/products/indoor-sauna/SIP-I077/SIP-I077-1.webp",
+        "/images/products/indoor-sauna/SIP-I077/SIP-I077-2.webp",
+        "/images/products/indoor-sauna/SIP-I077/SIP-I077-3.webp",
+        "/images/products/indoor-sauna/SIP-I077/SIP-I077-4.webp"
+      ],
+      "images": [
+        "/images/products/indoor-sauna/SIP-I077/SIP-I077-1.webp",
+        "/images/products/indoor-sauna/SIP-I077/SIP-I077-2.webp",
+        "/images/products/indoor-sauna/SIP-I077/SIP-I077-3.webp",
+        "/images/products/indoor-sauna/SIP-I077/SIP-I077-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 320,
+        "gw": 350,
+        "ctnSize": "205x185x65",
+        "length": 180,
+        "width": 150,
+        "height": 200,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    },
+    {
+      "id": 15,
+      "itemNo": "SIP-I074",
+      "name": "Indoor Traditional Sauna Room",
+      "description": "wood： spruce/hemlock/redcedar/               \nSauna stove: Choose from multiple brands\nSauna standard accessories: wooden bucket, wooden spoon, hourglass, thermometer, explosion-proof lamp (without light source), LED lights，Other lighting configurations need to be purchased separately.",
+      "material": "",
+      "capacity": "",
+      "subcategory": "Traditional sauna room",
+      "category": "indoor sauna",
+      "categorySlug": "indoor-sauna",
+      "mainImage": "/images/products/indoor-sauna/SIP-I074/SIP-I074-1.webp",
+      "gallery": [
+        "/images/products/indoor-sauna/SIP-I074/SIP-I074-1.webp",
+        "/images/products/indoor-sauna/SIP-I074/SIP-I074-2.webp",
+        "/images/products/indoor-sauna/SIP-I074/SIP-I074-3.webp",
+        "/images/products/indoor-sauna/SIP-I074/SIP-I074-4.webp"
+      ],
+      "images": [
+        "/images/products/indoor-sauna/SIP-I074/SIP-I074-1.webp",
+        "/images/products/indoor-sauna/SIP-I074/SIP-I074-2.webp",
+        "/images/products/indoor-sauna/SIP-I074/SIP-I074-3.webp",
+        "/images/products/indoor-sauna/SIP-I074/SIP-I074-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 320,
+        "gw": 350,
+        "ctnSize": "205x205x68",
+        "length": 120,
+        "width": 200,
+        "height": 200,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    },
+    {
+      "id": 16,
+      "itemNo": "SIP-I012",
+      "name": "Indoor Traditional Sauna Room",
+      "description": "wood： spruce/hemlock/redcedar/               \nSauna stove: Choose from multiple brands\nSauna standard accessories: wooden bucket, wooden spoon, hourglass, thermometer, explosion-proof lamp (without light source), LED lights，Other lighting configurations need to be purchased separately.",
+      "material": "",
+      "capacity": "",
+      "subcategory": "Traditional sauna room",
+      "category": "indoor sauna",
+      "categorySlug": "indoor-sauna",
+      "mainImage": "/images/products/indoor-sauna/SIP-I012/SIP-I012-1.webp",
+      "gallery": [
+        "/images/products/indoor-sauna/SIP-I012/SIP-I012-1.webp",
+        "/images/products/indoor-sauna/SIP-I012/SIP-I012-2.webp",
+        "/images/products/indoor-sauna/SIP-I012/SIP-I012-3.webp",
+        "/images/products/indoor-sauna/SIP-I012/SIP-I012-4.webp"
+      ],
+      "images": [
+        "/images/products/indoor-sauna/SIP-I012/SIP-I012-1.webp",
+        "/images/products/indoor-sauna/SIP-I012/SIP-I012-2.webp",
+        "/images/products/indoor-sauna/SIP-I012/SIP-I012-3.webp",
+        "/images/products/indoor-sauna/SIP-I012/SIP-I012-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 365,
+        "gw": 395,
+        "ctnSize": "195x185x72",
+        "length": 180,
+        "width": 150,
+        "height": 190,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    },
+    {
+      "id": 17,
+      "itemNo": "SIP-I001-2-3-4",
+      "name": "Far-Infrared Sauna Room",
+      "description": "Lightwave Room Configuration\nWood: spruce/hemlock/aspen/redcedar/\nRoom Configuration:\n1. Far-infrared heating panel\n2. Touchscreen control panel (time control/temperature control)\n3. Luxury high-fidelity speakers\n4. Bluetooth music playback function\n5. USB playback function\n6. Top wooden ventilated sliding window\n7. Standard: LED; optional: ambiance light strips/constellation lights/red light therapeutic lamp\n8. Standard equipment for the room: tempered glass / solid wood handles / imported raw material wood / screw wood plugs / assembly manual 1 copy / precautions document 1 copy / control system operation manual 1 copy",
+      "material": "",
+      "capacity": "",
+      "subcategory": "Far",
+      "category": "indoor sauna",
+      "categorySlug": "indoor-sauna",
+      "mainImage": "/images/products/indoor-sauna/SIP-I001-2-3-4/SIP-I001-2-3-4-1.webp",
+      "gallery": [
+        "/images/products/indoor-sauna/SIP-I001-2-3-4/SIP-I001-2-3-4-1.webp",
+        "/images/products/indoor-sauna/SIP-I001-2-3-4/SIP-I001-2-3-4-2.webp",
+        "/images/products/indoor-sauna/SIP-I001-2-3-4/SIP-I001-2-3-4-3.webp",
+        "/images/products/indoor-sauna/SIP-I001-2-3-4/SIP-I001-2-3-4-4.webp"
+      ],
+      "images": [
+        "/images/products/indoor-sauna/SIP-I001-2-3-4/SIP-I001-2-3-4-1.webp",
+        "/images/products/indoor-sauna/SIP-I001-2-3-4/SIP-I001-2-3-4-2.webp",
+        "/images/products/indoor-sauna/SIP-I001-2-3-4/SIP-I001-2-3-4-3.webp",
+        "/images/products/indoor-sauna/SIP-I001-2-3-4/SIP-I001-2-3-4-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 260,
+        "gw": 275,
+        "ctnSize": "195x117x65",
+        "length": 112,
+        "width": 90,
+        "height": 190,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    },
+    {
+      "id": 18,
+      "itemNo": "SIP-I014S",
+      "name": "Far-Infrared Sauna Room",
+      "description": "Lightwave Room Configuration\nWood: spruce/hemlock/aspen/redcedar/\nRoom Configuration:\n1. Far-infrared heating panel\n2. Touchscreen control panel (time control/temperature control)\n3. Luxury high-fidelity speakers\n4. Bluetooth music playback function\n5. USB playback function\n6. Top wooden ventilated sliding window\n7. Standard: LED; optional: ambiance light strips/constellation lights/red light therapeutic lamp\n8. Standard equipment for the room: tempered glass / solid wood handles / imported raw material wood / screw wood plugs / assembly manual 1 copy / precautions document 1 copy / control system operation manual 1 copy",
+      "material": "",
+      "capacity": "",
+      "subcategory": "Far",
+      "category": "indoor sauna",
+      "categorySlug": "indoor-sauna",
+      "mainImage": "/images/products/indoor-sauna/SIP-I014S/SIP-I014S-1.webp",
+      "gallery": [
+        "/images/products/indoor-sauna/SIP-I014S/SIP-I014S-1.webp",
+        "/images/products/indoor-sauna/SIP-I014S/SIP-I014S-2.webp",
+        "/images/products/indoor-sauna/SIP-I014S/SIP-I014S-3.webp",
+        "/images/products/indoor-sauna/SIP-I014S/SIP-I014S-4.webp"
+      ],
+      "images": [
+        "/images/products/indoor-sauna/SIP-I014S/SIP-I014S-1.webp",
+        "/images/products/indoor-sauna/SIP-I014S/SIP-I014S-2.webp",
+        "/images/products/indoor-sauna/SIP-I014S/SIP-I014S-3.webp",
+        "/images/products/indoor-sauna/SIP-I014S/SIP-I014S-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 220,
+        "gw": 245,
+        "ctnSize": "195x125x58",
+        "length": 120,
+        "width": 90,
+        "height": 190,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    },
+    {
+      "id": 19,
+      "itemNo": "SIP-I070",
+      "name": "Far-Infrared Sauna Room",
+      "description": "Lightwave Room Configuration\nWood: spruce/hemlock/aspen/redcedar/\nRoom Configuration:\n1. Far-infrared heating panel\n2. Touchscreen control panel (time control/temperature control)\n3. Luxury high-fidelity speakers\n4. Bluetooth music playback function\n5. USB playback function\n6. Top wooden ventilated sliding window\n7. Standard: LED; optional: ambiance light strips/constellation lights/red light therapeutic lamp\n8. Standard equipment for the room: tempered glass / solid wood handles / imported raw material wood / screw wood plugs / assembly manual 1 copy / precautions document 1 copy / control system operation manual 1 copy",
+      "material": "",
+      "capacity": "",
+      "subcategory": "Far",
+      "category": "indoor sauna",
+      "categorySlug": "indoor-sauna",
+      "mainImage": "/images/products/indoor-sauna/SIP-I070/SIP-I070-1.webp",
+      "gallery": [
+        "/images/products/indoor-sauna/SIP-I070/SIP-I070-1.webp",
+        "/images/products/indoor-sauna/SIP-I070/SIP-I070-2.webp",
+        "/images/products/indoor-sauna/SIP-I070/SIP-I070-3.webp",
+        "/images/products/indoor-sauna/SIP-I070/SIP-I070-4.webp"
+      ],
+      "images": [
+        "/images/products/indoor-sauna/SIP-I070/SIP-I070-1.webp",
+        "/images/products/indoor-sauna/SIP-I070/SIP-I070-2.webp",
+        "/images/products/indoor-sauna/SIP-I070/SIP-I070-3.webp",
+        "/images/products/indoor-sauna/SIP-I070/SIP-I070-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 275,
+        "gw": 295,
+        "ctnSize": "195x155x58",
+        "length": 150,
+        "width": 90,
+        "height": 190,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    },
+    {
+      "id": 20,
+      "itemNo": "SIP-I069",
+      "name": "Far-Infrared Sauna Room",
+      "description": "Lightwave Room Configuration\nWood: spruce/hemlock/aspen/redcedar/\nRoom Configuration:\n1. Far-infrared heating panel\n2. Touchscreen control panel (time control/temperature control)\n3. Luxury high-fidelity speakers\n4. Bluetooth music playback function\n5. USB playback function\n6. Top wooden ventilated sliding window\n7. Standard: LED; optional: ambiance light strips/constellation lights/red light therapeutic lamp\n8. Standard equipment for the room: tempered glass / solid wood handles / imported raw material wood / screw wood plugs / assembly manual 1 copy / precautions document 1 copy / control system operation manual 1 copy",
+      "material": "",
+      "capacity": "",
+      "subcategory": "Far",
+      "category": "indoor sauna",
+      "categorySlug": "indoor-sauna",
+      "mainImage": "/images/products/indoor-sauna/SIP-I069/SIP-I069-1.webp",
+      "gallery": [
+        "/images/products/indoor-sauna/SIP-I069/SIP-I069-1.webp",
+        "/images/products/indoor-sauna/SIP-I069/SIP-I069-2.webp",
+        "/images/products/indoor-sauna/SIP-I069/SIP-I069-3.png",
+        "/images/products/indoor-sauna/SIP-I069/SIP-I069-4.webp"
+      ],
+      "images": [
+        "/images/products/indoor-sauna/SIP-I069/SIP-I069-1.webp",
+        "/images/products/indoor-sauna/SIP-I069/SIP-I069-2.webp",
+        "/images/products/indoor-sauna/SIP-I069/SIP-I069-3.png",
+        "/images/products/indoor-sauna/SIP-I069/SIP-I069-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 360,
+        "gw": 390,
+        "ctnSize": "195x195x70",
+        "length": 180,
+        "width": 120,
+        "height": 190,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    },
+    {
+      "id": 21,
+      "itemNo": "SIP-I060",
+      "name": "Far-Infrared Sauna Room",
+      "description": "Lightwave Room Configuration\nWood: spruce/hemlock/Aspen/redcedar/\nRoom Configuration:\n1. Far-infrared heating panel\n2. Touchscreen control panel (time control/temperature control)\n3. Luxury high-fidelity speakers\n4. Bluetooth music playback function\n5. USB playback function\n6. Top wooden ventilated sliding window\n7. Standard: LED; optional: ambiance light strips/constellation lights/red light therapeutic lamp\n8. Standard equipment for the room: tempered glass / solid wood handles / imported raw material wood / screw wood plugs / assembly manual 1 copy / precautions document 1 copy / control system operation manual 1 copy",
+      "material": "",
+      "capacity": "",
+      "subcategory": "Far",
+      "category": "indoor sauna",
+      "categorySlug": "indoor-sauna",
+      "mainImage": "/images/products/indoor-sauna/SIP-I060/SIP-I060-1.webp",
+      "gallery": [
+        "/images/products/indoor-sauna/SIP-I060/SIP-I060-1.webp",
+        "/images/products/indoor-sauna/SIP-I060/SIP-I060-2.webp",
+        "/images/products/indoor-sauna/SIP-I060/SIP-I060-3.webp",
+        "/images/products/indoor-sauna/SIP-I060/SIP-I060-4.webp"
+      ],
+      "images": [
+        "/images/products/indoor-sauna/SIP-I060/SIP-I060-1.webp",
+        "/images/products/indoor-sauna/SIP-I060/SIP-I060-2.webp",
+        "/images/products/indoor-sauna/SIP-I060/SIP-I060-3.webp",
+        "/images/products/indoor-sauna/SIP-I060/SIP-I060-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 220,
+        "gw": 265,
+        "ctnSize": "195x125x68",
+        "length": 120,
+        "width": 90,
+        "height": 190,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    },
+    {
+      "id": 22,
+      "itemNo": "SIP-I062",
+      "name": "Far-Infrared Sauna Room",
+      "description": "Lightwave Room Configuration\nWood: spruce/hemlock/Aspen/redcedar/\nRoom Configuration:\n1. Far-infrared heating panel\n2. Touchscreen control panel (time control/temperature control)\n3. Luxury high-fidelity speakers\n4. Bluetooth music playback function\n5. USB playback function\n6. Top wooden ventilated sliding window\n7. Standard: LED; optional: ambiance light strips/constellation lights/red light therapeutic lamp\n8. Standard equipment for the room: tempered glass / solid wood handles / imported raw material wood / screw wood plugs / assembly manual 1 copy / precautions document 1 copy / control system operation manual 1 copy",
+      "material": "",
+      "capacity": "",
+      "subcategory": "Far",
+      "category": "indoor sauna",
+      "categorySlug": "indoor-sauna",
+      "mainImage": "/images/products/indoor-sauna/SIP-I062/SIP-I062-1.webp",
+      "gallery": [
+        "/images/products/indoor-sauna/SIP-I062/SIP-I062-1.webp",
+        "/images/products/indoor-sauna/SIP-I062/SIP-I062-2.webp",
+        "/images/products/indoor-sauna/SIP-I062/SIP-I062-3.png",
+        "/images/products/indoor-sauna/SIP-I062/SIP-I062-4.webp"
+      ],
+      "images": [
+        "/images/products/indoor-sauna/SIP-I062/SIP-I062-1.webp",
+        "/images/products/indoor-sauna/SIP-I062/SIP-I062-2.webp",
+        "/images/products/indoor-sauna/SIP-I062/SIP-I062-3.png",
+        "/images/products/indoor-sauna/SIP-I062/SIP-I062-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 220,
+        "gw": 265,
+        "ctnSize": "195x125x68",
+        "length": 120,
+        "width": 90,
+        "height": 190,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    },
+    {
+      "id": 23,
+      "itemNo": "SIP-I043",
+      "name": "Far-Infrared Sauna Room",
+      "description": "Lightwave Room Configuration\nWood: spruce/hemlock/Aspen/redcedar/\nRoom Configuration:\n1. Far-infrared heating panel\n2. Touchscreen control panel (time control/temperature control)\n3. Luxury high-fidelity speakers\n4. Bluetooth music playback function\n5. USB playback function\n6. Top wooden ventilated sliding window\n7. Standard: LED; optional: ambiance light strips/constellation lights/red light therapeutic lamp\n8. Standard equipment for the room: tempered glass / solid wood handles / imported raw material wood / screw wood plugs / assembly manual 1 copy / precautions document 1 copy / control system operation manual 1 copy",
+      "material": "",
+      "capacity": "",
+      "subcategory": "Far",
+      "category": "indoor sauna",
+      "categorySlug": "indoor-sauna",
+      "mainImage": "/images/products/indoor-sauna/SIP-I043/SIP-I043-1.webp",
+      "gallery": [
+        "/images/products/indoor-sauna/SIP-I043/SIP-I043-1.webp",
+        "/images/products/indoor-sauna/SIP-I043/SIP-I043-2.webp",
+        "/images/products/indoor-sauna/SIP-I043/SIP-I043-3.webp",
+        "/images/products/indoor-sauna/SIP-I043/SIP-I043-4.webp"
+      ],
+      "images": [
+        "/images/products/indoor-sauna/SIP-I043/SIP-I043-1.webp",
+        "/images/products/indoor-sauna/SIP-I043/SIP-I043-2.webp",
+        "/images/products/indoor-sauna/SIP-I043/SIP-I043-3.webp",
+        "/images/products/indoor-sauna/SIP-I043/SIP-I043-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 360,
+        "gw": 390,
+        "ctnSize": "195x195x70",
+        "length": 180,
+        "width": 120,
+        "height": 190,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    },
+    {
+      "id": 24,
+      "itemNo": "SIP-I065",
+      "name": "Far-Infrared Sauna Room",
+      "description": "Lightwave Room Configuration\nWood: spruce/hemlock/Aspen/redcedar/\nRoom Configuration:\n1. Far-infrared heating panel\n2. Touchscreen control panel (time control/temperature control)\n3. Luxury high-fidelity speakers\n4. Bluetooth music playback function\n5. USB playback function\n6. Top wooden ventilated sliding window\n7. Standard: LED; optional: ambiance light strips/constellation lights/red light therapeutic lamp\n8. Standard equipment for the room: tempered glass / solid wood handles / imported raw material wood / screw wood plugs / assembly manual 1 copy / precautions document 1 copy / control system operation manual 1 copy",
+      "material": "",
+      "capacity": "",
+      "subcategory": "Far",
+      "category": "indoor sauna",
+      "categorySlug": "indoor-sauna",
+      "mainImage": "/images/products/indoor-sauna/SIP-I065/SIP-I065-1.webp",
+      "gallery": [
+        "/images/products/indoor-sauna/SIP-I065/SIP-I065-1.webp",
+        "/images/products/indoor-sauna/SIP-I065/SIP-I065-2.webp",
+        "/images/products/indoor-sauna/SIP-I065/SIP-I065-3.webp",
+        "/images/products/indoor-sauna/SIP-I065/SIP-I065-4.webp"
+      ],
+      "images": [
+        "/images/products/indoor-sauna/SIP-I065/SIP-I065-1.webp",
+        "/images/products/indoor-sauna/SIP-I065/SIP-I065-2.webp",
+        "/images/products/indoor-sauna/SIP-I065/SIP-I065-3.webp",
+        "/images/products/indoor-sauna/SIP-I065/SIP-I065-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 330,
+        "gw": 350,
+        "ctnSize": "195x185x70",
+        "length": 180,
+        "width": 150,
+        "height": 190,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    },
+    {
+      "id": 25,
+      "itemNo": "SIP-PI0002",
+      "name": "Dry",
+      "description": "Lightwave Room Configuration\nDry Steam Area Wood: spruce/hemlock/aspen/redcedar/\nRoom Configuration: Optional far-infrared heating panel/Spa stove heating/Background landscaping/Lighting options/Size customizable/Power consultation \nSteam Room Area: Glass / Mosaic / Anti-corrosion Wood Flooring\nSteam Room Equipment: Temperature Control / Time Control / Lighting / Bluetooth / Shower Head",
+      "material": "",
+      "capacity": "",
+      "subcategory": "Dry",
+      "category": "indoor sauna",
+      "categorySlug": "indoor-sauna",
+      "mainImage": "/images/products/indoor-sauna/SIP-PI0002/SIP-PI0002-1.webp",
+      "gallery": [
+        "/images/products/indoor-sauna/SIP-PI0002/SIP-PI0002-1.webp",
+        "/images/products/indoor-sauna/SIP-PI0002/SIP-PI0002-2.webp",
+        "/images/products/indoor-sauna/SIP-PI0002/SIP-PI0002-3.webp",
+        "/images/products/indoor-sauna/SIP-PI0002/SIP-PI0002-4.webp"
+      ],
+      "images": [
+        "/images/products/indoor-sauna/SIP-PI0002/SIP-PI0002-1.webp",
+        "/images/products/indoor-sauna/SIP-PI0002/SIP-PI0002-2.webp",
+        "/images/products/indoor-sauna/SIP-PI0002/SIP-PI0002-3.webp",
+        "/images/products/indoor-sauna/SIP-PI0002/SIP-PI0002-4.webp"
+      ],
+      "specs": {
+        "pcsPerCtn": 1,
+        "nw": 620,
+        "gw": 650,
+        "ctnSize": "205x205x102",
+        "length": 300,
+        "width": 150,
+        "height": 200,
+        "pcs20gp": null,
+        "pcs40hq": null,
+        "moq": 1,
+        "hsCode": "940610000000",
+        "totalCartons": 1,
+        "totalCbm": null,
+        "remark": ""
+      }
+    }
+  ]
+}

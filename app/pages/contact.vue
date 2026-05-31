@@ -1,0 +1,719 @@
+<template>
+  <div class="contact-page">
+    <!-- Hero Section -->
+    <section class="contact-hero">
+      <div class="hero-container">
+        <h1 class="hero-title">Contact Us — Begin Your Wellness Journey</h1>
+        <p class="hero-subtitle">
+          Our wellness consultants are ready to assist you with custom sauna room design, heating equipment, and accessories inquiries
+        </p>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="contact-content">
+      <div class="content-container">
+        <!-- Contact Form -->
+        <div class="form-section">
+          <h2 class="section-title">Get Your Custom Sauna Room Quote</h2>
+          <p class="section-subtitle">
+            Please fill out the form below and our team will contact you within 24 hours with a tailored wellness solution
+          </p>
+
+          <form class="contact-form" @submit.prevent="handleSubmit" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Name / Contact Person <span class="required">*</span></label>
+                <input
+                  id="name"
+                  v-model="form.name"
+                  type="text"
+                  placeholder="Please enter your name"
+                  :class="{ error: errors.name }"
+                />
+                <span v-if="errors.name" class="error-message">{{ errors.name }}</span>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address <span class="required">*</span></label>
+                <input
+                  id="email"
+                  v-model="form.email"
+                  type="email"
+                  placeholder="Please enter your email address"
+                  :class="{ error: errors.email }"
+                />
+                <span v-if="errors.email" class="error-message">{{ errors.email }}</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input
+                  id="phone"
+                  v-model="form.phone"
+                  type="tel"
+                  placeholder="Please enter your phone number"
+                />
+              </div>
+              <div class="form-group">
+                <label for="company">Company / Dealer Name</label>
+                <input
+                  id="company"
+                  v-model="form.company"
+                  type="text"
+                  placeholder="If applicable, please enter company name"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="address">Installation Address</label>
+              <input
+                id="address"
+                v-model="form.address"
+                type="text"
+                placeholder="Please enter the sauna installation address (for size assessment)"
+              />
+            </div>
+
+            <!-- Inquiry Type - Sauna Industry Options -->
+            <div class="form-group">
+              <label for="subject">Inquiry Type</label>
+              <select id="subject" v-model="form.subject">
+                <option value="">Please select inquiry type</option>
+                <option value="home-custom">Home Sauna Room Customization</option>
+                <option value="commercial-spa">Commercial SPA Engineering</option>
+                <option value="equipment-parts">Equipment & Parts Purchase</option>
+                <option value="other">Other Inquiry</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="products">Products of Interest</label>
+              <input
+                id="products"
+                v-model="form.products"
+                type="text"
+                placeholder="e.g., Outdoor Sauna, Far-Infrared Sauna, Sauna Stove"
+              />
+            </div>
+
+            <!-- Message - Customized placeholder for sauna industry -->
+            <div class="form-group">
+              <label for="message">Project Details <span class="required">*</span></label>
+              <textarea
+                id="message"
+                v-model="form.message"
+                rows="5"
+                placeholder="Please describe your space dimensions, preferred style, or any specific questions..."
+                :class="{ error: errors.message }"
+              ></textarea>
+              <span v-if="errors.message" class="error-message">{{ errors.message }}</span>
+            </div>
+
+            <button type="submit" class="submit-btn" :disabled="isSubmitting">
+              <span v-if="!isSubmitting">Submit Inquiry</span>
+              <span v-else>Submitting...</span>
+            </button>
+
+            <!-- Success/Error Messages -->
+            <Transition name="fade">
+              <div v-if="submitStatus === 'success'" class="form-status success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                <span>Thank you for your inquiry! Our wellness consultant will contact you within 24 hours.</span>
+              </div>
+            </Transition>
+
+            <Transition name="fade">
+              <div v-if="submitStatus === 'error'" class="form-status error">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="15" y1="9" x2="9" y2="15"/>
+                  <line x1="9" y1="9" x2="15" y2="15"/>
+                </svg>
+                <span>Submission failed. Please try again or call our service hotline directly.</span>
+              </div>
+            </Transition>
+          </form>
+        </div>
+
+        <!-- Contact Info Sidebar -->
+        <div class="info-section">
+          <!-- Contact Cards -->
+          <div class="contact-cards">
+            <h3 class="info-title">Contact Information</h3>
+
+            <div class="info-card">
+              <div class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div class="info-content">
+                <h4>Factory Address</h4>
+                <p>Building A, Wellness Industrial Park<br>Jiangbei District, Ningbo, Zhejiang</p>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0 1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <div class="info-content">
+                <h4>Business Email</h4>
+                <p>info@siphersauna.com</p>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div class="info-content">
+                <h4>Service Hotline</h4>
+                <p>+86 400-XXX-XXXX</p>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <div class="info-content">
+                <h4>Business Hours</h4>
+                <p>Monday to Friday: 8:00 - 18:00<br>Saturday: 9:00 - 17:00</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mission Statement -->
+          <div class="mission-card">
+            <h3>Our Commitment</h3>
+            <p>
+              Sipher Sauna is dedicated to providing every client with high-quality wellness solutions. From wood selection to precision manufacturing, we strictly control every detail to ensure you receive not just a sauna room, but a trustworthy wellness experience.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="quick-links">
+            <h3>Product Navigation</h3>
+            <div class="links-grid">
+              <NuxtLink
+                v-for="category in categories"
+                :key="category.slug"
+                :to="getCategoryLink(category.slug)"
+                class="quick-link"
+              >
+                {{ category.name }}
+              </NuxtLink>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <SiteFooter />
+  </div>
+</template>
+
+<script setup lang="ts">
+import { getAllSaunaCategories } from '~/data/sauna-categories'
+
+definePageMeta({
+  layout: 'default',
+})
+
+// SEO Configuration - Sauna Brand Contact Page
+useHead({
+  title: 'Contact Us | Sipher Sauna - Begin Your Wellness Journey',
+  meta: [
+    {
+      name: 'description',
+      content: 'Contact Sipher Sauna for home sauna customization and commercial SPA engineering solutions. 18 years of professional experience delivering high-quality wellness solutions.',
+    },
+  ],
+})
+
+// Get sauna product categories
+const categories = getAllSaunaCategories()
+
+// Get category link
+const getCategoryLink = (slug: string): string => {
+  const linkMap: Record<string, string> = {
+    'outdoor-sauna': '/products/outdoor-sauna',
+    'indoor-sauna': '/products/indoor-sauna',
+  }
+  return linkMap[slug] || '/products'
+}
+
+// Form state
+const form = reactive({
+  name: '',
+  email: '',
+  phone: '',
+  company: '',
+  address: '',
+  subject: '',
+  products: '',
+  message: '',
+})
+
+const errors = reactive<Record<string, string>>({})
+const isSubmitting = ref(false)
+const submitStatus = ref<'idle' | 'success' | 'error'>('idle')
+
+// Form validation
+const validateForm = () => {
+  let isValid = true
+
+  // Clear previous errors
+  Object.keys(errors).forEach(key => delete errors[key])
+
+  // Validate name
+  if (!form.name.trim()) {
+    errors.name = 'Please enter your name'
+    isValid = false
+  }
+
+  // Validate email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (!form.email.trim()) {
+    errors.email = 'Please enter your email address'
+    isValid = false
+  } else if (!emailRegex.test(form.email)) {
+    errors.email = 'Please enter a valid email format'
+    isValid = false
+  }
+
+  // Validate message
+  if (!form.message.trim()) {
+    errors.message = 'Please describe your project requirements or questions'
+    isValid = false
+  }
+
+  return isValid
+}
+
+// Form submission handler
+const handleSubmit = async () => {
+  if (!validateForm()) return
+
+  isSubmitting.value = true
+  submitStatus.value = 'idle'
+
+  try {
+    // API call can be added here
+    // Simulating submission delay
+    await new Promise(resolve => setTimeout(resolve, 1000))
+
+    // Success
+    submitStatus.value = 'success'
+
+    // Reset form
+    Object.keys(form).forEach(key => {
+      form[key as keyof typeof form] = ''
+    })
+
+    // Clear success message after 5 seconds
+    setTimeout(() => {
+      submitStatus.value = 'idle'
+    }, 5000)
+  } catch {
+    submitStatus.value = 'error'
+  } finally {
+    isSubmitting.value = false
+  }
+}
+</script>
+
+<style lang="less" scoped>
+// Brand warm color palette - consistent with about-us.vue
+@brand-cream: #F5F1EB;
+@brand-wood: #8B5A2B;
+@brand-wood-light: #C4A77D;
+@brand-gold: #B8860B;
+@brand-dark: #2D2016;
+@text-dark: #333333;
+@text-light: #777777;
+@white: #FFFFFF;
+
+.contact-page {
+  background: @brand-cream;
+  min-height: 100vh;
+}
+
+// Hero Section
+.contact-hero {
+  background: linear-gradient(135deg, @brand-dark 0%, #4A3728 100%);
+  padding: 80px 40px;
+  text-align: center;
+  position: relative;
+
+  // Background decorative pattern
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C4A77D' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+
+  @media (max-width: 768px) {
+    padding: 60px 20px;
+  }
+}
+
+.hero-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: @brand-cream;
+  margin: 0 0 20px;
+  letter-spacing: -0.02em;
+
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: rgba(245, 241, 235, 0.85);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+// Content Section
+.contact-content {
+  padding: 80px 0;
+
+  @media (max-width: 768px) {
+    padding: 60px 0;
+  }
+}
+
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+    gap: 40px;
+  }
+}
+
+// Form Section
+.form-section {
+  background: @white;
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid rgba(139, 90, 43, 0.1);
+
+  @media (max-width: 768px) {
+    padding: 24px;
+  }
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: @brand-dark;
+  margin: 0 0 8px;
+}
+
+.section-subtitle {
+  font-size: 0.9rem;
+  color: @text-light;
+  margin: 0 0 32px;
+  line-height: 1.6;
+}
+
+// Form Styles
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: @text-dark;
+
+    .required {
+      color: @brand-gold;
+    }
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 12px 16px;
+    border: 1px solid rgba(139, 90, 43, 0.2);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: @text-dark;
+    background: @white;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &::placeholder {
+      color: @text-light;
+      opacity: 0.6;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: @brand-wood;
+      box-shadow: 0 0 0 3px rgba(139, 90, 43, 0.1);
+    }
+
+    &.error {
+      border-color: #C4644A;
+    }
+  }
+
+  select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238B5A2B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .error-message {
+    font-size: 0.75rem;
+    color: #C4644A;
+  }
+}
+
+.submit-btn {
+  padding: 14px 32px;
+  background: linear-gradient(135deg, @brand-wood 0%, @brand-dark 100%);
+  color: @brand-cream;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(45, 32, 22, 0.2);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+.form-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+
+  &.success {
+    background: #E8F5E9;
+    color: #5A8F5E;
+    border: 1px solid #C5E1C5;
+  }
+
+  &.error {
+    background: #FFEBE6;
+    color: #C4644A;
+    border: 1px solid #F0D4CA;
+  }
+}
+
+// Info Section
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.info-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: @brand-dark;
+  margin: 0 0 16px;
+}
+
+.contact-cards {
+  background: @white;
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(139, 90, 43, 0.1);
+}
+
+.info-card {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(139, 90, 43, 0.1);
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  &:first-child {
+    padding-top: 0;
+  }
+}
+
+.info-icon {
+  width: 48px;
+  height: 48px;
+  background: @brand-cream;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: @brand-wood;
+  flex-shrink: 0;
+}
+
+.info-content {
+  h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: @text-dark;
+    margin: 0 0 4px;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: @text-light;
+    margin: 0;
+    line-height: 1.6;
+  }
+}
+
+// Mission Card
+.mission-card {
+  background: linear-gradient(135deg, @brand-wood 0%, @brand-dark 100%);
+  padding: 24px;
+  border-radius: 16px;
+
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: @brand-cream;
+    margin: 0 0 12px;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: rgba(245, 241, 235, 0.85);
+    margin: 0;
+    line-height: 1.7;
+  }
+}
+
+// Quick Links
+.quick-links {
+  background: @white;
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(139, 90, 43, 0.1);
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: @brand-dark;
+    margin: 0 0 16px;
+  }
+}
+
+.links-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.quick-link {
+  display: inline-block;
+  padding: 8px 16px;
+  background: @brand-cream;
+  color: @text-light;
+  font-size: 0.85rem;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: @brand-wood;
+    color: @brand-cream;
+  }
+}
+
+// Transitions
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
