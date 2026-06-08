@@ -112,6 +112,29 @@
       </div>
     </section>
 
+    <!-- Global Presence Section -->
+    <section class="global-section">
+      <div class="global-container">
+        <h2 class="section-title" style="color: #F5F1EB;">Our Global Presence</h2>
+        <p class="global-intro">
+          From our home base in Foshan, China, Sipher Sauna reaches clients across six continents. Our premium sauna solutions are trusted by wellness brands, hospitality groups, and discerning homeowners worldwide.
+        </p>
+        <div class="map-wrapper">
+          <SharedWorldMapFlylines />
+        </div>
+        <div class="map-legend">
+          <div class="legend-item">
+            <span class="legend-dot hq"></span>
+            <span>Headquarters: Foshan, China</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot target"></span>
+            <span>Partner Cities: 50+ cities across 6 continents</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta-section">
       <div class="cta-container">
@@ -499,6 +522,81 @@ useHead({
   span {
     font-size: 0.85rem;
     color: @text-light;
+  }
+}
+
+// Global Presence Section
+.global-section {
+  background: linear-gradient(180deg, @brand-dark 0%, #3D2A1C 100%);
+  padding: 80px 40px;
+
+  @media (max-width: 768px) {
+    padding: 60px 20px;
+  }
+}
+
+.global-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.global-intro {
+  font-size: 1.1rem;
+  color: @brand-cream;
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  opacity: 0.9;
+}
+
+.map-wrapper {
+  width: 100%;
+  height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(196, 167, 125, 0.15);
+
+  @media (max-width: 768px) {
+    height: 350px;
+  }
+}
+
+.map-legend {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 24px;
+  padding: 16px 0;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: @brand-cream;
+  font-size: 0.95rem;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+
+  &.hq {
+    background-color: #E53935;
+    box-shadow: 0 0 8px rgba(229, 57, 53, 0.5);
+  }
+
+  &.target {
+    background-color: @brand-wood-light;
+    box-shadow: 0 0 8px rgba(196, 167, 125, 0.5);
   }
 }
 

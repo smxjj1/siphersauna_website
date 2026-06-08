@@ -46,6 +46,9 @@ export default defineNuxtConfig({
           additionalData: '@import "~/assets/css/variables.less";'
         }
       }
+    },
+    optimizeDeps: {
+      include: ['echarts']
     }
   }
 })
