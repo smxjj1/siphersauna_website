@@ -5,6 +5,7 @@
         <!-- Brand Column -->
         <div class="footer-brand">
           <NuxtLink to="/" class="logo">
+            <img src="/images/logo/logo.png" alt="Sipher Sauna" class="logo-img">
             <span class="logo-text">Sipher Sauna</span>
           </NuxtLink>
           <p class="footer-desc">
@@ -92,9 +93,17 @@
 
 .footer-brand {
   .logo {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     text-decoration: none;
     margin-bottom: 16px;
+
+    .logo-img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
 
     .logo-text {
       font-size: 24px;

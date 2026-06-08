@@ -34,6 +34,11 @@ export default defineNuxtConfig({
         {
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap'
+        },
+        {
+          rel: 'icon',
+          type: 'image/png',
+          href: '/images/logo/logo.png'
         }
       ]
     }

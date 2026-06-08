@@ -2,6 +2,7 @@
   <header class="navbar" :class="navbarClass">
     <div class="navbar-inner">
       <NuxtLink to="/" class="logo">
+        <img src="/images/logo/logo.png" alt="Sipher Sauna" class="logo-img">
         <span class="logo-text">Sipher Sauna</span>
       </NuxtLink>
       <nav class="nav-links">
@@ -98,8 +99,15 @@ onUnmounted(() => {
 .logo {
   display: flex;
   align-items: center;
+  gap: 10px;
   text-decoration: none;
   white-space: nowrap;
+
+  .logo-img {
+    height: 36px;
+    width: auto;
+    display: block;
+  }
 
   .logo-text {
     font-size: 22px;
@@ -204,8 +212,8 @@ onUnmounted(() => {
       padding: 12px 20px;
     }
 
-    .logo .logo-text {
-      font-size: 18px;
+    .logo .logo-img {
+      height: 28px;
     }
 
     .nav-links {
@@ -262,8 +270,8 @@ onUnmounted(() => {
       padding: 8px 12px;
     }
 
-    .logo .logo-text {
-      font-size: 16px;
+    .logo .logo-img {
+      height: 24px;
     }
   }
 }
