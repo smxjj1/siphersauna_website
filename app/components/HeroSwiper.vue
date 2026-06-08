@@ -27,29 +27,68 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Swiper from 'swiper'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import { onMounted } from 'vue'
+import { useAnalytics } from '~/composables/useAnalytics'
+
+const { sendTrackEvent } = useAnalytics()
+
+const SLIDE_META = [
+  { key: 'luxury-sauna-solutions', title: 'Luxury Sauna Solutions' },
+  { key: 'sauna-way', title: 'Sauna Way' },
+  { key: 'ultimate-sauna-lifestyle', title: 'Ultimate Sauna Lifestyle' },
+  { key: 'wellness', title: 'Wellness' },
+  { key: 'tailored-luxury', title: 'Tailored Luxury' },
+]
+
+const bannerSlidesViewed = ref(new Set<number>())
+
+function trackBannerSlide(index: number) {
+  if (bannerSlidesViewed.value.has(index))
+    return
+  bannerSlidesViewed.value.add(index)
+  const meta = SLIDE_META[index]
+  if (!meta)
+    return
+  void sendTrackEvent({
+    eventType: 'banner_view',
+    elementInfo: {
+      placement: 'home_hero_swiper',
+      slideIndex: index,
+      slideKey: meta.key,
+      title: meta.title,
+    },
+  })
+}
 
 onMounted(() => {
   new Swiper('.hero-swiper-container', {
     modules: [Navigation, Pagination, Autoplay],
     autoplay: {
       delay: 4000,
-      disableOnInteraction: false
+      disableOnInteraction: false,
     },
     loop: true,
     pagination: {
       el: '.swiper-pagination',
-      clickable: true
+      clickable: true,
     },
     navigation: {
       nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
+      prevEl: '.swiper-button-prev',
     },
     effect: 'slide',
-    speed: 800
+    speed: 800,
+    on: {
+      init(sw) {
+        trackBannerSlide(sw.realIndex)
+      },
+      slideChangeTransitionEnd(sw) {
+        trackBannerSlide(sw.realIndex)
+      },
+    },
   })
 })
 </script>

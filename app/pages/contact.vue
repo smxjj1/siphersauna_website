@@ -232,10 +232,15 @@
 
 <script setup lang="ts">
 import { getAllSaunaCategories } from '~/data/sauna-categories'
+import { useAnalytics } from '~/composables/useAnalytics'
 
 definePageMeta({
   layout: 'default',
 })
+
+const config = useRuntimeConfig()
+const { sendContactAnalytics } = useAnalytics()
+const analyticsSiteId = config.public.analyticsSiteId as string
 
 // SEO Configuration - Sauna Brand Contact Page
 useHead({
@@ -308,6 +313,11 @@ const validateForm = () => {
   return isValid
 }
 
+const getApiEndpoint = () => {
+  const baseUrl = config.public.analyticsBaseUrl as string
+  return `${baseUrl}/api/contact`
+}
+
 // Form submission handler
 const handleSubmit = async () => {
   if (!validateForm()) return
@@ -316,24 +326,56 @@ const handleSubmit = async () => {
   submitStatus.value = 'idle'
 
   try {
-    // API call can be added here
-    // Simulating submission delay
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    await sendContactAnalytics({
+      action: 'contact_submit_attempt',
+      form: 'contact_us',
+      subject: form.subject || 'other',
+    })
 
-    // Success
+    const response = await fetch(getApiEndpoint(), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        company: form.company,
+        address: form.address,
+        subject: form.subject,
+        products: form.products,
+        message: form.message,
+        website: analyticsSiteId,
+      }),
+    })
+
+    if (!response.ok) {
+      throw new Error('Request failed')
+    }
+
     submitStatus.value = 'success'
 
-    // Reset form
+    await sendContactAnalytics({
+      action: 'contact_submit_success',
+      form: 'contact_us',
+      subject: form.subject || 'other',
+    })
+
     Object.keys(form).forEach(key => {
       form[key as keyof typeof form] = ''
     })
 
-    // Clear success message after 5 seconds
     setTimeout(() => {
       submitStatus.value = 'idle'
     }, 5000)
   } catch {
     submitStatus.value = 'error'
+    await sendContactAnalytics({
+      action: 'contact_submit_failed',
+      form: 'contact_us',
+      reason: 'request_failed',
+    })
   } finally {
     isSubmitting.value = false
   }
