@@ -471,15 +471,28 @@ onUnmounted(() => {
 .products-page {
   background: @sauna-cream;
   min-height: 100vh;
-  padding-top: 60px; // 贴边导航栏高度
 }
 
 // Hero Section
 .products-hero {
-  background: @sauna-dark;
+  background: linear-gradient(135deg, @sauna-dark 0%, #4A3728 100%);
   padding: 80px 40px;
   text-align: center;
   color: @white;
+  position: relative;
+  overflow: hidden;
+
+  // 背景装饰纹理
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C4A77D' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
 
   @media (max-width: 768px) {
     padding: 60px 20px;
@@ -530,11 +543,16 @@ onUnmounted(() => {
 
 // Category Filter
 .category-filter {
-  padding: 30px 40px;
-  background: @white;
+  padding: 16px 40px;
+  background: @sauna-cream; // 米白色背景
+  position: sticky;
+  top: 80px; // 滚动后保持在导航栏下方
+  z-index: 100;
+  border-bottom: 1px solid rgba(@sauna-gold, 0.15);
 
   @media (max-width: 768px) {
-    padding: 20px;
+    padding: 12px 20px;
+    top: 60px;
   }
 }
 
@@ -543,20 +561,20 @@ onUnmounted(() => {
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
 .filter-btn {
-  padding: 12px 30px;
+  padding: 6px 20px;
   background: transparent;
-  border: 2px solid @sauna-wood;
+  border: 1px solid @sauna-wood;
   color: @sauna-wood;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  border-radius: 30px;
+  border-radius: 20px;
 
   &:hover {
     background: rgba(@sauna-wood, 0.1);
@@ -594,7 +612,7 @@ onUnmounted(() => {
 // Anchor Navigation (左侧固定导航)
 .anchor-nav {
   position: sticky;
-  top: 100px;
+  top: 150px; // 导航栏80px + category-filter高度约54px + 间距
   flex-shrink: 0;
   width: 180px;
   display: flex;

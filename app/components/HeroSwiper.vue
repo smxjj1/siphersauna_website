@@ -95,7 +95,7 @@ onMounted(() => {
 
 <style lang="less" scoped>
 .hero-swiper {
-  height: 100vh;
+  height: 100vh; // 首屏铺满整个视窗
   width: 100%;
   position: relative;
 

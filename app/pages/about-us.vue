@@ -527,7 +527,7 @@ useHead({
 
 // Global Presence Section
 .global-section {
-  background: linear-gradient(180deg, @brand-dark 0%, #3D2A1C 100%);
+  background: #2D2016;
   padding: 80px 40px;
 
   @media (max-width: 768px) {
@@ -555,7 +555,6 @@ useHead({
   height: 500px;
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid rgba(196, 167, 125, 0.15);
 
   @media (max-width: 768px) {
     height: 350px;

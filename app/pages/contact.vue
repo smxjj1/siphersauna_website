@@ -28,7 +28,7 @@
                   id="name"
                   v-model="form.name"
                   type="text"
-                  placeholder="Please enter your name"
+                  placeholder="Your name"
                   :class="{ error: errors.name }"
                 />
                 <span v-if="errors.name" class="error-message">{{ errors.name }}</span>
@@ -39,7 +39,7 @@
                   id="email"
                   v-model="form.email"
                   type="email"
-                  placeholder="Please enter your email address"
+                  placeholder="Your email"
                   :class="{ error: errors.email }"
                 />
                 <span v-if="errors.email" class="error-message">{{ errors.email }}</span>
@@ -53,7 +53,7 @@
                   id="phone"
                   v-model="form.phone"
                   type="tel"
-                  placeholder="Please enter your phone number"
+                  placeholder="Your phone"
                 />
               </div>
               <div class="form-group">
@@ -62,7 +62,7 @@
                   id="company"
                   v-model="form.company"
                   type="text"
-                  placeholder="If applicable, please enter company name"
+                  placeholder="Company name"
                 />
               </div>
             </div>
@@ -73,7 +73,7 @@
                 id="address"
                 v-model="form.address"
                 type="text"
-                placeholder="Please enter the sauna installation address (for size assessment)"
+                placeholder="Installation address"
               />
             </div>
 
@@ -81,7 +81,7 @@
             <div class="form-group">
               <label for="subject">Inquiry Type</label>
               <select id="subject" v-model="form.subject">
-                <option value="">Please select inquiry type</option>
+                <option value="">Select inquiry type</option>
                 <option value="home-custom">Home Sauna Room Customization</option>
                 <option value="commercial-spa">Commercial SPA Engineering</option>
                 <option value="equipment-parts">Equipment & Parts Purchase</option>
@@ -95,7 +95,7 @@
                 id="products"
                 v-model="form.products"
                 type="text"
-                placeholder="e.g., Outdoor Sauna, Far-Infrared Sauna, Sauna Stove"
+                placeholder="e.g., Outdoor Sauna, Sauna Stove"
               />
             </div>
 
@@ -106,7 +106,7 @@
                 id="message"
                 v-model="form.message"
                 rows="5"
-                placeholder="Please describe your space dimensions, preferred style, or any specific questions..."
+                placeholder="Describe your project requirements..."
                 :class="{ error: errors.message }"
               ></textarea>
               <span v-if="errors.message" class="error-message">{{ errors.message }}</span>
@@ -156,7 +156,7 @@
               </div>
               <div class="info-content">
                 <h4>Factory Address</h4>
-                <p>Building A, Wellness Industrial Park<br>Jiangbei District, Ningbo, Zhejiang</p>
+                <p>No. 1 (Building G), Qianjin Middle Road, Hongsha High-tech Development Zone, Nanhai Science and Technology Industrial Park (Guangao), Shilin Town, Nanhai District, Foshan City</p>
               </div>
             </div>
 
@@ -181,7 +181,10 @@
               </div>
               <div class="info-content">
                 <h4>Service Hotline</h4>
-                <p>+86 400-XXX-XXXX</p>
+                <p>
+                  <a href="tel:+8615999977665" class="contact-link">+86 159-9997-7665</a>
+                  <span class="whatsapp-tag">WhatsApp</span>
+                </p>
               </div>
             </div>
 
@@ -584,7 +587,7 @@ const handleSubmit = async () => {
 
 .submit-btn {
   padding: 14px 32px;
-  background: linear-gradient(135deg, @brand-wood 0%, @brand-dark 100%);
+  background: @brand-wood;
   color: @brand-cream;
   border: none;
   border-radius: 8px;
@@ -594,6 +597,7 @@ const handleSubmit = async () => {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
   &:hover:not(:disabled) {
+    background: @brand-dark;
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(45, 32, 22, 0.2);
   }
@@ -687,12 +691,34 @@ const handleSubmit = async () => {
     color: @text-light;
     margin: 0;
     line-height: 1.6;
+
+    .contact-link {
+      color: @text-light;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: @brand-wood;
+      }
+    }
+
+    .whatsapp-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: @white;
+      background: @brand-wood;
+      border-radius: 10px;
+      letter-spacing: 0.3px;
+      margin-left: 8px;
+    }
   }
 }
 
 // Mission Card
 .mission-card {
-  background: linear-gradient(135deg, @brand-wood 0%, @brand-dark 100%);
+  background: @brand-dark;
   padding: 24px;
   border-radius: 16px;
 
