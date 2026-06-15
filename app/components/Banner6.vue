@@ -11,7 +11,7 @@
         <!-- Case 1 -->
         <div class="case-card large">
           <div class="case-image">
-            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80" alt="Luxury Villa Project" loading="lazy" />
+            <img src="/images/home/FAMILY& VILLA-SAUNA.png" alt="Luxury Villa Project" loading="lazy" />
           </div>
           <div class="case-overlay">
             <span class="case-tag">Residential</span>
@@ -23,7 +23,7 @@
         <!-- Case 2 -->
         <div class="case-card">
           <div class="case-image">
-            <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600&q=80" alt="Hotel Spa" loading="lazy" />
+            <img src="/images/home/HOTEL&RESORT-SPA-CENTER.png" alt="Hotel Spa" loading="lazy" />
           </div>
           <div class="case-overlay">
             <span class="case-tag">Hotel</span>
@@ -35,7 +35,7 @@
         <!-- Case 3 -->
         <div class="case-card">
           <div class="case-image">
-            <img src="https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?w=600&q=80" alt="Fitness Center" loading="lazy" />
+            <img src="/images/home/GYM&FITNESS-CLUBS.png" alt="Fitness Center" loading="lazy" />
           </div>
           <div class="case-overlay">
             <span class="case-tag">Gym</span>
@@ -47,7 +47,7 @@
         <!-- Case 4 -->
         <div class="case-card">
           <div class="case-image">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Spa Center" loading="lazy" />
+            <img src="/images/home/IndoorDry&SteamRoom.png" alt="Spa Center" loading="lazy" />
           </div>
           <div class="case-overlay">
             <span class="case-tag">Spa</span>
@@ -59,7 +59,7 @@
         <!-- Case 5 -->
         <div class="case-card large">
           <div class="case-image">
-            <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80" alt="Wellness Center" loading="lazy" />
+            <img src="/images/home/OutdoorWoodfiredHotTub.png" alt="Wellness Center" loading="lazy" />
           </div>
           <div class="case-overlay">
             <span class="case-tag">Wellness</span>

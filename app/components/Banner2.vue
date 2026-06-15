@@ -11,7 +11,7 @@
         <!-- Product 1: Sauna Rooms -->
         <div class="product-item">
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=80" alt="Sauna Rooms" loading="lazy" />
+            <img src="/images/home/SaunaRooms.png" alt="Sauna Rooms" loading="lazy" />
           </div>
           <div class="product-content">
             <h3>Sauna Rooms</h3>
@@ -22,7 +22,7 @@
         <!-- Product 2: Sauna Heaters -->
         <div class="product-item">
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600&q=80" alt="Sauna Heaters" loading="lazy" />
+            <img src="/images/home/SaunaHeaters.png" alt="Sauna Heaters" loading="lazy" />
           </div>
           <div class="product-content">
             <h3>Sauna Heaters</h3>
@@ -33,44 +33,44 @@
         <!-- Product 3: Sauna Stones -->
         <div class="product-item">
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600&q=80" alt="Sauna Stones" loading="lazy" />
+            <img src="/images/home/SaunaAccessories.png" alt="Sauna Stones" loading="lazy" />
           </div>
           <div class="product-content">
-            <h3>Sauna Stones</h3>
-            <p>Premium Peridotite Stones</p>
+            <h3>Sauna Accessories</h3>
+            <p>Complete Your Sauna Experience.</p>
           </div>
         </div>
 
-        <!-- Product 4: Smart Controllers -->
+        <!-- Product 4: Outdoor Wood-fired Hot Tub -->
         <div class="product-item">
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Smart Controllers" loading="lazy" />
+            <img src="/images/home/OutdoorWoodfiredHotTub.png" alt="Outdoor Wood-fired Hot Tub" loading="lazy" />
           </div>
           <div class="product-content">
-            <h3>Smart Controllers</h3>
-            <p>Intelligent Temperature Control</p>
+            <h3>Outdoor Wood-fired Hot Tub</h3>
+            <p>Immerse in Nature. Relax in Warmth.</p>
           </div>
         </div>
 
-        <!-- Product 5: Wooden Accessories -->
+        <!-- Product 5: Indoor Dry & Steam Room -->
         <div class="product-item">
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?w=600&q=80" alt="Wooden Accessories" loading="lazy" />
+            <img src="/images/home/IndoorDry&SteamRoom.png" alt="Indoor Dry & Steam Room" loading="lazy" />
           </div>
           <div class="product-content">
-            <h3>Wooden Accessories</h3>
-            <p>Buckets, Ladles & Headrests</p>
+            <h3>Indoor Dry & Steam Room</h3>
+            <p>Cleanse. Relax. Rejuvenate.</p>
           </div>
         </div>
 
-        <!-- Product 6: Aromatherapy -->
+        <!-- Product 6: Outdoor Traditional Sauna -->
         <div class="product-item">
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600&q=80" alt="Aromatherapy" loading="lazy" />
+            <img src="/images/home/OutdoorTraditionalSauna.png" alt="Outdoor Traditional Sauna" loading="lazy" />
           </div>
           <div class="product-content">
-            <h3>Aromatherapy</h3>
-            <p>Essential Oils & Aromas</p>
+            <h3>Outdoor Traditional Sauna</h3>
+            <p>Embrace Tradition. Elevate Wellness.</p>
           </div>
         </div>
       </div>

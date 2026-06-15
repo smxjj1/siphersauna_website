@@ -28,7 +28,7 @@
         </div>
         <div class="content-right">
           <div class="showcase-image">
-            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80" alt="Custom Sauna Design" loading="lazy" />
+            <img src="/images/home/THE-ULTIMATESAUNA-EXPERIENCE.png" alt="The Ultimate Sauna Experience" loading="lazy" />
           </div>
         </div>
       </div>
@@ -129,6 +129,7 @@
     position: relative;
     border-radius: 12px;
     overflow: hidden;
+    aspect-ratio: 1;
 
     &::before {
       content: '';
@@ -144,7 +145,7 @@
 
     img {
       width: 100%;
-      height: 450px;
+      height: 100%;
       object-fit: cover;
       transition: transform 0.6s ease;
     }
@@ -173,8 +174,9 @@
     font-size: 18px;
   }
 
-  .content-right .showcase-image img {
-    height: 350px;
+  .content-right .showcase-image {
+    max-width: 400px;
+    margin: 0 auto;
   }
 }
 
@@ -195,8 +197,8 @@
     grid-template-columns: 1fr;
   }
 
-  .content-right .showcase-image img {
-    height: 280px;
+  .content-right .showcase-image {
+    max-width: 300px;
   }
 }
 </style>

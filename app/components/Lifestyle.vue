@@ -14,7 +14,7 @@
           <div class="swiper-slide">
             <div class="lifestyle-card">
               <div class="lifestyle-image">
-                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80" alt="Sauna Room" loading="lazy" />
+                <img src="/images/home/SaunaRooms.png" alt="Sauna Room" loading="lazy" />
               </div>
               <div class="lifestyle-content">
                 <span class="tag">Indoor</span>
@@ -26,7 +26,7 @@
           <div class="swiper-slide">
             <div class="lifestyle-card">
               <div class="lifestyle-image">
-                <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80" alt="Outdoor Sauna" loading="lazy" />
+                <img src="/images/home/OutdoorTraditionalSauna.png" alt="Outdoor Sauna" loading="lazy" />
               </div>
               <div class="lifestyle-content">
                 <span class="tag">Outdoor</span>
@@ -38,7 +38,7 @@
           <div class="swiper-slide">
             <div class="lifestyle-card">
               <div class="lifestyle-image">
-                <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80" alt="Aromatherapy" loading="lazy" />
+                <img src="/images/home/SaunaAccessories.png" alt="Aromatherapy" loading="lazy" />
               </div>
               <div class="lifestyle-content">
                 <span class="tag">Aromatherapy</span>
@@ -50,7 +50,7 @@
           <div class="swiper-slide">
             <div class="lifestyle-card">
               <div class="lifestyle-image">
-                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Wooden Accessories" loading="lazy" />
+                <img src="/images/home/SaunaHeaters.png" alt="Wooden Accessories" loading="lazy" />
               </div>
               <div class="lifestyle-content">
                 <span class="tag">Accessories</span>
@@ -62,7 +62,7 @@
           <div class="swiper-slide">
             <div class="lifestyle-card">
               <div class="lifestyle-image">
-                <img src="https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?w=800&q=80" alt="Wellness" loading="lazy" />
+                <img src="/images/home/OutdoorWoodfiredHotTub.png" alt="Wellness" loading="lazy" />
               </div>
               <div class="lifestyle-content">
                 <span class="tag">Wellness</span>

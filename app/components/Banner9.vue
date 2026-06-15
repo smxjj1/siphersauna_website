@@ -33,7 +33,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1920&q=80') center/cover;
+      background: url('/images/home/SaunaRooms.png') center/cover;
       opacity: 0.15;
     }
   }

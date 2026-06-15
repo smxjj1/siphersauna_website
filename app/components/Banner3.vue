@@ -10,7 +10,7 @@
       <div class="scenarios-grid">
         <!-- Scenario 1: Home -->
         <div class="scenario-card home">
-          <div class="scenario-bg" style="background-image: url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80')"></div>
+          <div class="scenario-bg" style="background-image: url('/images/home/FAMILY& VILLA-SAUNA.png')"></div>
           <div class="scenario-content">
             <span class="scenario-tag">Residential</span>
             <h3>Home & Villa Sauna</h3>
@@ -21,7 +21,7 @@
 
         <!-- Scenario 2: Hotel -->
         <div class="scenario-card hotel">
-          <div class="scenario-bg" style="background-image: url('https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80')"></div>
+          <div class="scenario-bg" style="background-image: url('/images/home/HOTEL&RESORT-SPA-CENTER.png')"></div>
           <div class="scenario-content">
             <span class="scenario-tag">Commercial</span>
             <h3>Hotel & Resort Spa</h3>
@@ -32,7 +32,7 @@
 
         <!-- Scenario 3: Fitness -->
         <div class="scenario-card fitness">
-          <div class="scenario-bg" style="background-image: url('https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?w=800&q=80')"></div>
+          <div class="scenario-bg" style="background-image: url('/images/home/GYM&FITNESS-CLUBS.png')"></div>
           <div class="scenario-content">
             <span class="scenario-tag">Wellness</span>
             <h3>Gym & Fitness Club</h3>
@@ -43,7 +43,7 @@
 
         <!-- Scenario 4: Spa -->
         <div class="scenario-card spa">
-          <div class="scenario-bg" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80')"></div>
+          <div class="scenario-bg" style="background-image: url('/images/home/IndoorDry&SteamRoom.png')"></div>
           <div class="scenario-content">
             <span class="scenario-tag">Professional</span>
             <h3>Commercial Spa Center</h3>

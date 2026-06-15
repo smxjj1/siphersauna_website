@@ -4,7 +4,7 @@
       <!-- 第一个：左图右文 -->
       <div class="philosophy-item">
         <div class="philosophy-image">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Premium Wood Texture" loading="lazy" />
+          <img src="/images/home/SaunaAccessories.png" alt="Premium Wood Texture" loading="lazy" />
         </div>
         <div class="philosophy-content">
           <span class="subtitle">Our Philosophy</span>

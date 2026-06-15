@@ -10,7 +10,7 @@
         <!-- Home Sauna Rooms -->
         <div class="product-card">
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=80" alt="Home Sauna Rooms" loading="lazy" />
+            <img src="/images/home/SaunaRooms.png" alt="Home Sauna Rooms" loading="lazy" />
             <div class="product-overlay">
               <button class="view-btn">View Details</button>
             </div>
@@ -24,7 +24,7 @@
         <!-- Heaters & Stones -->
         <div class="product-card">
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600&q=80" alt="Heaters & Stones" loading="lazy" />
+            <img src="/images/home/SaunaHeaters.png" alt="Heaters & Stones" loading="lazy" />
             <div class="product-overlay">
               <button class="view-btn">View Details</button>
             </div>
@@ -38,7 +38,7 @@
         <!-- Essential Oils -->
         <div class="product-card">
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600&q=80" alt="Essential Oils" loading="lazy" />
+            <img src="/images/home/SaunaAccessories.png" alt="Essential Oils" loading="lazy" />
             <div class="product-overlay">
               <button class="view-btn">View Details</button>
             </div>
@@ -52,7 +52,7 @@
         <!-- Wooden Accessories -->
         <div class="product-card">
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Wooden Accessories" loading="lazy" />
+            <img src="/images/home/SaunaAccessories.png" alt="Wooden Accessories" loading="lazy" />
             <div class="product-overlay">
               <button class="view-btn">View Details</button>
             </div>

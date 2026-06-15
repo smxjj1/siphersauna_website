@@ -35,7 +35,9 @@
         <div class="stat-item">
           <div class="stat-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="1" y="3" width="15" height="13M18 8h1a4 4 0 010 8h-1M5 8h14v9a4 4 0 01-4 4H9a4 4 0 01-4-4V8zM5 1v3M8 1v3M13 1v3"/>
+              <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+              <line x1="12" y1="22.08" x2="12" y2="12"/>
             </svg>
           </div>
           <div class="stat-info">
@@ -60,7 +62,7 @@
       <div class="factory-highlights">
         <div class="highlight-card">
           <div class="highlight-image">
-            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80" alt="Production Workshop" loading="lazy" />
+            <img src="/images/home/MODERN-PRODUCTION.png" alt="Production Workshop" loading="lazy" />
           </div>
           <div class="highlight-content">
             <h3>Modern Production</h3>
@@ -70,7 +72,7 @@
 
         <div class="highlight-card">
           <div class="highlight-image">
-            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80" alt="Quality Control" loading="lazy" />
+            <img src="/images/home/QUALITY-TESTING.png" alt="Quality Control" loading="lazy" />
           </div>
           <div class="highlight-content">
             <h3>Quality Testing</h3>
@@ -80,7 +82,7 @@
 
         <div class="highlight-card">
           <div class="highlight-image">
-            <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=600&q=80" alt="Warehouse" loading="lazy" />
+            <img src="/images/home/WAREHOUSING&LOGISTICS.png" alt="Warehouse" loading="lazy" />
           </div>
           <div class="highlight-content">
             <h3>Warehouse & Logistics</h3>
