@@ -41,7 +41,7 @@
           </div>
         </div>
 
-        <!-- Quick Links -->
+        <!-- Products -->
         <div class="footer-column">
           <h4 class="footer-title">Products</h4>
           <ul class="footer-links">
@@ -65,14 +65,21 @@
           </ul>
         </div>
 
-        <!-- Newsletter -->
-        <div class="footer-column">
-          <h4 class="footer-title">Wellness Tips</h4>
-          <p class="newsletter-desc">Subscribe for sauna wellness tips, exclusive offers, and new product updates.</p>
-          <form class="newsletter-form" @submit.prevent>
-            <input type="email" placeholder="Your email address" class="newsletter-input" />
-            <button type="submit" class="newsletter-btn">Subscribe</button>
-          </form>
+        <!-- Find Us -->
+        <div class="footer-column footer-findus">
+          <h4 class="footer-title">Find Us</h4>
+          <div class="map-wrapper">
+            <iframe
+              src="https://www.google.com/maps?q=汇力丰工业园+前进中路2号+南海区+佛山市+广东省&output=embed&z=15&hl=en"
+              width="100%"
+              height="200"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Find Us on Google Maps"
+            ></iframe>
+          </div>
         </div>
       </div>
 
@@ -100,7 +107,7 @@
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  grid-template-columns: 1.3fr 1fr 1fr 2.2fr;
   gap: 48px;
   margin-bottom: 48px;
 }
@@ -290,6 +297,18 @@
   }
 }
 
+.footer-findus {
+  .map-wrapper {
+    border-radius: 8px;
+    overflow: hidden;
+
+    iframe {
+      display: block;
+      border-radius: 8px;
+    }
+  }
+}
+
 @media (max-width: 992px) {
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -352,10 +371,6 @@
     flex-direction: column;
     gap: 16px;
     text-align: center;
-  }
-
-  .newsletter-form {
-    flex-direction: column;
   }
 }
 </style>

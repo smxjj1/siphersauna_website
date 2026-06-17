@@ -11,7 +11,7 @@
         <!-- Case 1 -->
         <div class="case-card large">
           <div class="case-image">
-            <img src="/images/home/FAMILY& VILLA-SAUNA.png" alt="Luxury Villa Project" loading="lazy" />
+            <img src="/images/home/LuxuryVillaSauna.png" alt="Luxury Villa Project" loading="lazy" />
           </div>
           <div class="case-overlay">
             <span class="case-tag">Residential</span>
@@ -23,7 +23,7 @@
         <!-- Case 2 -->
         <div class="case-card">
           <div class="case-image">
-            <img src="/images/home/HOTEL&RESORT-SPA-CENTER.png" alt="Hotel Spa" loading="lazy" />
+            <img src="/images/home/Five-StarResort.png" alt="Hotel Spa" loading="lazy" />
           </div>
           <div class="case-overlay">
             <span class="case-tag">Hotel</span>
@@ -35,7 +35,7 @@
         <!-- Case 3 -->
         <div class="case-card">
           <div class="case-image">
-            <img src="/images/home/GYM&FITNESS-CLUBS.png" alt="Fitness Center" loading="lazy" />
+            <img src="/images/home/PremiumFitnessClub.png" alt="Fitness Center" loading="lazy" />
           </div>
           <div class="case-overlay">
             <span class="case-tag">Gym</span>
@@ -47,7 +47,7 @@
         <!-- Case 4 -->
         <div class="case-card">
           <div class="case-image">
-            <img src="/images/home/IndoorDry&SteamRoom.png" alt="Spa Center" loading="lazy" />
+            <img src="/images/home/CommercialSpa.png" alt="Spa Center" loading="lazy" />
           </div>
           <div class="case-overlay">
             <span class="case-tag">Spa</span>
@@ -59,7 +59,7 @@
         <!-- Case 5 -->
         <div class="case-card large">
           <div class="case-image">
-            <img src="/images/home/OutdoorWoodfiredHotTub.png" alt="Wellness Center" loading="lazy" />
+            <img src="/images/home/MedicalWellnessCenter.png" alt="Wellness Center" loading="lazy" />
           </div>
           <div class="case-overlay">
             <span class="case-tag">Wellness</span>
