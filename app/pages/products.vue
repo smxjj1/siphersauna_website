@@ -236,7 +236,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
-import saunaProductsData from '~/data/sauna-products.json'
+import { useProductCatalog } from '~/composables/useProducts'
 
 definePageMeta({
   layout: 'default',
@@ -244,18 +244,21 @@ definePageMeta({
 
 // 产品接口定义
 interface ProductSpecs {
-  pcsPerCtn: number | null
-  nw: number | null
-  gw: number | null
-  ctnSize: string | null
-  length: number | null
-  width: number | null
-  height: number | null
-  pcs20gp: number | null
-  pcs40hq: number | null
-  moq: number | null
-  hsCode: string | null
-  remark: string | null
+  pcsPerCtn?: number | null
+  nw?: number | null
+  gw?: number | null
+  ctnSize?: string | null
+  length?: number | null
+  width?: number | null
+  height?: number | null
+  pcs20gp?: number | null
+  pcs40hq?: number | null
+  moq?: number | null
+  hsCode?: string | null
+  remark?: string | null
+  totalCartons?: number | null
+  totalCbm?: number | null
+  [key: string]: unknown
 }
 
 interface Product {
@@ -282,10 +285,8 @@ useHead({
   ]
 })
 
-// 数据
-const allProducts = saunaProductsData.products as Product[]
-const categories = saunaProductsData.categories
-const totalProducts = allProducts.length
+// 从 CMS 拉取全站产品（失败时 fallback 本地 JSON）
+const { products: allProducts, categories, totalProducts } = useProductCatalog()
 
 // 状态
 const activeCategory = ref<string>('all')
@@ -300,9 +301,9 @@ let scrollObserver: IntersectionObserver | null = null
 // 筛选后的产品
 const filteredProducts = computed(() => {
   if (activeCategory.value === 'all') {
-    return allProducts
+    return allProducts.value
   }
-  return allProducts.filter(p => p.categorySlug === activeCategory.value)
+  return allProducts.value.filter((p: Product) => p.categorySlug === activeCategory.value)
 })
 
 // 按子分类分组

@@ -15,6 +15,10 @@ export default defineNuxtConfig({
       analyticsToken: process.env.NUXT_PUBLIC_ANALYTICS_TOKEN || '',
       analyticsBaseUrl: process.env.NUXT_PUBLIC_ANALYTICS_BASE_URL || 'https://analytics.siphersauna.com',
       analyticsSiteId: process.env.NUXT_PUBLIC_ANALYTICS_SITE_ID || 'siphersauna.com',
+      /** 产品 CMS（analytics-platform /api/public） */
+      cmsSiteKey: process.env.NUXT_PUBLIC_CMS_SITE_KEY || 'siphersauna.com',
+      cmsApi: process.env.NUXT_PUBLIC_CMS_API || 'https://analytics.oyababies.com/api/public',
+      cmsMediaBase: process.env.NUXT_PUBLIC_CMS_MEDIA_BASE || 'https://analytics.oyababies.com/media',
       /** 为 true 时不发起任何上报（如本地调试） */
       analyticsDisabled: process.env.NUXT_PUBLIC_ANALYTICS_DISABLED === 'true',
       /** 为 true 时匿名用户 ID 仅存 sessionStorage，关闭标签后重置（偏隐私） */
