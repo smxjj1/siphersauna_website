@@ -204,9 +204,18 @@
                   </table>
                 </div>
 
-                <NuxtLink :to="getLocalePath('/contact-us')" class="detail-cta">
-                  {{ $t('products.contactInquiry') }}
-                </NuxtLink>
+                <div class="detail-actions">
+                  <button type="button" class="detail-add-list" @click="handleAddToList">
+                    Add to List
+                  </button>
+                  <NuxtLink
+                    v-if="currentProduct"
+                    :to="{ path: '/contact', query: { products: currentProduct.itemNo } }"
+                    class="detail-cta"
+                  >
+                    {{ $t('products.contactInquiry') }}
+                  </NuxtLink>
+                </div>
               </div>
             </div>
           </div>
@@ -230,6 +239,7 @@ definePageMeta({
 })
 
 const { $t, getLocalePath } = useI18n()
+const { add, showFeedback } = useInquiryList()
 
 interface ProductSpecs {
   pcsPerCtn: number | null
@@ -409,6 +419,30 @@ const closeDetail = () => {
   detailOpen.value = false
   document.body.style.marginLeft = ''
   document.body.style.overflow = ''
+}
+
+const handleAddToList = () => {
+  const product = currentProduct.value
+  if (!product) return
+
+  const result = add({
+    itemNo: product.itemNo,
+    name: product.name,
+    categorySlug: product.categorySlug,
+    mainImage: product.mainImage,
+  })
+
+  if (result.ok) {
+    showFeedback('Added to inquiry list')
+    return
+  }
+  if (result.reason === 'duplicate') {
+    showFeedback('Already in your list')
+    return
+  }
+  if (result.reason === 'limit') {
+    showFeedback('Maximum 20 products')
+  }
 }
 
 const handleKeydown = (e: KeyboardEvent) => {
@@ -950,6 +984,29 @@ onUnmounted(() => {
     &:last-child {
       color: @text-color;
     }
+  }
+}
+
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.detail-add-list {
+  padding: 14px 24px;
+  background: transparent;
+  border: 2px solid @sauna-wood;
+  color: @sauna-wood;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background: @sauna-wood;
+    color: @white;
   }
 }
 

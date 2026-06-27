@@ -244,6 +244,7 @@ definePageMeta({
 })
 
 const config = useRuntimeConfig()
+const route = useRoute()
 const { sendContactAnalytics } = useAnalytics()
 const { contactLinks, contactProfile, getLinkDisplayText, getLocalizedProfileText } = useContactLinks()
 const analyticsSiteId = config.public.analyticsSiteId as string
@@ -291,6 +292,10 @@ const form = reactive({
 const errors = reactive<Record<string, string>>({})
 const isSubmitting = ref(false)
 const submitStatus = ref<'idle' | 'success' | 'error'>('idle')
+
+onMounted(() => {
+  form.products = applyProductsQueryToField(route.query.products, form.products)
+})
 
 // Form validation
 const validateForm = () => {

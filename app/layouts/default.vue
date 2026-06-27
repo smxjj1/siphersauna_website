@@ -4,6 +4,7 @@
     <div class="page-content">
       <NuxtPage />
     </div>
+    <InquiryListFab contact-path="/contact" />
   </div>
 </template>
 

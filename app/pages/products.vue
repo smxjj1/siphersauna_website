@@ -222,9 +222,18 @@
                   </table>
                 </div>
 
-                <NuxtLink to="/contact" class="detail-cta">
-                  Contact for Inquiry
-                </NuxtLink>
+                <div class="detail-actions">
+                  <button type="button" class="detail-add-list" @click="handleAddToList">
+                    Add to List
+                  </button>
+                  <NuxtLink
+                    v-if="currentProduct"
+                    :to="{ path: '/contact', query: { products: currentProduct.itemNo } }"
+                    class="detail-cta"
+                  >
+                    Contact for Inquiry
+                  </NuxtLink>
+                </div>
               </div>
             </div>
           </div>
@@ -241,6 +250,8 @@ import { useProductCatalog } from '~/composables/useProducts'
 definePageMeta({
   layout: 'default',
 })
+
+const { add, showFeedback } = useInquiryList()
 
 // 产品接口定义
 interface ProductSpecs {
@@ -436,6 +447,30 @@ const closeDetail = () => {
   detailOpen.value = false
   document.body.style.marginLeft = ''
   document.body.style.overflow = ''
+}
+
+const handleAddToList = () => {
+  const product = currentProduct.value
+  if (!product) return
+
+  const result = add({
+    itemNo: product.itemNo,
+    name: product.name,
+    categorySlug: product.categorySlug,
+    mainImage: product.mainImage,
+  })
+
+  if (result.ok) {
+    showFeedback('Added to inquiry list')
+    return
+  }
+  if (result.reason === 'duplicate') {
+    showFeedback('Already in your list')
+    return
+  }
+  if (result.reason === 'limit') {
+    showFeedback('Maximum 20 products')
+  }
 }
 
 // 键盘事件处理
@@ -1053,6 +1088,29 @@ onUnmounted(() => {
     &:last-child {
       color: @sauna-dark;
     }
+  }
+}
+
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.detail-add-list {
+  padding: 14px 30px;
+  background: transparent;
+  border: 2px solid @sauna-wood;
+  color: @sauna-wood;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background: @sauna-wood;
+    color: @white;
   }
 }
 
