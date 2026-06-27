@@ -51,12 +51,15 @@
     <button
       type="button"
       class="inquiry-fab"
+      :class="{ 'inquiry-fab--pulse': !panelOpen }"
       aria-label="Open inquiry list"
+      :aria-expanded="panelOpen"
       @click="panelOpen = !panelOpen"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
       </svg>
+      <span class="fab-label">Inquiry List</span>
       <span class="fab-badge">{{ badgeText }}</span>
     </button>
   </div>
@@ -79,6 +82,26 @@ const {
 const panelOpen = ref(false)
 
 const badgeText = computed(() => (count.value > 99 ? '99+' : String(count.value)))
+
+watch(count, (newVal, oldVal) => {
+  if (newVal > oldVal) {
+    panelOpen.value = true
+  }
+  if (newVal === 0) {
+    panelOpen.value = false
+  }
+})
+
+onMounted(() => {
+  if (count.value <= 0) return
+  const config = useRuntimeConfig()
+  const siteKey = (config.public.cmsSiteKey as string) || 'default'
+  const autoOpenKey = `inquiry-list-auto-open:${siteKey}`
+  if (!sessionStorage.getItem(autoOpenKey)) {
+    panelOpen.value = true
+    sessionStorage.setItem(autoOpenKey, '1')
+  }
+})
 
 const handleClearAll = () => {
   if (!count.value) return
@@ -120,40 +143,46 @@ const handleContactFromList = async () => {
 
 .inquiry-fab-root {
   position: fixed;
-  right: 24px;
-  bottom: 24px;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 10000;
 
   @media (max-width: 768px) {
-    right: 16px;
-    bottom: 16px;
+    right: 12px;
   }
 }
 
 .inquiry-fab {
   position: relative;
-  width: 56px;
-  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 10px 14px 10px 12px;
   border: none;
-  border-radius: 50%;
+  border-radius: 999px;
   background: @sauna-wood;
   color: @white;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(139, 90, 43, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  box-shadow: 0 4px 20px rgba(139, 90, 43, 0.45);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(139, 90, 43, 0.55);
+    transform: scale(1.03);
+    box-shadow: 0 6px 24px rgba(139, 90, 43, 0.55);
+  }
+
+  .fab-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .fab-badge {
-    position: absolute;
-    top: -4px;
-    right: -4px;
     min-width: 22px;
     height: 22px;
     padding: 0 6px;
@@ -164,15 +193,40 @@ const handleContactFromList = async () => {
     font-weight: 700;
     line-height: 22px;
     text-align: center;
+    flex-shrink: 0;
+  }
+
+  &.inquiry-fab--pulse {
+    animation: inquiry-pulse 2s ease-in-out infinite;
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px 12px;
+
+    .fab-label {
+      max-width: 88px;
+      font-size: 0.8125rem;
+    }
+  }
+}
+
+@keyframes inquiry-pulse {
+  0%,
+  100% {
+    box-shadow: 0 4px 20px rgba(139, 90, 43, 0.45);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(139, 90, 43, 0.45), 0 0 0 8px rgba(139, 90, 43, 0.18);
   }
 }
 
 .inquiry-panel {
   position: absolute;
-  right: 0;
-  bottom: 68px;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
   width: 360px;
-  max-height: 420px;
+  max-height: min(420px, 70vh);
   background: @sauna-dark;
   color: @sauna-cream;
   border-radius: 12px;
@@ -183,8 +237,11 @@ const handleContactFromList = async () => {
   overflow: hidden;
 
   @media (max-width: 768px) {
-    width: calc(100vw - 32px);
-    right: -8px;
+    right: 0;
+    top: auto;
+    bottom: calc(100% + 12px);
+    transform: none;
+    width: min(360px, calc(100vw - 24px));
   }
 }
 
@@ -344,6 +401,10 @@ const handleContactFromList = async () => {
 .inquiry-panel-enter-from,
 .inquiry-panel-leave-to {
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateY(calc(-50% + 8px));
+
+  @media (max-width: 768px) {
+    transform: translateY(8px);
+  }
 }
 </style>

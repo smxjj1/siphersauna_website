@@ -75,12 +75,8 @@ export function useInquiryList() {
     }
   }
 
-  if (import.meta.client) {
-    onMounted(() => {
-      if (items.value.length === 0) {
-        hydrate()
-      }
-    })
+  if (import.meta.client && items.value.length === 0) {
+    hydrate()
   }
 
   const count = computed(() => items.value.length)
