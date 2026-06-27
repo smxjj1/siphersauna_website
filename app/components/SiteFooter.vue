@@ -13,7 +13,13 @@
           </p>
           <ul class="footer-contact">
             <li v-for="link in contactLinks" :key="`${link.iconKey}-${link.url}`">
-              <SocialIcon :icon-key="link.iconKey" variant="contact" class="contact-icon" />
+              <SocialIcon
+                :icon-key="link.iconKey"
+                :icon-source="link.iconSource"
+                :icon-url="link.iconUrl"
+                variant="contact"
+                class="contact-icon"
+              />
               <a :href="link.url">{{ getLinkDisplayText(link) }}</a>
               <span v-if="link.label" class="contact-tag">{{ link.label }}</span>
             </li>
@@ -28,7 +34,12 @@
               :target="link.openInNewTab ? '_blank' : undefined"
               :rel="link.openInNewTab ? 'noopener noreferrer' : undefined"
             >
-              <SocialIcon :icon-key="link.iconKey" variant="social" />
+              <SocialIcon
+                :icon-key="link.iconKey"
+                :icon-source="link.iconSource"
+                :icon-url="link.iconUrl"
+                variant="social"
+              />
             </a>
           </div>
         </div>

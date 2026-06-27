@@ -1,7 +1,9 @@
 export interface ContactLinkItem {
   id?: number
   linkType: 'contact' | 'social'
-  iconKey: string
+  iconSource?: 'builtin' | 'upload'
+  iconKey?: string | null
+  iconUrl?: string | null
   label?: string | null
   url: string
   openInNewTab?: boolean
@@ -83,7 +85,7 @@ export function getLinkDisplayText(link: ContactLinkItem): string {
   if (link.iconKey === 'phone' || link.iconKey === 'whatsapp') {
     return url.replace(/^tel:/i, '')
   }
-  return url
+  return link.label || url
 }
 
 export function getLinkAriaLabel(link: ContactLinkItem): string {
@@ -100,7 +102,7 @@ export function getLinkAriaLabel(link: ContactLinkItem): string {
     youtube: 'YouTube',
     tiktok: 'TikTok',
   }
-  return link.label || labels[link.iconKey] || link.iconKey
+  return link.label || labels[link.iconKey || ''] || link.iconKey || 'Link'
 }
 
 export function useContactLinks() {

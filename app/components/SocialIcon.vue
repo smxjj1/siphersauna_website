@@ -5,8 +5,14 @@
     :aria-hidden="decorative ? 'true' : undefined"
     :aria-label="decorative ? undefined : ariaLabel"
   >
+    <img
+      v-if="iconSource === 'upload' && iconUrl"
+      :src="iconUrl"
+      :alt="ariaLabel || ''"
+      class="uploaded-icon"
+    />
     <svg
-      v-if="iconKey === 'email'"
+      v-else-if="iconKey === 'email'"
       viewBox="0 0 24 24"
       fill="currentColor"
     >
@@ -77,11 +83,16 @@
 
 <script setup lang="ts">
 const props = withDefaults(defineProps<{
-  iconKey: string
+  iconKey?: string
+  iconSource?: 'builtin' | 'upload'
+  iconUrl?: string | null
   ariaLabel?: string
   variant?: 'default' | 'contact' | 'social'
   decorative?: boolean
 }>(), {
+  iconKey: '',
+  iconSource: 'builtin',
+  iconUrl: null,
   variant: 'default',
   decorative: true,
 })
@@ -111,6 +122,18 @@ const iconClass = computed(() => ['social-icon', `social-icon--${props.variant}`
 
 .social-icon--social svg,
 .social-icon--default svg {
+  width: 14px;
+  height: 14px;
+}
+
+.uploaded-icon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  display: block;
+}
+
+.social-icon--contact .uploaded-icon {
   width: 14px;
   height: 14px;
 }
