@@ -10,71 +10,47 @@ export interface ContactLinkItem {
   sortOrder?: number
 }
 
+export interface ContactProfile {
+  address?: string | null
+  businessHours?: string | null
+  addressI18n?: Record<string, string> | null
+  businessHoursI18n?: Record<string, string> | null
+}
+
 export interface ContactLinksPayload {
   contact: ContactLinkItem[]
   social: ContactLinkItem[]
   links: ContactLinkItem[]
+  profile?: ContactProfile | null
 }
 
-const FALLBACK_LINKS: ContactLinkItem[] = [
-  {
-    linkType: 'contact',
-    iconKey: 'email',
-    url: 'mailto:info@siphersauna.com',
-    openInNewTab: false,
-    sortOrder: 0,
-  },
-  {
-    linkType: 'contact',
-    iconKey: 'phone',
-    label: 'WhatsApp',
-    url: 'tel:+8615999977665',
-    openInNewTab: false,
-    sortOrder: 1,
-  },
-  {
-    linkType: 'social',
-    iconKey: 'instagram',
-    url: 'https://www.instagram.com/siphersauna.terra/',
-    openInNewTab: true,
-    sortOrder: 2,
-  },
-  {
-    linkType: 'social',
-    iconKey: 'facebook',
-    url: 'https://www.facebook.com/siphersauna',
-    openInNewTab: true,
-    sortOrder: 3,
-  },
-  {
-    linkType: 'social',
-    iconKey: 'xiaohongshu',
-    url: 'https://www.xiaohongshu.com/user/profile/6303a7de000000001200fd4d?m_source=pwa',
-    openInNewTab: true,
-    sortOrder: 4,
-  },
-  {
-    linkType: 'social',
-    iconKey: 'threads',
-    url: 'https://www.threads.com/@siphersauna.terra',
-    openInNewTab: true,
-    sortOrder: 5,
-  },
-  {
-    linkType: 'social',
-    iconKey: 'linkedin',
-    url: 'https://www.linkedin.com/in/siphersauna',
-    openInNewTab: true,
-    sortOrder: 6,
-  },
-]
+const EMPTY_PROFILE: ContactProfile = {
+  address: null,
+  businessHours: null,
+  addressI18n: null,
+  businessHoursI18n: null,
+}
 
-function splitLinks(links: ContactLinkItem[]): ContactLinksPayload {
-  return {
-    contact: links.filter(item => item.linkType === 'contact'),
-    social: links.filter(item => item.linkType === 'social'),
-    links,
-  }
+const EMPTY_PAYLOAD: ContactLinksPayload = {
+  contact: [],
+  social: [],
+  links: [],
+  profile: EMPTY_PROFILE,
+}
+
+export function getLocalizedProfileText(
+  profile: ContactProfile | null | undefined,
+  field: 'address' | 'businessHours',
+  locale?: string,
+): string {
+  if (!profile) return ''
+  const i18nKey = field === 'address' ? 'addressI18n' : 'businessHoursI18n'
+  const i18n = profile[i18nKey]
+  const normalizedLocale = locale || 'en'
+
+  if (i18n?.[normalizedLocale]) return i18n[normalizedLocale]
+  if (normalizedLocale === 'zh-TW' && i18n?.['zh-CN']) return i18n['zh-CN']
+  return profile[field] || ''
 }
 
 export function getLinkDisplayText(link: ContactLinkItem): string {
@@ -118,25 +94,31 @@ export function useContactLinks() {
     },
   )
 
-  const fromCms = computed(() => !error.value && (data.value?.data?.links?.length ?? 0) > 0)
-
   const payload = computed<ContactLinksPayload>(() => {
-    if (fromCms.value && data.value?.data) {
-      return data.value.data
+    if (error.value || !data.value?.success || !data.value.data) {
+      return EMPTY_PAYLOAD
     }
-    return splitLinks(FALLBACK_LINKS)
+    return {
+      ...data.value.data,
+      profile: data.value.data.profile || EMPTY_PROFILE,
+    }
   })
 
   const contactLinks = computed(() => payload.value.contact)
   const socialLinks = computed(() => payload.value.social)
+  const contactProfile = computed(() => payload.value.profile || EMPTY_PROFILE)
+  const hasLinks = computed(() => payload.value.links.length > 0)
 
   return {
     contactLinks,
     socialLinks,
-    fromCms,
+    contactProfile,
+    hasLinks,
     pending,
+    error,
     refresh,
     getLinkDisplayText,
     getLinkAriaLabel,
+    getLocalizedProfileText,
   }
 }

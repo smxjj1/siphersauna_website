@@ -1,9 +1,9 @@
 <template>
   <header class="navbar-wrapper">
     <!-- Top Info Bar -->
-    <div class="top-info-bar">
+    <div v-if="contactLinks.length || socialLinks.length" class="top-info-bar">
       <div class="top-info-inner">
-        <div class="contact-info">
+        <div v-if="contactLinks.length" class="contact-info">
           <a
             v-for="link in contactLinks"
             :key="`${link.iconKey}-${link.url}`"
@@ -19,7 +19,7 @@
             <span>{{ getLinkDisplayText(link) }}</span>
           </a>
         </div>
-        <div class="social-links">
+        <div v-if="socialLinks.length" class="social-links">
           <a
             v-for="link in socialLinks"
             :key="`${link.iconKey}-${link.url}`"
@@ -173,25 +173,9 @@ onUnmounted(() => {
       object-fit: contain;
     }
 
-    .social-icon-mask {
-      display: block;
-      height: 14px;
-      width: auto;
-      background-color: currentColor;
-      mask-size: contain;
-      mask-repeat: no-repeat;
-      mask-position: center;
-      -webkit-mask-size: contain;
-      -webkit-mask-repeat: no-repeat;
-      -webkit-mask-position: center;
-    }
-
-    .xiaohongshu-icon {
-      mask-image: url('/images/logo/xiaohongshu.ico');
-      -webkit-mask-image: url('/images/logo/xiaohongshu.ico');
-      mask-mode: luminance;
-      -webkit-mask-mode: luminance;
+    :deep(.brand-icon--wide) {
       width: calc(14px * 1.4);
+      height: 14px;
     }
 
     &:hover {

@@ -11,7 +11,7 @@
           <p class="footer-desc">
             Premium home sauna solutions crafted with natural wood and advanced heating technology. Your wellness, our passion.
           </p>
-          <ul class="footer-contact">
+          <ul v-if="contactLinks.length" class="footer-contact">
             <li v-for="link in contactLinks" :key="`${link.iconKey}-${link.url}`">
               <SocialIcon
                 :icon-key="link.iconKey"
@@ -24,7 +24,7 @@
               <span v-if="link.label" class="contact-tag">{{ link.label }}</span>
             </li>
           </ul>
-          <div class="social-links">
+          <div v-if="socialLinks.length" class="social-links">
             <a
               v-for="link in socialLinks"
               :key="`${link.iconKey}-${link.url}`"
@@ -169,7 +169,7 @@ const { contactLinks, socialLinks, getLinkDisplayText, getLinkAriaLabel } = useC
       height: 18px;
     }
 
-    :deep(.xiaohongshu-icon) {
+    :deep(.brand-icon--wide) {
       width: calc(18px * 1.4);
       height: 18px;
     }
@@ -179,27 +179,6 @@ const { contactLinks, socialLinks, getLinkDisplayText, getLinkAriaLabel } = useC
       width: auto;
       display: block;
       object-fit: contain;
-    }
-
-    .social-icon-mask {
-      display: block;
-      height: 18px;
-      width: auto;
-      background-color: currentColor;
-      mask-size: contain;
-      mask-repeat: no-repeat;
-      mask-position: center;
-      -webkit-mask-size: contain;
-      -webkit-mask-repeat: no-repeat;
-      -webkit-mask-position: center;
-    }
-
-    .xiaohongshu-icon {
-      mask-image: url('/images/logo/xiaohongshu.ico');
-      -webkit-mask-image: url('/images/logo/xiaohongshu.ico');
-      mask-mode: luminance;
-      -webkit-mask-mode: luminance;
-      width: calc(18px * 1.4);
     }
 
     &:hover {
