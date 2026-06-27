@@ -199,10 +199,25 @@ export function useAnalytics() {
     });
   };
 
+  const trackNewsView = async (data: {
+    newsId: number;
+    category: string;
+    title?: string;
+  }) => {
+    await sendTrackEvent({
+      eventType: 'click',
+      elementInfo: {
+        action: 'news_view',
+        ...data,
+      },
+    });
+  };
+
   return {
     sendTrackEvent,
     sendContactAnalytics,
     trackPageview,
+    trackNewsView,
     flushRetryQueue,
   };
 }

@@ -50,6 +50,7 @@
         <NuxtLink to="/" class="nav-link">Home</NuxtLink>
         <NuxtLink to="/products" class="nav-link">Products</NuxtLink>
         <NuxtLink to="/about-us" class="nav-link">About Us</NuxtLink>
+        <NuxtLink to="/news" class="nav-link">News</NuxtLink>
         <NuxtLink to="/contact" class="nav-link">Contact</NuxtLink>
       </nav>
     </div>
