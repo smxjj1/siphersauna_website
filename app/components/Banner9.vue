@@ -2,13 +2,13 @@
   <section class="banner-9">
     <div class="banner-9-bg">
       <div class="container">
-        <div class="banner-9-content">
-          <span class="tag">Get Your Free Quote</span>
-          <h2 class="title">Looking for a Reliable Sauna Products & Accessories Supplier?</h2>
-          <p class="description">We provide cost-effective solutions and exclusive quotations for personal purchase, store wholesale, foreign trade bulk order and large-scale engineering customization.</p>
+        <div class="banner-9-content" :class="{ 'zh-wide': isZh }">
+          <span class="tag">{{ tm('banner9.tag') }}</span>
+          <h2 class="title">{{ tm('banner9.title') }}</h2>
+          <p class="description">{{ tm('banner9.description') }}</p>
           <div class="cta-buttons">
-            <a href="#" class="cta-btn primary">Get Free Solution & Quote</a>
-            <a href="#" class="cta-btn secondary">Contact Us</a>
+            <NuxtLink :to="localePath('/contact')" class="cta-btn primary">{{ tm('banner9.primaryCta') }}</NuxtLink>
+            <NuxtLink :to="localePath('/contact')" class="cta-btn secondary">{{ tm('banner9.secondaryCta') }}</NuxtLink>
           </div>
         </div>
       </div>
@@ -17,6 +17,9 @@
 </template>
 
 <script setup>
+const { tm, localePath } = useI18nHelpers()
+const currentLocale = useLocale()
+const isZh = computed(() => currentLocale.value.startsWith('zh'))
 </script>
 
 <style lang="less" scoped>
@@ -64,6 +67,13 @@
     color: @white;
     margin: 0 0 32px;
     line-height: 1.3;
+  }
+
+  &.zh-wide .title {
+    width: max-content;
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .description {

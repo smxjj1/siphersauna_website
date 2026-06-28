@@ -11,8 +11,8 @@
                 </svg>
               </div>
               <div class="card-text">
-                <h3>Premium Materials</h3>
-                <p>Eco-friendly solid wood, sustainable sourcing</p>
+                <h3>{{ tm('banner7.advantages.materials.title') }}</h3>
+                <p>{{ tm('banner7.advantages.materials.desc') }}</p>
               </div>
             </div>
 
@@ -24,8 +24,8 @@
                 </svg>
               </div>
               <div class="card-text">
-                <h3>Safe Heating System</h3>
-                <p>Intelligent constant temperature, energy efficient</p>
+                <h3>{{ tm('banner7.advantages.heating.title') }}</h3>
+                <p>{{ tm('banner7.advantages.heating.desc') }}</p>
               </div>
             </div>
 
@@ -37,8 +37,8 @@
                 </svg>
               </div>
               <div class="card-text">
-                <h3>High Temperature Resistant</h3>
-                <p>Durable components, low failure rate</p>
+                <h3>{{ tm('banner7.advantages.resistant.title') }}</h3>
+                <p>{{ tm('banner7.advantages.resistant.desc') }}</p>
               </div>
             </div>
 
@@ -49,18 +49,18 @@
                 </svg>
               </div>
               <div class="card-text">
-                <h3>Easy Maintenance</h3>
-                <p>Simple upkeep, long-term commercial use</p>
+                <h3>{{ tm('banner7.advantages.maintenance.title') }}</h3>
+                <p>{{ tm('banner7.advantages.maintenance.desc') }}</p>
               </div>
             </div>
           </div>
         </div>
 
         <div class="content-right">
-          <span class="subtitle">Why Choose Us</span>
-          <h2 class="title">Premium Craftsmanship, Safety Durability & Long-term After-sales Guarantee</h2>
-          <p class="description">Adopt eco-friendly solid wood, safe heating system, intelligent constant temperature and high-temperature resistance design. All accessories are high temperature resistant, corrosion resistant, low failure rate and easy maintenance for long-term commercial and household use.</p>
-          <a href="#" class="cta-btn">Our Advantages</a>
+          <span class="subtitle">{{ tm('banner7.subtitle') }}</span>
+          <h2 class="title">{{ tm('banner7.title') }}</h2>
+          <p class="description">{{ tm('banner7.description') }}</p>
+          <a href="#" class="cta-btn">{{ tm('banner7.cta') }}</a>
         </div>
       </div>
     </div>
@@ -68,6 +68,7 @@
 </template>
 
 <script setup>
+const { tm } = useI18nHelpers()
 </script>
 
 <style lang="less" scoped>

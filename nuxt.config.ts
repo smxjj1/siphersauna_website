@@ -23,6 +23,9 @@ export default defineNuxtConfig({
       analyticsDisabled: process.env.NUXT_PUBLIC_ANALYTICS_DISABLED === 'true',
       /** 为 true 时匿名用户 ID 仅存 sessionStorage，关闭标签后重置（偏隐私） */
       analyticsSessionOnlyUser: process.env.NUXT_PUBLIC_ANALYTICS_SESSION_ONLY_USER === 'true',
+      /** i18n 配置 */
+      supportedLocales: ['en', 'zh-CN', 'zh-TW'],
+      defaultLocale: 'en',
     },
   },
 
@@ -44,7 +47,8 @@ export default defineNuxtConfig({
           type: 'image/png',
           href: '/images/logo/logo.png'
         }
-      ]
+      ],
+      htmlAttrs: { lang: 'en' },
     }
   },
 

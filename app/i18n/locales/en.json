@@ -1,0 +1,361 @@
+{
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "aboutUs": "About Us",
+    "contact": "Contact"
+  },
+  "footer": {
+    "products": "Products",
+    "support": "Support",
+    "findUs": "Find Us",
+    "brandDesc": "Premium home sauna solutions crafted with natural wood and advanced heating technology. Your wellness, our passion.",
+    "saunaRooms": "Sauna Rooms",
+    "heatersStones": "Heaters & Stones",
+    "essentialOils": "Essential Oils",
+    "accessories": "Wooden Accessories",
+    "bundles": "Bundle Deals",
+    "installation": "Installation Guide",
+    "warranty": "Warranty",
+    "faq": "FAQ",
+    "shipping": "Shipping & Returns",
+    "contactUs": "Contact Us",
+    "copyright": "© 2026 Sipher Sauna. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "common": {
+    "languageSwitcher": "Language",
+    "language": {
+      "en": "English",
+      "zh-CN": "简体中文",
+      "zh-TW": "繁體中文"
+    }
+  },
+  "home": {
+    "seoTitle": "Sipher Sauna — Premium Home Sauna Solutions",
+    "seoDescription": "Experience the ultimate home sauna with Sipher Sauna. Premium wood and heating technology for your wellness sanctuary."
+  },
+  "products": {
+    "title": "Our Products",
+    "subtitle": "Premium sauna solutions crafted for your wellness journey",
+    "productCount": "{count} Products",
+    "categoryCount": "{count} Categories",
+    "allProducts": "All Products",
+    "itemsCount": "{count} Items",
+    "comingSoonTitle": "Products Coming Soon",
+    "comingSoonDesc": "Check back later for new sauna products.",
+    "backToTop": "Back to top",
+    "itemNo": "Item No",
+    "description": "Description",
+    "specifications": "Specifications",
+    "woodType": "Wood Type",
+    "size": "Size (cm)",
+    "netWeight": "Net Weight (kg)",
+    "grossWeight": "Gross Weight (kg)",
+    "pcs20gp": "pcs/20GP",
+    "pcs40hq": "pcs/40HQ",
+    "moq": "MOQ",
+    "hsCode": "H.S. Code",
+    "contactInquiry": "Contact for Inquiry",
+    "subcategory": {
+      "Far": "Far-Infrared Sauna Room",
+      "Dry": "Dry-Wet Steam Combination",
+      "Traditional sauna room": "Traditional Sauna Room",
+      "General": "General Products"
+    }
+  },
+  "about": {
+    "title": "Our Story",
+    "subtitle": "Crafting Wellness Since 2008",
+    "heroText": "<strong>Sipher Sauna</strong> brings over 18 years of expertise in designing and manufacturing premium sauna rooms. Born from a passion for Nordic wellness traditions and Chinese craftsmanship, we create sauna experiences that blend authentic design with modern innovation. From sustainably sourced Nordic spruce to precision-engineered heating systems, every detail reflects our commitment to quality.",
+    "whyChooseTitle": "Why Choose Sipher",
+    "strength1Title": "Years of Excellence",
+    "strength1Desc": "Nearly two decades perfecting sauna craftsmanship, serving clients across 50+ countries with consistent quality.",
+    "strength2Title": "Workshop & Factory",
+    "strength2Desc": "15,000 square meters of production capacity in Zhejiang, equipped with German precision machinery for flawless craftsmanship.",
+    "strength3Title": "Global Reach",
+    "strength3Desc": "Trusted by wellness brands, hotel chains, and private clients worldwide. Exporting premium sauna rooms to Europe, North America, and Asia.",
+    "craftsmanshipTitle": "Artisan Craftsmanship",
+    "craftsmanshipText": "Every Sipher sauna begins with carefully selected wood—Nordic spruce, Canadian hemlock, and premium red cedar—sourced from sustainable forests. Our master craftsmen combine time-honored joinery techniques with modern precision engineering to create sauna rooms that exceed international standards for durability, safety, and thermal performance.",
+    "oemDesc": "Custom manufacturing for brands seeking distinctive sauna solutions with flexible MOQ and comprehensive quality assurance.",
+    "odmDesc": "Full-service design and development partnership, from conceptualization to mass production with complete regulatory compliance.",
+    "qualityTitle": "Quality & Compliance",
+    "qualityIntro": "Sipher Sauna maintains rigorous quality standards verified by leading international certification bodies. Every product undergoes comprehensive testing for structural integrity, electrical safety, and environmental compliance.",
+    "certifications": {
+      "iso9001": "Quality Management System",
+      "bsci": "Social Compliance",
+      "ce": "European Conformity",
+      "ul": "Safety Certification"
+    },
+    "globalTitle": "Our Global Presence",
+    "globalIntro": "From our home base in Foshan, China, Sipher Sauna reaches clients across six continents. Our premium sauna solutions are trusted by wellness brands, hospitality groups, and discerning homeowners worldwide.",
+    "hqLabel": "Headquarters: Foshan, China",
+    "partnersLabel": "Partner Cities: 50+ cities across 6 continents",
+    "ctaTitle": "Experience the Sipher Difference",
+    "ctaText": "Whether you're envisioning a private home wellness sanctuary or outfitting a commercial spa, Sipher Sauna delivers exceptional craftsmanship backed by dedicated customer support. Let us help you create the perfect sauna experience.",
+    "ctaClosing": "Elevate Your Wellness Journey with Sipher",
+    "ctaButton": "Contact Us Today",
+    "seoTitle": "Our Story | Sipher Sauna - Premium Wellness Experience",
+    "seoDescription": "Sipher Sauna - 18 years of excellence in crafting premium outdoor and indoor sauna rooms. Nordic design meets Chinese craftsmanship."
+  },
+  "contact": {
+    "heroTitle": "Contact Us — Begin Your Wellness Journey",
+    "heroSubtitle": "Our wellness consultants are ready to assist you with custom sauna room design, heating equipment, and accessories inquiries",
+    "formTitle": "Get Your Custom Sauna Room Quote",
+    "formSubtitle": "Please fill out the form below and our team will contact you within 24 hours with a tailored wellness solution",
+    "name": "Name / Contact Person",
+    "namePlaceholder": "Your name",
+    "email": "Email Address",
+    "emailPlaceholder": "Your email",
+    "phone": "Phone Number",
+    "phonePlaceholder": "Your phone",
+    "company": "Company / Dealer Name",
+    "companyPlaceholder": "Company name",
+    "address": "Installation Address",
+    "addressPlaceholder": "Installation address",
+    "subject": "Inquiry Type",
+    "subjectPlaceholder": "Select inquiry type",
+    "subjectHomeCustom": "Home Sauna Room Customization",
+    "subjectCommercialSpa": "Commercial SPA Engineering",
+    "subjectEquipmentParts": "Equipment & Parts Purchase",
+    "subjectOther": "Other Inquiry",
+    "products": "Products of Interest",
+    "productsPlaceholder": "e.g., Outdoor Sauna, Sauna Stove",
+    "message": "Project Details",
+    "messagePlaceholder": "Describe your project requirements...",
+    "submit": "Submit Inquiry",
+    "submitting": "Submitting...",
+    "successMessage": "Thank you for your inquiry! Our wellness consultant will contact you within 24 hours.",
+    "errorMessage": "Submission failed. Please try again or call our service hotline directly.",
+    "infoTitle": "Contact Information",
+    "factoryAddressTitle": "Factory Address",
+    "factoryAddress": "No. 1 (Building G), Qianjin Middle Road, Hongsha High-tech Development Zone, Nanhai Science and Technology Industrial Park (Guangao), Shilin Town, Nanhai District, Foshan City",
+    "emailTitle": "Business Email",
+    "hotlineTitle": "Service Hotline",
+    "hoursTitle": "Business Hours",
+    "hoursValue": "Monday to Friday: 8:00 - 18:00\nSaturday: 9:00 - 17:00",
+    "commitmentTitle": "Our Commitment",
+    "commitmentText": "Sipher Sauna is dedicated to providing every client with high-quality wellness solutions. From wood selection to precision manufacturing, we strictly control every detail to ensure you receive not just a sauna room, but a trustworthy wellness experience.",
+    "quickLinksTitle": "Product Navigation",
+    "validation": {
+      "nameRequired": "Please enter your name",
+      "emailRequired": "Please enter your email address",
+      "emailInvalid": "Please enter a valid email format",
+      "messageRequired": "Please describe your project requirements or questions"
+    },
+    "seoTitle": "Contact Us | Sipher Sauna - Begin Your Wellness Journey",
+    "seoDescription": "Contact Sipher Sauna for home sauna customization and commercial SPA engineering solutions. 18 years of professional experience delivering high-quality wellness solutions."
+  },
+  "faq": {
+    "subtitle": "FAQ",
+    "title": "Frequently Asked Questions About Sauna Products & Accessories",
+    "desc": "We have sorted out the most frequent questions about sauna products, installation, accessories, customization and after-sales service to help you solve doubts quickly.",
+    "viewAll": "View All FAQs",
+    "items": [
+      {
+        "question": "Are sauna rooms suitable for long-term daily home use?",
+        "answer": "All household sauna products are specially designed for family scenarios, featuring safe constant temperature, low energy consumption and quiet operation, completely suitable for long-term daily wellness use."
+      },
+      {
+        "question": "Are sauna accessories universal and available for separate replacement?",
+        "answer": "Most sauna accessories are universal and replaceable, including sauna heaters, temperature controllers, wooden buckets, sauna stones, backrests and more. We support retail and bulk purchase."
+      },
+      {
+        "question": "Do you support overseas project customization and export?",
+        "answer": "We support global export, non-standard customization, international voltage adaptation and complete certification to meet commercial standards of different countries."
+      },
+      {
+        "question": "Do you provide installation guidance and after-sales service?",
+        "answer": "We provide complete installation drawings, video guidance, lifelong technical consultation and professional after-sales maintenance service."
+      },
+      {
+        "question": "What are the advantages of wholesale and engineering orders?",
+        "answer": "Direct factory supply without middlemen. We provide customized packaging, OEM branding, bulk discount price and stable delivery schedule for wholesale and project clients."
+      }
+    ]
+  },
+  "banner9": {
+    "tag": "Get Your Free Quote",
+    "title": "Looking for a Reliable Sauna Products & Accessories Supplier?",
+    "description": "We provide cost-effective solutions and exclusive quotations for personal purchase, store wholesale, foreign trade bulk order and large-scale engineering customization.",
+    "primaryCta": "Get Free Solution & Quote",
+    "secondaryCta": "Contact Us"
+  },
+  "banner2": {
+    "subtitle": "Product Catalog",
+    "title": "Complete Sauna Products & Supporting Accessories Collection",
+    "desc": "Our product range covers prebuilt sauna rooms, infrared sauna rooms, heating equipment, intelligent temperature control systems, wooden sauna tools, aroma accessories and decorative parts. One-stop procurement for all home and commercial sauna scenarios.",
+    "viewAll": "View All Products",
+    "products": {
+      "saunaRooms": {
+        "title": "Sauna Rooms",
+        "desc": "Prebuilt & Infrared Sauna Rooms"
+      },
+      "saunaHeaters": {
+        "title": "Sauna Heaters",
+        "desc": "Electric & Wood-fired Heaters"
+      },
+      "saunaAccessories": {
+        "title": "Sauna Accessories",
+        "desc": "Complete Your Sauna Experience"
+      },
+      "outdoorHotTub": {
+        "title": "Outdoor Wood-fired Hot Tub",
+        "desc": "Immerse in Nature. Relax in Warmth."
+      },
+      "indoorDrySteam": {
+        "title": "Indoor Dry & Steam Room",
+        "desc": "Cleanse. Relax. Rejuvenate."
+      },
+      "outdoorTraditional": {
+        "title": "Outdoor Traditional Sauna",
+        "desc": "Embrace Tradition. Elevate Wellness."
+      }
+    }
+  },
+  "banner3": {
+    "subtitle": "Solutions",
+    "title": "Custom Sauna Solutions for Multiple Scenarios",
+    "desc": "Tailored standard and customized sauna solutions for family relaxation, private villa, luxury hotel, commercial spa, fitness club and wellness engineering projects to fit different spaces and usage demands.",
+    "viewDetails": "View Details",
+    "viewSolutions": "View Solutions",
+    "scenarios": {
+      "home": {
+        "tag": "Residential",
+        "title": "Home & Villa Sauna",
+        "desc": "Private family wellness space"
+      },
+      "hotel": {
+        "tag": "Commercial",
+        "title": "Hotel & Resort Spa",
+        "desc": "Luxury guest experience"
+      },
+      "fitness": {
+        "tag": "Wellness",
+        "title": "Gym & Fitness Club",
+        "desc": "Premium workout recovery"
+      },
+      "spa": {
+        "tag": "Professional",
+        "title": "Commercial Spa Center",
+        "desc": "High-capacity solutions"
+      }
+    }
+  },
+  "banner4": {
+    "subtitle": "Customization",
+    "title": "Professional Sauna Customization<br/>Size, Style & Function Custom Service",
+    "description": "We support non-standard size customization, appearance style adjustment, functional upgrade and full accessory matching. Provide one-stop service including design, production, installation guidance and after-sales support.",
+    "features": {
+      "dimensions": "Custom Dimensions & Layout",
+      "style": "Style & Material Selection",
+      "heating": "Heating System Upgrade",
+      "smart": "Smart Control Integration"
+    },
+    "cta": "Customize Your Sauna"
+  },
+  "banner5": {
+    "subtitle": "Factory Direct",
+    "title": "Direct Factory Supply | Stable Production & Strict Quality Control",
+    "desc": "Self-owned factory and complete supply chain. All sauna equipment and accessories pass strict multi-channel quality testing. Support bulk foreign trade wholesale, OEM & ODM service with stable quality and reliable delivery time.",
+    "stats": {
+      "years": "Years Experience",
+      "clients": "Global Clients",
+      "output": "Annual Output",
+      "quality": "Certified Quality"
+    },
+    "highlights": {
+      "production": {
+        "title": "Modern Production",
+        "desc": "Automated production lines with precision manufacturing"
+      },
+      "testing": {
+        "title": "Quality Testing",
+        "desc": "Multi-stage inspection for every product"
+      },
+      "logistics": {
+        "title": "Warehouse & Logistics",
+        "desc": "Integrated supply chain for timely delivery"
+      }
+    },
+    "cta": "Factory Cooperation Inquiry"
+  },
+  "banner6": {
+    "subtitle": "Case Studies",
+    "title": "Global Successful Sauna Project Cases",
+    "desc": "Years of experience in global sauna export business. We have completed thousands of residential saunas, commercial spa saunas, hotel and wellness center projects with mature implementation experience.",
+    "cta": "View More Cases",
+    "cases": {
+      "villa": {
+        "tag": "Residential",
+        "title": "Luxury Villa Sauna",
+        "desc": "Private wellness retreat"
+      },
+      "resort": {
+        "tag": "Hotel",
+        "title": "Five-Star Resort",
+        "desc": "Premium guest experience"
+      },
+      "fitness": {
+        "tag": "Gym",
+        "title": "Premium Fitness Club",
+        "desc": "Member wellness facility"
+      },
+      "spa": {
+        "tag": "Spa",
+        "title": "Commercial Spa",
+        "desc": "High-capacity solution"
+      },
+      "wellness": {
+        "tag": "Wellness",
+        "title": "Medical Wellness Center",
+        "desc": "Health-focused design"
+      }
+    }
+  },
+  "banner7": {
+    "subtitle": "Why Choose Us",
+    "title": "Premium Craftsmanship, Safety Durability & Long-term After-sales Guarantee",
+    "description": "Adopt eco-friendly solid wood, safe heating system, intelligent constant temperature and high-temperature resistance design. All accessories are high temperature resistant, corrosion resistant, low failure rate and easy maintenance for long-term commercial and household use.",
+    "cta": "Our Advantages",
+    "advantages": {
+      "materials": {
+        "title": "Premium Materials",
+        "desc": "Eco-friendly solid wood, sustainable sourcing"
+      },
+      "heating": {
+        "title": "Safe Heating System",
+        "desc": "Intelligent constant temperature, energy efficient"
+      },
+      "resistant": {
+        "title": "High Temperature Resistant",
+        "desc": "Durable components, low failure rate"
+      },
+      "maintenance": {
+        "title": "Easy Maintenance",
+        "desc": "Simple upkeep, long-term commercial use"
+      }
+    }
+  },
+  "categories": {
+    "outdoor-sauna": {
+      "name": "Outdoor Sauna",
+      "title": "Outdoor Sauna Rooms | Premium Wooden Design",
+      "description": "Discover our premium outdoor sauna rooms. Crafted from high-quality spruce, hemlock, and red cedar wood with customizable configurations.",
+      "heroHeadline": "Premium Outdoor Sauna Experience",
+      "heroSubheadline": "Transform your outdoor space into a wellness sanctuary. Our sauna rooms feature premium wood construction, multiple heating options, and complete accessory sets."
+    },
+    "indoor-sauna": {
+      "name": "Indoor Sauna",
+      "title": "Indoor Sauna Rooms | Traditional & Far-Infrared",
+      "description": "Explore our indoor sauna collection including traditional sauna rooms and far-infrared lightwave rooms. Compact designs perfect for home installation.",
+      "heroHeadline": "Home Wellness Solutions",
+      "heroSubheadline": "Bring the sauna experience indoors. From traditional Finnish-style rooms to modern far-infrared technology, find the perfect fit for your space."
+    },
+    "productCategory": {
+      "outdoor sauna": "Outdoor Sauna",
+      "indoor sauna": "Indoor Sauna"
+    }
+  }
+}

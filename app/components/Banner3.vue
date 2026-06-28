@@ -2,65 +2,62 @@
   <section class="banner-3">
     <div class="container">
       <div class="section-header">
-        <span class="subtitle">Solutions</span>
-        <h2 class="title">Custom Sauna Solutions for Multiple Scenarios</h2>
-        <p class="desc">Tailored standard and customized sauna solutions for family relaxation, private villa, luxury hotel, commercial spa, fitness club and wellness engineering projects to fit different spaces and usage demands.</p>
+        <span class="subtitle">{{ tm('banner3.subtitle') }}</span>
+        <h2 class="title">{{ tm('banner3.title') }}</h2>
+        <p class="desc">{{ tm('banner3.desc') }}</p>
       </div>
 
       <div class="scenarios-grid">
-        <!-- Scenario 1: Home -->
         <div class="scenario-card home">
           <div class="scenario-bg" style="background-image: url('/images/home/FAMILY& VILLA-SAUNA.png')"></div>
           <div class="scenario-content">
-            <span class="scenario-tag">Residential</span>
-            <h3>Home & Villa Sauna</h3>
-            <p>Private family wellness space</p>
+            <span class="scenario-tag">{{ tm('banner3.scenarios.home.tag') }}</span>
+            <h3>{{ tm('banner3.scenarios.home.title') }}</h3>
+            <p>{{ tm('banner3.scenarios.home.desc') }}</p>
           </div>
-          <a href="#" class="scenario-link">View Details</a>
+          <a href="#" class="scenario-link">{{ tm('banner3.viewDetails') }}</a>
         </div>
 
-        <!-- Scenario 2: Hotel -->
         <div class="scenario-card hotel">
           <div class="scenario-bg" style="background-image: url('/images/home/HOTEL&RESORT-SPA-CENTER.png')"></div>
           <div class="scenario-content">
-            <span class="scenario-tag">Commercial</span>
-            <h3>Hotel & Resort Spa</h3>
-            <p>Luxury guest experience</p>
+            <span class="scenario-tag">{{ tm('banner3.scenarios.hotel.tag') }}</span>
+            <h3>{{ tm('banner3.scenarios.hotel.title') }}</h3>
+            <p>{{ tm('banner3.scenarios.hotel.desc') }}</p>
           </div>
-          <a href="#" class="scenario-link">View Details</a>
+          <a href="#" class="scenario-link">{{ tm('banner3.viewDetails') }}</a>
         </div>
 
-        <!-- Scenario 3: Fitness -->
         <div class="scenario-card fitness">
           <div class="scenario-bg" style="background-image: url('/images/home/GYM&FITNESS-CLUBS.png')"></div>
           <div class="scenario-content">
-            <span class="scenario-tag">Wellness</span>
-            <h3>Gym & Fitness Club</h3>
-            <p>Premium workout recovery</p>
+            <span class="scenario-tag">{{ tm('banner3.scenarios.fitness.tag') }}</span>
+            <h3>{{ tm('banner3.scenarios.fitness.title') }}</h3>
+            <p>{{ tm('banner3.scenarios.fitness.desc') }}</p>
           </div>
-          <a href="#" class="scenario-link">View Details</a>
+          <a href="#" class="scenario-link">{{ tm('banner3.viewDetails') }}</a>
         </div>
 
-        <!-- Scenario 4: Spa -->
         <div class="scenario-card spa">
           <div class="scenario-bg" style="background-image: url('/images/home/IndoorDry&SteamRoom.png')"></div>
           <div class="scenario-content">
-            <span class="scenario-tag">Professional</span>
-            <h3>Commercial Spa Center</h3>
-            <p>High-capacity solutions</p>
+            <span class="scenario-tag">{{ tm('banner3.scenarios.spa.tag') }}</span>
+            <h3>{{ tm('banner3.scenarios.spa.title') }}</h3>
+            <p>{{ tm('banner3.scenarios.spa.desc') }}</p>
           </div>
-          <a href="#" class="scenario-link">View Details</a>
+          <a href="#" class="scenario-link">{{ tm('banner3.viewDetails') }}</a>
         </div>
       </div>
 
       <div class="cta-wrapper">
-        <a href="#" class="cta-btn">View Solutions</a>
+        <a href="#" class="cta-btn">{{ tm('banner3.viewSolutions') }}</a>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+const { tm } = useI18nHelpers()
 </script>
 
 <style lang="less" scoped>

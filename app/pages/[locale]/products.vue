@@ -27,7 +27,7 @@
           :class="{ active: activeCategory === category.slug }"
           @click="activeCategory = category.slug"
         >
-          {{ category.name }}
+          {{ getCategoryName(category) }}
         </button>
       </div>
     </section>
@@ -204,18 +204,9 @@
                   </table>
                 </div>
 
-                <div class="detail-actions">
-                  <button type="button" class="detail-add-list" @click="handleAddToList">
-                    Add to List
-                  </button>
-                  <NuxtLink
-                    v-if="currentProduct"
-                    :to="{ path: '/contact', query: { products: currentProduct.itemNo } }"
-                    class="detail-cta"
-                  >
-                    {{ tm('products.contactInquiry') }}
-                  </NuxtLink>
-                </div>
+                <NuxtLink :to="localePath('/contact')" class="detail-cta">
+                  {{ tm('products.contactInquiry') }}
+                </NuxtLink>
               </div>
             </div>
           </div>
@@ -233,9 +224,6 @@ definePageMeta({
   layout: 'default',
 })
 
-const { add, showFeedback } = useInquiryList()
-
-// 产品接口定义
 interface ProductSpecs {
   pcsPerCtn?: number | null
   nw?: number | null
@@ -271,6 +259,12 @@ interface Product {
 }
 
 const { tm, t, localePath, locale } = useI18nHelpers()
+
+const getCategoryName = (category: { name: string; slug: string }) => {
+  const translated = tm(`categories.productCategory.${category.name}`)
+  if (translated !== `categories.productCategory.${category.name}`) return translated
+  return category.name
+}
 
 useHead({
   title: computed(() => `${tm('products.title')} | Sipher Sauna`),
@@ -406,31 +400,6 @@ const closeDetail = () => {
   document.body.style.overflow = ''
 }
 
-const handleAddToList = () => {
-  const product = currentProduct.value
-  if (!product) return
-
-  const result = add({
-    itemNo: product.itemNo,
-    name: product.name,
-    categorySlug: product.categorySlug,
-    mainImage: product.mainImage,
-  })
-
-  if (result.ok) {
-    showFeedback('Added to inquiry list')
-    return
-  }
-  if (result.reason === 'duplicate') {
-    showFeedback('Already in your list')
-    return
-  }
-  if (result.reason === 'limit') {
-    showFeedback('Maximum 20 products')
-  }
-}
-
-// 键盘事件处理
 const handleKeydown = (e: KeyboardEvent) => {
   if (e.key === 'Escape' && detailOpen.value) {
     closeDetail()
@@ -673,29 +642,6 @@ onUnmounted(() => {
   td { padding: 12px 15px; font-size: 0.85rem; border-bottom: 1px solid rgba(@sauna-wood, 0.15);
     &:first-child { color: @light-text; width: 140px; }
     &:last-child { color: @sauna-dark; }
-  }
-}
-
-.detail-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 16px;
-}
-
-.detail-add-list {
-  padding: 14px 30px;
-  background: transparent;
-  border: 2px solid @sauna-wood;
-  color: @sauna-wood;
-  font-weight: 600;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
-
-  &:hover {
-    background: @sauna-wood;
-    color: @white;
   }
 }
 

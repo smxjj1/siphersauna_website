@@ -4,56 +4,38 @@
     <div v-if="contactLinks.length || socialLinks.length" class="top-info-bar">
       <div class="top-info-inner">
         <div v-if="contactLinks.length" class="contact-info">
-          <a
-            v-for="link in contactLinks"
-            :key="`${link.iconKey}-${link.url}`"
-            :href="link.url"
-            class="info-item"
-          >
-            <SocialIcon
-              :icon-key="link.iconKey"
-              :icon-source="link.iconSource"
-              :icon-url="link.iconUrl"
-              variant="contact"
-            />
+          <a v-for="link in contactLinks" :key="`${link.iconKey}-${link.url}`" :href="link.url" class="info-item">
+            <SocialIcon :icon-key="link.iconKey" :icon-source="link.iconSource" :icon-url="link.iconUrl"
+              variant="contact" />
             <span>{{ getLinkDisplayText(link) }}</span>
           </a>
         </div>
-        <div v-if="socialLinks.length" class="social-links">
-          <a
-            v-for="link in socialLinks"
-            :key="`${link.iconKey}-${link.url}`"
-            :href="link.url"
-            class="social-link"
-            :aria-label="getLinkAriaLabel(link)"
-            :target="link.openInNewTab ? '_blank' : undefined"
-            :rel="link.openInNewTab ? 'noopener noreferrer' : undefined"
-          >
-            <SocialIcon
-              :icon-key="link.iconKey"
-              :icon-source="link.iconSource"
-              :icon-url="link.iconUrl"
-              variant="social"
-            />
-          </a>
+        <div class="right-cluster">
+          <LanguageSwitcher />
+          <div v-if="socialLinks.length" class="social-links">
+            <a v-for="link in socialLinks" :key="`${link.iconKey}-${link.url}`" :href="link.url" class="social-link"
+              :aria-label="getLinkAriaLabel(link)" :target="link.openInNewTab ? '_blank' : undefined"
+              :rel="link.openInNewTab ? 'noopener noreferrer' : undefined">
+              <SocialIcon :icon-key="link.iconKey" :icon-source="link.iconSource" :icon-url="link.iconUrl"
+                variant="social" />
+            </a>
+          </div>
         </div>
       </div>
     </div>
-    <!-- Main Navbar -->
     <nav class="navbar" :class="navbarClass">
-    <div class="navbar-inner">
-      <NuxtLink to="/" class="logo">
-        <img src="/images/logo/logo.png" alt="Sipher Sauna" class="logo-img">
-        <span class="logo-text">Sipher Sauna</span>
-      </NuxtLink>
-      <nav class="nav-links">
-        <NuxtLink to="/" class="nav-link">Home</NuxtLink>
-        <NuxtLink to="/products" class="nav-link">Products</NuxtLink>
-        <NuxtLink to="/about-us" class="nav-link">About Us</NuxtLink>
-        <NuxtLink to="/news" class="nav-link">News</NuxtLink>
-        <NuxtLink to="/contact" class="nav-link">Contact</NuxtLink>
-      </nav>
-    </div>
+      <div class="navbar-inner">
+        <NuxtLink :to="localePath('/')" class="logo">
+          <img src="/images/logo/logo.png" alt="Sipher Sauna" class="logo-img">
+          <span class="logo-text">Sipher Sauna</span>
+        </NuxtLink>
+        <nav class="nav-links">
+          <NuxtLink :to="localePath('/')" class="nav-link">{{ tm('nav.home') }}</NuxtLink>
+          <NuxtLink :to="localePath('/products')" class="nav-link">{{ tm('nav.products') }}</NuxtLink>
+          <NuxtLink :to="localePath('/about-us')" class="nav-link">{{ tm('nav.aboutUs') }}</NuxtLink>
+          <NuxtLink :to="localePath('/contact')" class="nav-link">{{ tm('nav.contact') }}</NuxtLink>
+        </nav>
+      </div>
     </nav>
   </header>
 </template>
@@ -65,17 +47,17 @@ const emit = defineEmits(['scroll-state'])
 const { contactLinks, socialLinks, getLinkDisplayText, getLinkAriaLabel } = useContactLinks()
 
 const isScrolled = ref(false)
-
-// 响应式检测当前路由
 const route = useRoute()
-const isHomePage = computed(() => route.path === '/')
+const { tm, localePath } = useI18nHelpers()
+
+const strippedPath = computed(() => route.path.replace(/^\/(zh-CN|zh-TW)/, '') || '/')
+const isHomePage = computed(() => strippedPath.value === '/')
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 50
   emit('scroll-state', { isScrolled: isScrolled.value })
 }
 
-// 非首页始终贴边，首页滚动后贴边
 const navbarClass = computed(() => {
   if (!isHomePage.value || isScrolled.value) {
     return { 'navbar--scrolled': true }
@@ -85,7 +67,6 @@ const navbarClass = computed(() => {
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true })
-  // 初始化时触发一次
   emit('scroll-state', { isScrolled: isScrolled.value })
 })
 
@@ -125,6 +106,12 @@ onUnmounted(() => {
     display: flex;
     align-items: center;
     gap: 24px;
+  }
+
+  .right-cluster {
+    display: flex;
+    align-items: center;
+    gap: 16px;
   }
 
   .info-item {
@@ -189,7 +176,7 @@ onUnmounted(() => {
 .navbar {
   width: 100%;
   max-width: 1200px;
-  margin: 12px auto 0; // 未滚动时距离 top-info-bar 12px
+  margin: 12px auto 0;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   .navbar-inner {
@@ -251,13 +238,12 @@ onUnmounted(() => {
   }
 }
 
-// 滚动状态 - 隐藏顶部信息栏，背景贴边，内容居中靠拢
 .navbar--scrolled {
-  background: #2D2016; // 不透明的深色背景
+  background: #2D2016;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
   max-width: 100%;
-  margin-top: 0; // 滚动后贴边
+  margin-top: 0;
 
   .navbar-inner {
     max-width: 1200px;
@@ -272,7 +258,6 @@ onUnmounted(() => {
   }
 }
 
-// 响应式适配
 @media (max-width: 1200px) {
   .navbar {
     .navbar-inner {

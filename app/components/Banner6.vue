@@ -2,81 +2,77 @@
   <section class="banner-6">
     <div class="container">
       <div class="section-header">
-        <span class="subtitle">Case Studies</span>
-        <h2 class="title">Global Successful Sauna Project Cases</h2>
-        <p class="desc">Years of experience in global sauna export business. We have completed thousands of residential saunas, commercial spa saunas, hotel and wellness center projects with mature implementation experience.</p>
+        <span class="subtitle">{{ tm('banner6.subtitle') }}</span>
+        <h2 class="title">{{ tm('banner6.title') }}</h2>
+        <p class="desc">{{ tm('banner6.desc') }}</p>
       </div>
 
       <div class="cases-grid">
-        <!-- Case 1 -->
         <div class="case-card large">
           <div class="case-image">
             <img src="/images/home/LuxuryVillaSauna.png" alt="Luxury Villa Project" loading="lazy" />
           </div>
           <div class="case-overlay">
-            <span class="case-tag">Residential</span>
-            <h3>Luxury Villa Sauna</h3>
-            <p>Private wellness retreat</p>
+            <span class="case-tag">{{ tm('banner6.cases.villa.tag') }}</span>
+            <h3>{{ tm('banner6.cases.villa.title') }}</h3>
+            <p>{{ tm('banner6.cases.villa.desc') }}</p>
           </div>
         </div>
 
-        <!-- Case 2 -->
         <div class="case-card">
           <div class="case-image">
             <img src="/images/home/Five-StarResort.png" alt="Hotel Spa" loading="lazy" />
           </div>
           <div class="case-overlay">
-            <span class="case-tag">Hotel</span>
-            <h3>Five-Star Resort</h3>
-            <p>Premium guest experience</p>
+            <span class="case-tag">{{ tm('banner6.cases.resort.tag') }}</span>
+            <h3>{{ tm('banner6.cases.resort.title') }}</h3>
+            <p>{{ tm('banner6.cases.resort.desc') }}</p>
           </div>
         </div>
 
-        <!-- Case 3 -->
         <div class="case-card">
           <div class="case-image">
             <img src="/images/home/PremiumFitnessClub.png" alt="Fitness Center" loading="lazy" />
           </div>
           <div class="case-overlay">
-            <span class="case-tag">Gym</span>
-            <h3>Premium Fitness Club</h3>
-            <p>Member wellness facility</p>
+            <span class="case-tag">{{ tm('banner6.cases.fitness.tag') }}</span>
+            <h3>{{ tm('banner6.cases.fitness.title') }}</h3>
+            <p>{{ tm('banner6.cases.fitness.desc') }}</p>
           </div>
         </div>
 
-        <!-- Case 4 -->
         <div class="case-card">
           <div class="case-image">
             <img src="/images/home/CommercialSpa.png" alt="Spa Center" loading="lazy" />
           </div>
           <div class="case-overlay">
-            <span class="case-tag">Spa</span>
-            <h3>Commercial Spa</h3>
-            <p>High-capacity solution</p>
+            <span class="case-tag">{{ tm('banner6.cases.spa.tag') }}</span>
+            <h3>{{ tm('banner6.cases.spa.title') }}</h3>
+            <p>{{ tm('banner6.cases.spa.desc') }}</p>
           </div>
         </div>
 
-        <!-- Case 5 -->
         <div class="case-card large">
           <div class="case-image">
             <img src="/images/home/MedicalWellnessCenter.png" alt="Wellness Center" loading="lazy" />
           </div>
           <div class="case-overlay">
-            <span class="case-tag">Wellness</span>
-            <h3>Medical Wellness Center</h3>
-            <p>Health-focused design</p>
+            <span class="case-tag">{{ tm('banner6.cases.wellness.tag') }}</span>
+            <h3>{{ tm('banner6.cases.wellness.title') }}</h3>
+            <p>{{ tm('banner6.cases.wellness.desc') }}</p>
           </div>
         </div>
       </div>
 
       <div class="cta-wrapper">
-        <a href="#" class="cta-btn">View More Cases</a>
+        <a href="#" class="cta-btn">{{ tm('banner6.cta') }}</a>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+const { tm } = useI18nHelpers()
 </script>
 
 <style lang="less" scoped>

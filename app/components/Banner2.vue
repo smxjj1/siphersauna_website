@@ -2,87 +2,82 @@
   <section class="banner-2">
     <div class="container">
       <div class="section-header">
-        <span class="subtitle">Product Catalog</span>
-        <h2 class="title">Complete Sauna Products & Supporting Accessories Collection</h2>
-        <p class="desc">Our product range covers prebuilt sauna rooms, infrared sauna rooms, heating equipment, intelligent temperature control systems, wooden sauna tools, aroma accessories and decorative parts. One-stop procurement for all home and commercial sauna scenarios.</p>
+        <span class="subtitle">{{ tm('banner2.subtitle') }}</span>
+        <h2 class="title">{{ tm('banner2.title') }}</h2>
+        <p class="desc">{{ tm('banner2.desc') }}</p>
       </div>
 
       <div class="products-grid">
-        <!-- Product 1: Sauna Rooms -->
         <div class="product-item">
           <div class="product-image">
             <img src="/images/home/SaunaRooms.png" alt="Sauna Rooms" loading="lazy" />
           </div>
           <div class="product-content">
-            <h3>Sauna Rooms</h3>
-            <p>Prebuilt & Infrared Sauna Rooms</p>
+            <h3>{{ tm('banner2.products.saunaRooms.title') }}</h3>
+            <p>{{ tm('banner2.products.saunaRooms.desc') }}</p>
           </div>
         </div>
 
-        <!-- Product 2: Sauna Heaters -->
         <div class="product-item">
           <div class="product-image">
             <img src="/images/home/SaunaHeaters.png" alt="Sauna Heaters" loading="lazy" />
           </div>
           <div class="product-content">
-            <h3>Sauna Heaters</h3>
-            <p>Electric & Wood-fired Heaters</p>
+            <h3>{{ tm('banner2.products.saunaHeaters.title') }}</h3>
+            <p>{{ tm('banner2.products.saunaHeaters.desc') }}</p>
           </div>
         </div>
 
-        <!-- Product 3: Sauna Stones -->
         <div class="product-item">
           <div class="product-image">
             <img src="/images/home/SaunaAccessories.png" alt="Sauna Stones" loading="lazy" />
           </div>
           <div class="product-content">
-            <h3>Sauna Accessories</h3>
-            <p>Complete Your Sauna Experience.</p>
+            <h3>{{ tm('banner2.products.saunaAccessories.title') }}</h3>
+            <p>{{ tm('banner2.products.saunaAccessories.desc') }}</p>
           </div>
         </div>
 
-        <!-- Product 4: Outdoor Wood-fired Hot Tub -->
         <div class="product-item">
           <div class="product-image">
             <img src="/images/home/OutdoorWoodfiredHotTub.png" alt="Outdoor Wood-fired Hot Tub" loading="lazy" />
           </div>
           <div class="product-content">
-            <h3>Outdoor Wood-fired Hot Tub</h3>
-            <p>Immerse in Nature. Relax in Warmth.</p>
+            <h3>{{ tm('banner2.products.outdoorHotTub.title') }}</h3>
+            <p>{{ tm('banner2.products.outdoorHotTub.desc') }}</p>
           </div>
         </div>
 
-        <!-- Product 5: Indoor Dry & Steam Room -->
         <div class="product-item">
           <div class="product-image">
             <img src="/images/home/IndoorDry&SteamRoom.png" alt="Indoor Dry & Steam Room" loading="lazy" />
           </div>
           <div class="product-content">
-            <h3>Indoor Dry & Steam Room</h3>
-            <p>Cleanse. Relax. Rejuvenate.</p>
+            <h3>{{ tm('banner2.products.indoorDrySteam.title') }}</h3>
+            <p>{{ tm('banner2.products.indoorDrySteam.desc') }}</p>
           </div>
         </div>
 
-        <!-- Product 6: Outdoor Traditional Sauna -->
         <div class="product-item">
           <div class="product-image">
             <img src="/images/home/OutdoorTraditionalSauna.png" alt="Outdoor Traditional Sauna" loading="lazy" />
           </div>
           <div class="product-content">
-            <h3>Outdoor Traditional Sauna</h3>
-            <p>Embrace Tradition. Elevate Wellness.</p>
+            <h3>{{ tm('banner2.products.outdoorTraditional.title') }}</h3>
+            <p>{{ tm('banner2.products.outdoorTraditional.desc') }}</p>
           </div>
         </div>
       </div>
 
       <div class="cta-wrapper">
-        <a href="#" class="cta-btn">View All Products</a>
+        <a href="#" class="cta-btn">{{ tm('banner2.viewAll') }}</a>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+const { tm } = useI18nHelpers()
 </script>
 
 <style lang="less" scoped>

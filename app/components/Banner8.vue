@@ -1,10 +1,10 @@
 <template>
   <section class="banner-8">
     <div class="container">
-      <div class="section-header">
-        <span class="subtitle">FAQ</span>
-        <h2 class="title">Frequently Asked Questions About Sauna Products & Accessories</h2>
-        <p class="desc">We have sorted out the most frequent questions about sauna products, installation, accessories, customization and after-sales service to help you solve doubts quickly.</p>
+      <div class="section-header" :class="{ 'zh-wide': isZh }">
+        <span class="subtitle">{{ tm('faq.subtitle') }}</span>
+        <h2 class="title">{{ tm('faq.title') }}</h2>
+        <p class="desc">{{ tm('faq.desc') }}</p>
       </div>
 
       <div class="faq-list">
@@ -30,39 +30,47 @@
       </div>
 
       <div class="cta-wrapper">
-        <a href="#" class="cta-btn">View All FAQs</a>
+        <a href="#" class="cta-btn">{{ tm('faq.viewAll') }}</a>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const activeIndex = ref(null)
+const { tm } = useI18nHelpers()
+const currentLocale = useLocale()
+const isZh = computed(() => currentLocale.value.startsWith('zh'))
 
-const faqs = [
+const fallbackFaqs = [
   {
     question: 'Are sauna rooms suitable for long-term daily home use?',
-    answer: 'All household sauna products are specially designed for family scenarios, featuring safe constant temperature, low energy consumption and quiet operation, completely suitable for long-term daily wellness use.'
+    answer: 'All household sauna products are specially designed for family scenarios, featuring safe constant temperature, low energy consumption and quiet operation, completely suitable for long-term daily wellness use.',
   },
   {
     question: 'Are sauna accessories universal and available for separate replacement?',
-    answer: 'Most sauna accessories are universal and replaceable, including sauna heaters, temperature controllers, wooden buckets, sauna stones, backrests and more. We support retail and bulk purchase.'
+    answer: 'Most sauna accessories are universal and replaceable, including sauna heaters, temperature controllers, wooden buckets, sauna stones, backrests and more. We support retail and bulk purchase.',
   },
   {
     question: 'Do you support overseas project customization and export?',
-    answer: 'We support global export, non-standard customization, international voltage adaptation and complete certification to meet commercial standards of different countries.'
+    answer: 'We support global export, non-standard customization, international voltage adaptation and complete certification to meet commercial standards of different countries.',
   },
   {
     question: 'Do you provide installation guidance and after-sales service?',
-    answer: 'We provide complete installation drawings, video guidance, lifelong technical consultation and professional after-sales maintenance service.'
+    answer: 'We provide complete installation drawings, video guidance, lifelong technical consultation and professional after-sales maintenance service.',
   },
   {
     question: 'What are the advantages of wholesale and engineering orders?',
-    answer: 'Direct factory supply without middlemen. We provide customized packaging, OEM branding, bulk discount price and stable delivery schedule for wholesale and project clients.'
-  }
+    answer: 'Direct factory supply without middlemen. We provide customized packaging, OEM branding, bulk discount price and stable delivery schedule for wholesale and project clients.',
+  },
 ]
+
+const faqs = computed(() => {
+  const list = useTmArray('faq.items')
+  return list.length ? list : fallbackFaqs
+})
 
 const toggleFaq = (index) => {
   activeIndex.value = activeIndex.value === index ? null : index
@@ -79,6 +87,10 @@ const toggleFaq = (index) => {
   text-align: center;
   max-width: 800px;
   margin: 0 auto 60px;
+}
+
+.section-header.zh-wide {
+  max-width: 900px;
 }
 
 .subtitle {

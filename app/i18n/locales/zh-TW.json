@@ -1,0 +1,361 @@
+{
+  "nav": {
+    "home": "首頁",
+    "products": "產品",
+    "aboutUs": "關於我們",
+    "contact": "聯絡我們"
+  },
+  "footer": {
+    "products": "產品",
+    "support": "支援",
+    "findUs": "聯絡我們",
+    "brandDesc": "優質家用桑拿房解決方案，採用天然木材與先進加熱技術精心打造。您的健康，我們的心之所向。",
+    "saunaRooms": "桑拿房",
+    "heatersStones": "桑拿爐與桑拿石",
+    "essentialOils": "精油",
+    "accessories": "木質配件",
+    "bundles": "套裝優惠",
+    "installation": "安裝指南",
+    "warranty": "保固服務",
+    "faq": "常見問題",
+    "shipping": "運輸與退換",
+    "contactUs": "聯絡我們",
+    "copyright": "© 2026 Sipher Sauna 保留所有權利。",
+    "privacyPolicy": "隱私權政策",
+    "termsOfService": "服務條款"
+  },
+  "common": {
+    "languageSwitcher": "語言",
+    "language": {
+      "en": "English",
+      "zh-CN": "简体中文",
+      "zh-TW": "繁體中文"
+    }
+  },
+  "home": {
+    "seoTitle": "Sipher Sauna — 高階家用桑拿解決方案",
+    "seoDescription": "體驗 Sipher Sauna 帶來的頂級家用桑拿享受。優質木材與加熱科技，打造您的健康養生秘境。"
+  },
+  "products": {
+    "title": "我們的產品",
+    "subtitle": "為您的健康之旅精心打造的優質桑拿解決方案",
+    "productCount": "{count} 款產品",
+    "categoryCount": "{count} 個分類",
+    "allProducts": "全部產品",
+    "itemsCount": "{count} 件",
+    "comingSoonTitle": "新品即將上線",
+    "comingSoonDesc": "請稍後查看新的桑拿產品。",
+    "backToTop": "回到頂部",
+    "itemNo": "產品編號",
+    "description": "產品描述",
+    "specifications": "規格參數",
+    "woodType": "木材類型",
+    "size": "尺寸 (cm)",
+    "netWeight": "淨重 (kg)",
+    "grossWeight": "毛重 (kg)",
+    "pcs20gp": "件數/20尺櫃",
+    "pcs40hq": "件數/40尺高櫃",
+    "moq": "起訂量",
+    "hsCode": "海關編碼",
+    "contactInquiry": "聯絡我們諮詢",
+    "subcategory": {
+      "Far": "遠紅外桑拿房",
+      "Dry": "乾濕蒸組合桑拿",
+      "Traditional sauna room": "傳統桑拿房",
+      "General": "常規產品"
+    }
+  },
+  "about": {
+    "title": "我們的故事",
+    "subtitle": "自 2008 年起，匠心打造健康養生",
+    "heroText": "<strong>Sipher Sauna</strong> 擁有超過 18 年的高階桑拿房設計與製造經驗。源於對北歐養生傳統與中國匠心精神的熱愛，我們打造融合經典設計與現代創新的桑拿體驗。從永續採購的北歐雲杉，到精密工程打造的加熱系統，每一個細節都體現著我們對品質的執著追求。",
+    "whyChooseTitle": "為什麼選擇 Sipher",
+    "strength1Title": "卓越歲月",
+    "strength1Desc": "近二十年來專注於桑拿工藝，服務全球 50 多個國家的客戶，始終如一地保證品質。",
+    "strength2Title": "工坊與工廠",
+    "strength2Desc": "浙江 15,000 平方米生產基地，配備德國精密機械，確保工藝完美無瑕。",
+    "strength3Title": "全球佈局",
+    "strength3Desc": "受到全球健康品牌、酒店連鎖及私人客戶的信賴。高階桑拿房遠銷歐洲、北美及亞洲。",
+    "craftsmanshipTitle": "匠心工藝",
+    "craftsmanshipText": "每一間 Sipher 桑拿房都從精挑細選的木材開始——北歐雲杉、加拿大鐵杉、優質紅雪松——均來自永續森林。我們的工匠將傳統榫卯技藝與現代精密工程相結合，打造出在耐用性、安全性和熱性能方面均超越國際標準的桑拿房。",
+    "oemDesc": "為尋求差異化桑拿解決方案的品牌提供訂製製造，靈活的起訂量與全面的品質保證。",
+    "odmDesc": "提供從概念設計到批量生產的全方位設計與開發合作，全程符合監管要求。",
+    "qualityTitle": "品質與合規",
+    "qualityIntro": "Sipher Sauna 保持嚴格的品質標準，並獲得主要國際認證機構認證。每件產品都經過全面的結構完整性、電氣安全和環境合規測試。",
+    "certifications": {
+      "iso9001": "品質管理體系",
+      "bsci": "社會責任合規",
+      "ce": "歐洲合格認證",
+      "ul": "安全認證"
+    },
+    "globalTitle": "我們的全球佈局",
+    "globalIntro": "立足中國佛山，Sipher Sauna 業務遍及六大洲。我們的高階桑拿解決方案贏得全球健康品牌、酒店集團及高端業主的信賴。",
+    "hqLabel": "總部：中國佛山",
+    "partnersLabel": "合作城市：六大洲 50+ 城市",
+    "ctaTitle": "體驗 Sipher 的與眾不同",
+    "ctaText": "無論您是在構想私人家庭養生空間，還是為商業水療中心配置設備，Sipher Sauna 都能以卓越工藝和貼心客戶服務助您實現。讓我們幫您打造完美的桑拿體驗。",
+    "ctaClosing": "攜手 Sipher 提升您的健康之旅",
+    "ctaButton": "立即聯絡我們",
+    "seoTitle": "我們的故事 | Sipher Sauna - 卓越健康體驗",
+    "seoDescription": "Sipher Sauna - 18 年致力於打造高階戶外與室內桑拿房。北歐設計與中國匠心工藝的完美融合。"
+  },
+  "contact": {
+    "heroTitle": "聯絡我們 — 開啟您的健康之旅",
+    "heroSubtitle": "我們的健康顧問隨時為您解答關於桑拿房訂製、加熱設備和配件的諮詢",
+    "formTitle": "獲取您的專屬桑拿房報價",
+    "formSubtitle": "請填寫以下表單，我們的團隊將在 24 小時內與您聯絡，提供量身訂製的健康解決方案",
+    "name": "姓名 / 聯絡人",
+    "namePlaceholder": "您的姓名",
+    "email": "電子郵件地址",
+    "emailPlaceholder": "您的電子郵件",
+    "phone": "電話號碼",
+    "phonePlaceholder": "您的電話",
+    "company": "公司 / 經銷商名稱",
+    "companyPlaceholder": "公司名稱",
+    "address": "安裝地址",
+    "addressPlaceholder": "安裝地址",
+    "subject": "諮詢類型",
+    "subjectPlaceholder": "請選擇諮詢類型",
+    "subjectHomeCustom": "家用桑拿房訂製",
+    "subjectCommercialSpa": "商業 SPA 工程",
+    "subjectEquipmentParts": "設備與配件採購",
+    "subjectOther": "其他諮詢",
+    "products": "感興趣的產品",
+    "productsPlaceholder": "例如：戶外桑拿、桑拿爐",
+    "message": "項目詳情",
+    "messagePlaceholder": "請描述您的項目需求...",
+    "submit": "送出諮詢",
+    "submitting": "送出中...",
+    "successMessage": "感謝您的諮詢！我們的健康顧問將在 24 小時內與您聯絡。",
+    "errorMessage": "送出失敗，請重試或直接致電我們的服務專線。",
+    "infoTitle": "聯絡資訊",
+    "factoryAddressTitle": "工廠地址",
+    "factoryAddress": "佛山市南海區獅山鎮紅沙高新技術開發區前進中路1號（G棟），南海科技工業園（廣澳）",
+    "emailTitle": "商務電子郵件",
+    "hotlineTitle": "服務專線",
+    "hoursTitle": "營業時間",
+    "hoursValue": "週一至週五：8:00 - 18:00\n週六：9:00 - 17:00",
+    "commitmentTitle": "我們的承諾",
+    "commitmentText": "Sipher Sauna 致力於為每一位客戶提供高品質的健康解決方案。從木材挑選到精密製造，我們嚴格把控每一個細節，確保您不僅獲得一間桑拿房，更是一份值得信賴的健康體驗。",
+    "quickLinksTitle": "產品導覽",
+    "validation": {
+      "nameRequired": "請輸入您的姓名",
+      "emailRequired": "請輸入您的電子郵件地址",
+      "emailInvalid": "請輸入有效的電子郵件格式",
+      "messageRequired": "請描述您的項目需求或問題"
+    },
+    "seoTitle": "聯絡我們 | Sipher Sauna - 開啟您的健康之旅",
+    "seoDescription": "聯絡 Sipher Sauna 諮詢家用桑拿訂製與商業 SPA 工程方案。18 年專業經驗，提供高品質健康解決方案。"
+  },
+  "faq": {
+    "subtitle": "常見問題",
+    "title": "關於桑拿產品和配件的常見問題",
+    "desc": "我們整理了關於桑拿產品、安裝、配件、訂製和售後最常被問到的問題，幫助您快速解決疑惑。",
+    "viewAll": "查看全部常見問題",
+    "items": [
+      {
+        "question": "桑拿房是否適合長期每日家庭使用？",
+        "answer": "所有家用桑拿產品均為家庭場景專門設計，具有安全恆溫、低能耗、靜音運行的特點，完全適合長期日常養生使用。"
+      },
+      {
+        "question": "桑拿配件是否通用，可單獨更換嗎？",
+        "answer": "大多數桑拿配件通用且可更換，包括桑拿爐、溫控器、木桶、桑拿石、靠背等。我們支援零售與批量採購。"
+      },
+      {
+        "question": "是否支援海外項目訂製與出口？",
+        "answer": "我們支援全球出口、非標訂製、國際電壓適配和全套認證，滿足不同國家的商業標準。"
+      },
+      {
+        "question": "是否提供安裝指導與售後服務？",
+        "answer": "我們提供完整的安裝圖紙、影片指導、終身技術諮詢以及專業的售後維護服務。"
+      },
+      {
+        "question": "批發與工程訂單有哪些優勢？",
+        "answer": "廠家直供無中間商。我們為批發和工程客戶提供訂製包裝、OEM 品牌、批量優惠價和穩定的交付週期。"
+      }
+    ]
+  },
+  "banner9": {
+    "tag": "獲取免費報價",
+    "title": "尋找可靠的桑拿產品和配件供應商？",
+    "description": "我們為個人採購、門市批發、外貿大單和大型工程訂製提供高性價比的解決方案和專屬報價。",
+    "primaryCta": "獲取免費方案與報價",
+    "secondaryCta": "聯絡我們"
+  },
+  "banner2": {
+    "subtitle": "產品目錄",
+    "title": "完整桑拿產品及配套配件系列",
+    "desc": "我們的產品線涵蓋預製桑拿房、紅外桑拿房、加熱設備、智慧溫控系統、木質桑拿工具、香薰配件及裝飾部件。一站式採購滿足家庭和商業桑拿場景需求。",
+    "viewAll": "查看全部產品",
+    "products": {
+      "saunaRooms": {
+        "title": "桑拿房",
+        "desc": "預製式與紅外桑拿房"
+      },
+      "saunaHeaters": {
+        "title": "桑拿爐",
+        "desc": "電加熱爐與木柴爐"
+      },
+      "saunaAccessories": {
+        "title": "桑拿配件",
+        "desc": "完善您的桑拿體驗"
+      },
+      "outdoorHotTub": {
+        "title": "戶外木柴熱水浴缸",
+        "desc": "沉浸自然。溫暖放鬆。"
+      },
+      "indoorDrySteam": {
+        "title": "室內乾濕蒸房",
+        "desc": "潔淨。放鬆。煥活。"
+      },
+      "outdoorTraditional": {
+        "title": "戶外傳統桑拿",
+        "desc": "傳承傳統。提升養生。"
+      }
+    }
+  },
+  "banner3": {
+    "subtitle": "解決方案",
+    "title": "多場景訂製桑拿解決方案",
+    "desc": "為家庭放鬆、私人別墅、豪華飯店、商業水療、健身俱樂部及養生工程提供訂製標準桑拿解決方案，滿足不同空間和使用需求。",
+    "viewDetails": "查看詳情",
+    "viewSolutions": "查看解決方案",
+    "scenarios": {
+      "home": {
+        "tag": "家用",
+        "title": "家庭與別墅桑拿",
+        "desc": "私人家庭養生空間"
+      },
+      "hotel": {
+        "tag": "商業",
+        "title": "飯店度假村水療",
+        "desc": "奢華賓客體驗"
+      },
+      "fitness": {
+        "tag": "養生",
+        "title": "健身房與健身俱樂部",
+        "desc": "高端健身恢復"
+      },
+      "spa": {
+        "tag": "專業",
+        "title": "商業水療中心",
+        "desc": "大容量解決方案"
+      }
+    }
+  },
+  "banner4": {
+    "subtitle": "訂製服務",
+    "title": "專業桑拿訂製<br>尺寸、風格與功能訂製服務",
+    "desc": "我們支援非標尺寸訂製、外觀風格調整、功能升級及完整配件配套。提供設計、生產、安裝指導及售後支持的一站式服務。",
+    "features": {
+      "dimensions": "訂製尺寸與佈局",
+      "style": "風格與材質選擇",
+      "heating": "加熱系統升級",
+      "smart": "智慧控制整合"
+    },
+    "cta": "訂製您的桑拿"
+  },
+  "banner5": {
+    "subtitle": "工廠直供",
+    "title": "直供工廠 | 穩定生產與嚴格品控",
+    "desc": "自有工廠及完整供應鏈。所有桑拿設備及配件均經過嚴格的多通道質檢。支援外貿批發、OEM及ODM服務，品質穩定，交期可靠。",
+    "stats": {
+      "years": "年行業經驗",
+      "clients": "全球客戶",
+      "output": "年產量",
+      "quality": "認證品質"
+    },
+    "highlights": {
+      "production": {
+        "title": "現代化生產",
+        "desc": "自動化生產線，精密製造"
+      },
+      "testing": {
+        "title": "品質檢測",
+        "desc": "每件產品多階段檢測"
+      },
+      "logistics": {
+        "title": "倉儲物流",
+        "desc": "整合供應鏈，及時交付"
+      }
+    },
+    "cta": "工廠合作咨詢"
+  },
+  "banner6": {
+    "subtitle": "案例展示",
+    "title": "全球成功桑拿項目案例",
+    "desc": "多年全球桑拿出口業務經驗。我們已完成數千個住宅桑拿、商業水療桑拿、飯店及養生中心項目，擁有成熟的實施經驗。",
+    "cta": "查看更多案例",
+    "cases": {
+      "villa": {
+        "tag": "住宅",
+        "title": "豪華別墅桑拿",
+        "desc": "私人養���度假勝地"
+      },
+      "resort": {
+        "tag": "飯店",
+        "title": "五星級度假村",
+        "desc": "高端賓客體驗"
+      },
+      "fitness": {
+        "tag": "健身",
+        "title": "高端健身俱樂部",
+        "desc": "會員養生設施"
+      },
+      "spa": {
+        "tag": "水療",
+        "title": "商業水療中心",
+        "desc": "大容量解決方案"
+      },
+      "wellness": {
+        "tag": "養生",
+        "title": "醫療養生中心",
+        "desc": "健康導向設計"
+      }
+    }
+  },
+  "banner7": {
+    "subtitle": "為什麼選擇我們",
+    "title": "卓越工藝、安全耐用與長期售後保障",
+    "desc": "採用環保實木、安全加熱系統、智慧恆溫及耐高溫設計。所有配件均耐高溫、耐腐蝕、故障率低、易於維護，適用於長期商業及家用場景。",
+    "cta": "我們的優勢",
+    "advantages": {
+      "materials": {
+        "title": "優質材料",
+        "desc": "環保實木，可持續採購"
+      },
+      "heating": {
+        "title": "安全加熱系統",
+        "desc": "智慧恆溫，節能高效"
+      },
+      "resistant": {
+        "title": "耐高溫設計",
+        "desc": "耐用組件，低故障率"
+      },
+      "maintenance": {
+        "title": "易於維護",
+        "desc": "簡單保養，長期商用"
+      }
+    }
+  },
+  "categories": {
+    "outdoor-sauna": {
+      "name": "戶外桑拿",
+      "title": "戶外桑拿房 | 優質木製設計",
+      "description": "探索我們的優質戶外桑拿房系列。採用高品質雲杉、鐵杉和紅雪松木材打造，支援多種訂製配置。",
+      "heroHeadline": "尊貴戶外桑拿體驗",
+      "heroSubheadline": "將您的戶外空間打造成養生秘境。我們的桑拿房採用優質木材打造，提供多種加熱選項和完整的配件套裝。"
+    },
+    "indoor-sauna": {
+      "name": "室內桑拿",
+      "title": "室內桑拿房 | 傳統與遠紅外",
+      "description": "探索我們的室內桑拿系列，包括傳統桑拿房和遠紅外光波房。緊湊設計，完美適配家居安裝。",
+      "heroHeadline": "家居健康解決方案",
+      "heroSubheadline": "將桑拿體驗帶入室內。從傳統芬蘭式桑拿房到現代遠紅外科技，為您的空間找到完美之選。"
+    },
+    "productCategory": {
+      "outdoor sauna": "戶外桑拿",
+      "indoor sauna": "室內桑拿"
+    }
+  }
+}

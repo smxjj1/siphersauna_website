@@ -2,9 +2,9 @@
   <section class="banner-5">
     <div class="container">
       <div class="section-header">
-        <span class="subtitle">Factory Direct</span>
-        <h2 class="title">Direct Factory Supply | Stable Production & Strict Quality Control</h2>
-        <p class="desc">Self-owned factory and complete supply chain. All sauna equipment and accessories pass strict multi-channel quality testing. Support bulk foreign trade wholesale, OEM & ODM service with stable quality and reliable delivery time.</p>
+        <span class="subtitle">{{ tm('banner5.subtitle') }}</span>
+        <h2 class="title">{{ tm('banner5.title') }}</h2>
+        <p class="desc">{{ tm('banner5.desc') }}</p>
       </div>
 
       <div class="factory-stats">
@@ -16,7 +16,7 @@
           </div>
           <div class="stat-info">
             <span class="stat-number">15+</span>
-            <span class="stat-label">Years Experience</span>
+            <span class="stat-label">{{ tm('banner5.stats.years') }}</span>
           </div>
         </div>
 
@@ -28,7 +28,7 @@
           </div>
           <div class="stat-info">
             <span class="stat-number">500+</span>
-            <span class="stat-label">Global Clients</span>
+            <span class="stat-label">{{ tm('banner5.stats.clients') }}</span>
           </div>
         </div>
 
@@ -42,7 +42,7 @@
           </div>
           <div class="stat-info">
             <span class="stat-number">50K+</span>
-            <span class="stat-label">Annual Output</span>
+            <span class="stat-label">{{ tm('banner5.stats.output') }}</span>
           </div>
         </div>
 
@@ -54,7 +54,7 @@
           </div>
           <div class="stat-info">
             <span class="stat-number">ISO</span>
-            <span class="stat-label">Certified Quality</span>
+            <span class="stat-label">{{ tm('banner5.stats.quality') }}</span>
           </div>
         </div>
       </div>
@@ -65,8 +65,8 @@
             <img src="/images/home/MODERN-PRODUCTION.png" alt="Production Workshop" loading="lazy" />
           </div>
           <div class="highlight-content">
-            <h3>Modern Production</h3>
-            <p>Automated production lines with precision manufacturing</p>
+            <h3>{{ tm('banner5.highlights.production.title') }}</h3>
+            <p>{{ tm('banner5.highlights.production.desc') }}</p>
           </div>
         </div>
 
@@ -75,8 +75,8 @@
             <img src="/images/home/QUALITY-TESTING.png" alt="Quality Control" loading="lazy" />
           </div>
           <div class="highlight-content">
-            <h3>Quality Testing</h3>
-            <p>Multi-stage inspection for every product</p>
+            <h3>{{ tm('banner5.highlights.testing.title') }}</h3>
+            <p>{{ tm('banner5.highlights.testing.desc') }}</p>
           </div>
         </div>
 
@@ -85,20 +85,21 @@
             <img src="/images/home/WAREHOUSING&LOGISTICS.png" alt="Warehouse" loading="lazy" />
           </div>
           <div class="highlight-content">
-            <h3>Warehouse & Logistics</h3>
-            <p>Integrated supply chain for timely delivery</p>
+            <h3>{{ tm('banner5.highlights.logistics.title') }}</h3>
+            <p>{{ tm('banner5.highlights.logistics.desc') }}</p>
           </div>
         </div>
       </div>
 
       <div class="cta-wrapper">
-        <a href="#" class="cta-btn">Factory Cooperation Inquiry</a>
+        <a href="#" class="cta-btn">{{ tm('banner5.cta') }}</a>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+const { tm } = useI18nHelpers()
 </script>
 
 <style lang="less" scoped>

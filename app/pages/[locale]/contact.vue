@@ -135,7 +135,7 @@
           <div class="contact-cards">
             <h3 class="info-title">{{ tm('contact.infoTitle') }}</h3>
 
-            <div v-if="displayAddress" class="info-card">
+            <div class="info-card">
               <div class="info-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
@@ -144,11 +144,11 @@
               </div>
               <div class="info-content">
                 <h4>{{ tm('contact.factoryAddressTitle') }}</h4>
-                <p class="pre-line">{{ displayAddress }}</p>
+                <p>{{ tm('contact.factoryAddress') }}</p>
               </div>
             </div>
 
-            <div v-if="emailLink" class="info-card">
+            <div class="info-card">
               <div class="info-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
@@ -157,13 +157,11 @@
               </div>
               <div class="info-content">
                 <h4>{{ tm('contact.emailTitle') }}</h4>
-                <p>
-                  <a :href="emailLink.url">{{ getLinkDisplayText(emailLink) }}</a>
-                </p>
+                <p>info@siphersauna.com</p>
               </div>
             </div>
 
-            <div v-if="phoneLink" class="info-card">
+            <div class="info-card">
               <div class="info-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
@@ -172,13 +170,13 @@
               <div class="info-content">
                 <h4>{{ tm('contact.hotlineTitle') }}</h4>
                 <p>
-                  <a :href="phoneLink.url" class="contact-link">{{ getLinkDisplayText(phoneLink) }}</a>
-                  <span v-if="phoneLink.label" class="whatsapp-tag">{{ phoneLink.label }}</span>
+                  <a href="tel:+8615999977665" class="contact-link">+86 159-9997-7665</a>
+                  <span class="whatsapp-tag">WhatsApp</span>
                 </p>
               </div>
             </div>
 
-            <div v-if="displayBusinessHours" class="info-card">
+            <div class="info-card">
               <div class="info-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="12" cy="12" r="10"/>
@@ -187,7 +185,7 @@
               </div>
               <div class="info-content">
                 <h4>{{ tm('contact.hoursTitle') }}</h4>
-                <p class="pre-line">{{ displayBusinessHours }}</p>
+                <p style="white-space: pre-line;">{{ tm('contact.hoursValue') }}</p>
               </div>
             </div>
           </div>
@@ -227,18 +225,10 @@ definePageMeta({
 })
 
 const config = useRuntimeConfig()
-const route = useRoute()
 const { sendContactAnalytics } = useAnalytics()
-const { contactLinks, contactProfile, getLinkDisplayText, getLocalizedProfileText } = useContactLinks()
 const analyticsSiteId = config.public.analyticsSiteId as string
 const { tm, localePath, locale } = useI18nHelpers()
 
-const emailLink = computed(() => contactLinks.value.find(link => link.iconKey === 'email'))
-const phoneLink = computed(() => contactLinks.value.find(link => link.iconKey === 'phone' || link.iconKey === 'whatsapp'))
-const displayAddress = computed(() => getLocalizedProfileText(contactProfile.value, 'address'))
-const displayBusinessHours = computed(() => getLocalizedProfileText(contactProfile.value, 'businessHours'))
-
-// SEO Configuration - Sauna Brand Contact Page
 useHead({
   title: computed(() => tm('contact.seoTitle')),
   htmlAttrs: { lang: locale },
@@ -272,11 +262,6 @@ const errors = reactive<Record<string, string>>({})
 const isSubmitting = ref(false)
 const submitStatus = ref<'idle' | 'success' | 'error'>('idle')
 
-onMounted(() => {
-  form.products = applyProductsQueryToField(route.query.products, form.products)
-})
-
-// Form validation
 const validateForm = () => {
   let isValid = true
   Object.keys(errors).forEach(key => delete errors[key])
@@ -502,11 +487,6 @@ const handleSubmit = async () => {
   }
 }
 
-.pre-line {
-  white-space: pre-line;
-}
-
-// Mission Card
 .mission-card {
   background: @brand-dark; padding: 24px; border-radius: 16px;
   h3 { font-size: 1.1rem; font-weight: 700; color: @brand-cream; margin: 0 0 12px; }

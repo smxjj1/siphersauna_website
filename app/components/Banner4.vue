@@ -3,28 +3,28 @@
     <div class="container">
       <div class="banner-4-content">
         <div class="content-left">
-          <span class="subtitle">Customization</span>
-          <h2 class="title">Professional Sauna Customization<br/>Size, Style & Function Custom Service</h2>
-          <p class="description">We support non-standard size customization, appearance style adjustment, functional upgrade and full accessory matching. Provide one-stop service including design, production, installation guidance and after-sales support.</p>
+          <span class="subtitle">{{ tm('banner4.subtitle') }}</span>
+          <h2 class="title" v-html="tm('banner4.title')"></h2>
+          <p class="description">{{ tm('banner4.description') }}</p>
           <div class="features-list">
             <div class="feature-item">
               <span class="check-icon">✓</span>
-              <span>Custom Dimensions & Layout</span>
+              <span>{{ tm('banner4.features.dimensions') }}</span>
             </div>
             <div class="feature-item">
               <span class="check-icon">✓</span>
-              <span>Style & Material Selection</span>
+              <span>{{ tm('banner4.features.style') }}</span>
             </div>
             <div class="feature-item">
               <span class="check-icon">✓</span>
-              <span>Heating System Upgrade</span>
+              <span>{{ tm('banner4.features.heating') }}</span>
             </div>
             <div class="feature-item">
               <span class="check-icon">✓</span>
-              <span>Smart Control Integration</span>
+              <span>{{ tm('banner4.features.smart') }}</span>
             </div>
           </div>
-          <a href="#" class="cta-btn">Customize Your Sauna</a>
+          <a href="#" class="cta-btn">{{ tm('banner4.cta') }}</a>
         </div>
         <div class="content-right">
           <div class="showcase-image">
@@ -37,6 +37,7 @@
 </template>
 
 <script setup>
+const { tm } = useI18nHelpers()
 </script>
 
 <style lang="less" scoped>

@@ -2,9 +2,8 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <!-- Brand Column -->
         <div class="footer-brand">
-          <NuxtLink to="/" class="logo">
+          <NuxtLink :to="localePath('/')" class="logo">
             <img src="/images/logo/logo.png" alt="Sipher Sauna" class="logo-img">
             <span class="logo-text">Sipher Sauna</span>
           </NuxtLink>
@@ -44,21 +43,19 @@
           </div>
         </div>
 
-        <!-- Products -->
         <div class="footer-column">
-          <h4 class="footer-title">Products</h4>
+          <h4 class="footer-title">{{ tm('footer.products') }}</h4>
           <ul class="footer-links">
-            <li><NuxtLink to="/sauna-rooms">Sauna Rooms</NuxtLink></li>
-            <li><NuxtLink to="/heaters">Heaters & Stones</NuxtLink></li>
-            <li><NuxtLink to="/essential-oils">Essential Oils</NuxtLink></li>
-            <li><NuxtLink to="/accessories">Wooden Accessories</NuxtLink></li>
-            <li><NuxtLink to="/bundles">Bundle Deals</NuxtLink></li>
+            <li><NuxtLink :to="localePath('/products')">{{ tm('footer.saunaRooms') }}</NuxtLink></li>
+            <li><NuxtLink :to="localePath('/products')">{{ tm('footer.heatersStones') }}</NuxtLink></li>
+            <li><NuxtLink :to="localePath('/products')">{{ tm('footer.essentialOils') }}</NuxtLink></li>
+            <li><NuxtLink :to="localePath('/products')">{{ tm('footer.accessories') }}</NuxtLink></li>
+            <li><NuxtLink :to="localePath('/products')">{{ tm('footer.bundles') }}</NuxtLink></li>
           </ul>
         </div>
 
-        <!-- Support -->
         <div class="footer-column">
-          <h4 class="footer-title">Support</h4>
+          <h4 class="footer-title">{{ tm('footer.support') }}</h4>
           <ul class="footer-links">
             <li><NuxtLink to="/installation">Installation Guide</NuxtLink></li>
             <li><NuxtLink to="/warranty">Warranty</NuxtLink></li>
@@ -70,9 +67,8 @@
           </ul>
         </div>
 
-        <!-- Find Us -->
         <div class="footer-column footer-findus">
-          <h4 class="footer-title">Find Us</h4>
+          <h4 class="footer-title">{{ tm('footer.findUs') }}</h4>
           <div class="map-wrapper">
             <iframe
               src="https://www.google.com/maps?q=汇力丰工业园+前进中路2号+南海区+佛山市+广东省&output=embed&z=15&hl=en"
@@ -88,12 +84,11 @@
         </div>
       </div>
 
-      <!-- Footer Bottom -->
       <div class="footer-bottom">
-        <p>&copy; 2026 Sipher Sauna. All rights reserved.</p>
+        <p>{{ tm('footer.copyright') }}</p>
         <div class="footer-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
+          <a href="#">{{ tm('footer.privacyPolicy') }}</a>
+          <a href="#">{{ tm('footer.termsOfService') }}</a>
         </div>
       </div>
     </div>
@@ -102,6 +97,7 @@
 
 <script setup>
 const { contactLinks, socialLinks, getLinkDisplayText, getLinkAriaLabel } = useContactLinks()
+const { tm, localePath } = useI18nHelpers()
 </script>
 
 <style lang="less" scoped>
@@ -211,55 +207,6 @@ const { contactLinks, socialLinks, getLinkDisplayText, getLinkAriaLabel } = useC
         color: @sauna-wood-light;
       }
     }
-  }
-}
-
-.newsletter-desc {
-  color: #aaa;
-  font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.newsletter-form {
-  display: flex;
-  gap: 8px;
-}
-
-.newsletter-input {
-  flex: 1;
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
-  color: #fff;
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.3s ease;
-
-  &::placeholder {
-    color: #777;
-  }
-
-  &:focus {
-    border-color: @sauna-wood-light;
-  }
-}
-
-.newsletter-btn {
-  padding: 12px 20px;
-  background: @sauna-wood;
-  color: @white;
-  border: none;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: darken(@sauna-wood, 10%);
   }
 }
 
