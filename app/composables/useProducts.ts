@@ -58,13 +58,22 @@ export function useProductCatalog(categorySlug?: string | Ref<string | undefined
   })
 
   const categories = computed<SaunaCategory[]>(() => {
+    let list: SaunaCategory[]
     if (!error.value && data.value?.categories?.length) {
-      return data.value.categories as SaunaCategory[]
+      list = data.value.categories as SaunaCategory[]
     }
-    return fallbackSauna.categories as SaunaCategory[]
+    else {
+      list = fallbackSauna.categories as SaunaCategory[]
+    }
+    return [...list].sort((a, b) => ((a as { sortOrder?: number }).sortOrder ?? 0) - ((b as { sortOrder?: number }).sortOrder ?? 0))
   })
 
-  const totalProducts = computed(() => products.value.length)
+  const totalProducts = computed(() => {
+    if (!error.value && data.value?.totalProducts != null) {
+      return data.value.totalProducts
+    }
+    return products.value.length
+  })
 
   const fromCms = computed(() => !error.value && (data.value?.products?.length ?? 0) > 0)
 

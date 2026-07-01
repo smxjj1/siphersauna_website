@@ -228,6 +228,12 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import { useProductCatalog } from '~/composables/useProducts'
+import { useTmObject } from '~/composables/useI18n'
+import {
+  formatSubcategoryLabel,
+  normalizeSubcategoryKey,
+  sortSubcategoryKeys,
+} from '~/utils/productCategory'
 
 definePageMeta({
   layout: 'default',
@@ -298,42 +304,38 @@ const filteredProducts = computed(() => {
   return allProducts.value.filter((p: Product) => p.categorySlug === activeCategory.value)
 })
 
+// 按子分类分组（顺序来自 CMS 白名单）
 const groupedProducts = computed(() => {
-  const groups: { subcategory: string; products: Product[] }[] = []
   const groupMap = new Map<string, Product[]>()
 
   for (const product of filteredProducts.value) {
-    const subcat = product.subcategory || 'General'
+    const subcat = normalizeSubcategoryKey(product.subcategory)
     if (!groupMap.has(subcat)) {
       groupMap.set(subcat, [])
     }
     groupMap.get(subcat)!.push(product)
   }
 
-  const order = ['Traditional sauna room', 'Far', 'Dry', 'General']
-  for (const orderedSubcat of order) {
-    if (groupMap.has(orderedSubcat)) {
-      groups.push({ subcategory: formatSubcategory(orderedSubcat), products: groupMap.get(orderedSubcat)! })
-    }
-  }
+  const activeCategoryMeta = categories.value.find(c => c.slug === activeCategory.value)
+  const preferredOrder = activeCategory.value === 'all'
+    ? categories.value.flatMap(c => (c as { subcategories?: string[] }).subcategories || [])
+    : ((activeCategoryMeta as { subcategories?: string[] } | undefined)?.subcategories || [])
 
-  for (const [subcategory, products] of groupMap) {
-    if (!order.includes(subcategory)) {
-      groups.push({ subcategory: formatSubcategory(subcategory), products })
-    }
-  }
+  const orderedKeys = sortSubcategoryKeys([...groupMap.keys()], preferredOrder)
 
-  return groups
+  return orderedKeys.map(subcategory => ({
+    subcategory: getSubcategoryDisplay(subcategory),
+    products: groupMap.get(subcategory)!,
+  }))
 })
 
-const formatSubcategory = (subcategory: string): string => {
+const getSubcategoryDisplay = (subcategory: string): string => {
   const translated = useTmObject(`products.subcategory.${subcategory}`)
   if (translated !== `products.subcategory.${subcategory}`) return translated
-  if (subcategory === 'Far') return 'Far-Infrared Sauna Room'
-  if (subcategory === 'Dry') return 'Dry-Wet Steam Combination'
-  return subcategory
+  return formatSubcategoryLabel(subcategory)
 }
 
+// 格式化材质
 const formatMaterial = (material: string): string => {
   const woods = material.split('/').filter(w => w.trim())
   if (woods.length === 0) return ''
