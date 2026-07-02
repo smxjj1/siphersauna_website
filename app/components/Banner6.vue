@@ -65,14 +65,14 @@
       </div>
 
       <div class="cta-wrapper">
-        <a href="#" class="cta-btn">{{ tm('banner6.cta') }}</a>
+        <NuxtLink :to="localePath('/products')" class="cta-btn">{{ tm('banner6.cta') }}</NuxtLink>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-const { tm } = useI18nHelpers()
+const { tm, localePath } = useI18nHelpers()
 </script>
 
 <style lang="less" scoped>

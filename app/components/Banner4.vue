@@ -24,7 +24,7 @@
               <span>{{ tm('banner4.features.smart') }}</span>
             </div>
           </div>
-          <a href="#" class="cta-btn">{{ tm('banner4.cta') }}</a>
+          <NuxtLink :to="localePath('/products')" class="cta-btn">{{ tm('banner4.cta') }}</NuxtLink>
         </div>
         <div class="content-right">
           <div class="showcase-image">
@@ -37,7 +37,7 @@
 </template>
 
 <script setup>
-const { tm } = useI18nHelpers()
+const { tm, localePath } = useI18nHelpers()
 </script>
 
 <style lang="less" scoped>

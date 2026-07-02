@@ -60,7 +60,7 @@
           <span class="subtitle">{{ tm('banner7.subtitle') }}</span>
           <h2 class="title">{{ tm('banner7.title') }}</h2>
           <p class="description">{{ tm('banner7.description') }}</p>
-          <a href="#" class="cta-btn">{{ tm('banner7.cta') }}</a>
+          <NuxtLink :to="localePath('/products')" class="cta-btn">{{ tm('banner7.cta') }}</NuxtLink>
         </div>
       </div>
     </div>
@@ -68,7 +68,7 @@
 </template>
 
 <script setup>
-const { tm } = useI18nHelpers()
+const { tm, localePath } = useI18nHelpers()
 </script>
 
 <style lang="less" scoped>

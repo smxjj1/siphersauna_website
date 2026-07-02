@@ -15,7 +15,6 @@
             <h3>{{ tm('banner3.scenarios.home.title') }}</h3>
             <p>{{ tm('banner3.scenarios.home.desc') }}</p>
           </div>
-          <a href="#" class="scenario-link">{{ tm('banner3.viewDetails') }}</a>
         </div>
 
         <div class="scenario-card hotel">
@@ -25,7 +24,6 @@
             <h3>{{ tm('banner3.scenarios.hotel.title') }}</h3>
             <p>{{ tm('banner3.scenarios.hotel.desc') }}</p>
           </div>
-          <a href="#" class="scenario-link">{{ tm('banner3.viewDetails') }}</a>
         </div>
 
         <div class="scenario-card fitness">
@@ -35,7 +33,6 @@
             <h3>{{ tm('banner3.scenarios.fitness.title') }}</h3>
             <p>{{ tm('banner3.scenarios.fitness.desc') }}</p>
           </div>
-          <a href="#" class="scenario-link">{{ tm('banner3.viewDetails') }}</a>
         </div>
 
         <div class="scenario-card spa">
@@ -45,19 +42,18 @@
             <h3>{{ tm('banner3.scenarios.spa.title') }}</h3>
             <p>{{ tm('banner3.scenarios.spa.desc') }}</p>
           </div>
-          <a href="#" class="scenario-link">{{ tm('banner3.viewDetails') }}</a>
         </div>
       </div>
 
       <div class="cta-wrapper">
-        <a href="#" class="cta-btn">{{ tm('banner3.viewSolutions') }}</a>
+        <NuxtLink :to="localePath('/products')" class="cta-btn">{{ tm('banner3.viewSolutions') }}</NuxtLink>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-const { tm } = useI18nHelpers()
+const { tm, localePath } = useI18nHelpers()
 </script>
 
 <style lang="less" scoped>
@@ -115,11 +111,6 @@ const { tm } = useI18nHelpers()
     .scenario-bg {
       transform: scale(1.1);
     }
-
-    .scenario-link {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 }
 
@@ -164,23 +155,6 @@ const { tm } = useI18nHelpers()
     margin: 0;
     opacity: 0.85;
   }
-}
-
-.scenario-link {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -30%);
-  padding: 16px 36px;
-  background: @white;
-  color: @sauna-dark;
-  font-size: 18px;
-  font-weight: 600;
-  border-radius: 4px;
-  text-decoration: none;
-  opacity: 0;
-  transition: all 0.4s ease;
-  z-index: 2;
 }
 
 .cta-wrapper {
@@ -243,11 +217,6 @@ const { tm } = useI18nHelpers()
 
   .scenario-card {
     height: 280px;
-  }
-
-  .scenario-link {
-    opacity: 1;
-    transform: translate(-50%, -50%);
   }
 }
 </style>

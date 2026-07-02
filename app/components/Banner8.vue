@@ -30,7 +30,7 @@
       </div>
 
       <div class="cta-wrapper">
-        <a href="#" class="cta-btn">{{ tm('faq.viewAll') }}</a>
+        <NuxtLink :to="localePath('/contact')" class="cta-btn">{{ tm('faq.viewAll') }}</NuxtLink>
       </div>
     </div>
   </section>
@@ -40,7 +40,7 @@
 import { ref, computed } from 'vue'
 
 const activeIndex = ref(null)
-const { tm } = useI18nHelpers()
+const { tm, localePath } = useI18nHelpers()
 const currentLocale = useLocale()
 const isZh = computed(() => currentLocale.value.startsWith('zh'))
 
