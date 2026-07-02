@@ -95,7 +95,7 @@ onMounted(() => {
 
 <style lang="less" scoped>
 .hero-swiper {
-  height: 100vh; // 首屏铺满整个视窗
+  height: calc(100vh - 36px);
   width: 100%;
   position: relative;
 
@@ -112,7 +112,6 @@ onMounted(() => {
     .slide-image {
       width: 100%;
       height: 100%;
-      object-fit: cover;
       object-position: center;
     }
   }
@@ -198,8 +197,14 @@ onMounted(() => {
 }
 
 // 响应式适配
-@media (max-width: 768px) {
+@media (max-width: 1440px) {
   .hero-swiper {
+    height: auto;
+
+    .slide-image {
+      object-fit: contain;
+    }
+
     .swiper-pagination {
       bottom: 30px;
     }

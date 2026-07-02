@@ -37,7 +37,7 @@ const layoutClass = computed(() => {
 }
 
 .layout-wrapper.home-initial {
-  padding-top: 24px;
+  padding-top: 36px;
 }
 
 .layout-wrapper.not-home {
@@ -50,7 +50,7 @@ const layoutClass = computed(() => {
   }
 
   .layout-wrapper.home-initial {
-    padding-top: 20px;
+    padding-top: 36px;
   }
 
   .layout-wrapper.not-home {

@@ -86,6 +86,8 @@ onUnmounted(() => {
 
 .top-info-bar {
   width: 100%;
+  height: 36px;
+  box-sizing: border-box;
   background: #1A1510;
   color: rgba(255, 255, 255, 0.85);
   font-size: 12px;
