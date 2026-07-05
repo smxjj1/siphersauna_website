@@ -50,5 +50,9 @@ export function buildLlmsSections(): LlmsSection[] {
 }
 
 export function buildLlmsNotes(siteUrl: string): string[] {
-  return [`Sitemap: ${siteUrl.replace(/\/$/, '')}/sitemap.xml`]
+  const base = siteUrl.replace(/\/$/, '')
+  return [
+    `Sitemap: ${base}/sitemap.xml`,
+    `Full documentation: ${base}/llms-full.txt`,
+  ]
 }

@@ -57,6 +57,10 @@ export default defineNuxtConfig({
     description: siteDescription,
     sections: buildLlmsSections(),
     notes: buildLlmsNotes(siteUrl),
+    full: {
+      title: `${siteName} — Full Documentation`,
+      description: 'Complete site overview, page summaries, and sauna product catalog for AI assistants.',
+    },
   },
 
   /** Hybrid Rendering：首页 SSG，产品页 ISR 5 分钟，新闻页 ISR 30 分钟 */
@@ -64,7 +68,7 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      routes: ['/', '/zh-CN', '/zh-TW', '/llms.txt'],
+      routes: ['/', '/zh-CN', '/zh-TW', '/llms.txt', '/llms-full.txt'],
     },
   },
 
