@@ -1,4 +1,5 @@
 import { buildHybridRouteRules } from './shared/seo/rendering'
+import { buildLlmsNotes, buildLlmsSections } from './shared/seo/llms'
 
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://siphersauna.com'
 const siteName = 'Sipher Sauna'
@@ -8,7 +9,7 @@ const siteDescription = 'Experience the ultimate home sauna with Sipher Sauna. P
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/seo', 'nuxt-gtag'],
+  modules: ['@nuxtjs/seo', 'nuxt-gtag', 'nuxt-llms'],
 
   css: [
     'swiper/css',
@@ -50,12 +51,20 @@ export default defineNuxtConfig({
     id: process.env.NUXT_PUBLIC_GTAG_ID || 'G-TLD63MYJC7',
   },
 
+  llms: {
+    domain: siteUrl,
+    title: siteName,
+    description: siteDescription,
+    sections: buildLlmsSections(),
+    notes: buildLlmsNotes(siteUrl),
+  },
+
   /** Hybrid Rendering：首页 SSG，产品页 ISR 5 分钟，新闻页 ISR 30 分钟 */
   routeRules: buildHybridRouteRules(),
 
   nitro: {
     prerender: {
-      routes: ['/', '/zh-CN', '/zh-TW'],
+      routes: ['/', '/zh-CN', '/zh-TW', '/llms.txt'],
     },
   },
 
