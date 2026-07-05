@@ -23,12 +23,10 @@ function resolveByPath(obj: Record<string, any>, path: string): any {
  * 从 URL 路径检测 locale
  */
 function detectFromUrl(path: string): Locale {
-  // 匹配 /zh-CN/xxx 或 /zh-CN
   const m = path.match(/^\/(zh-CN|zh-TW)(\/|$)/)
   if (m && isValidLocale(m[1])) {
     return m[1] as Locale
   }
-  // 无前缀或 /en 前缀都默认为英文
   return DEFAULT_LOCALE
 }
 

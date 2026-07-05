@@ -1,17 +1,32 @@
+import { buildHybridRouteRules } from './shared/seo/rendering'
+
+const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://siphersauna.com'
+const siteName = 'Sipher Sauna'
+const siteDescription = 'Experience the ultimate home sauna with Sipher Sauna. Premium wood and heating technology for your wellness sanctuary.'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
+  modules: ['@nuxtjs/seo'],
 
   css: [
-    // Swiper CSS - 核心 + 所有模块样式
     'swiper/css',
     'swiper/css/bundle',
-    '~/assets/css/main.less'
+    '~/assets/css/main.less',
   ],
+
+  site: {
+    url: siteUrl,
+    name: siteName,
+    description: siteDescription,
+    defaultLocale: 'en',
+  },
 
   runtimeConfig: {
     public: {
+      siteUrl,
+      siteName,
       analyticsToken: process.env.NUXT_PUBLIC_ANALYTICS_TOKEN || '',
       analyticsBaseUrl: process.env.NUXT_PUBLIC_ANALYTICS_BASE_URL || 'https://analytics.siphersauna.com',
       analyticsSiteId: process.env.NUXT_PUBLIC_ANALYTICS_SITE_ID || 'siphersauna.com',
@@ -29,39 +44,85 @@ export default defineNuxtConfig({
     },
   },
 
+  /** Hybrid Rendering：首页 SSG，产品页 ISR 5 分钟，新闻页 ISR 30 分钟 */
+  routeRules: buildHybridRouteRules(),
+
+  nitro: {
+    prerender: {
+      routes: ['/', '/zh-CN', '/zh-TW'],
+    },
+  },
+
+  sitemap: {
+    excludeAppSources: true,
+    autoI18n: false,
+    sources: ['/api/__sitemap__/urls'],
+    defaults: {
+      changefreq: 'weekly',
+      priority: 0.7,
+    },
+    xslColumns: [
+      { label: 'URL', width: '50%' },
+      { label: 'Last Modified', select: 'sitemap:lastmod', width: '25%' },
+      { label: 'Hreflangs', select: 'count(xhtml:link)', width: '25%' },
+    ],
+  },
+
+  linkChecker: {
+    skipInspections: ['no-uppercase-chars', 'trailing-slash'],
+  },
+
+  robots: {
+    disallow: ['/example', '/example/**', '/api/**'],
+  },
+
+  ogImage: {
+    enabled: false,
+  },
+
+  schemaOrg: {
+    identity: {
+      type: 'Organization',
+      name: siteName,
+      url: siteUrl,
+      logo: `${siteUrl}/images/logo/logo.png`,
+      description: siteDescription,
+    },
+  },
+
   app: {
     head: {
       title: 'Sipher Sauna — Premium Home Sauna Solutions',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Experience the ultimate home sauna with Sipher Sauna. Premium wood and heating technology for your wellness sanctuary.' }
+        { name: 'description', content: siteDescription },
       ],
       link: [
         {
           rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap'
+          href: 'https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap',
         },
         {
           rel: 'icon',
           type: 'image/png',
-          href: '/images/logo/logo.png'
-        }
+          href: '/images/logo/logo.png',
+        },
       ],
       htmlAttrs: { lang: 'en' },
-    }
+    },
   },
 
   vite: {
     css: {
       preprocessorOptions: {
         less: {
-          additionalData: '@import "~/assets/css/variables.less";'
-        }
-      }
+          additionalData: '@import "~/assets/css/variables.less";',
+        },
+      },
     },
     optimizeDeps: {
-      include: ['echarts']
-    }
-  }
+      include: ['echarts'],
+    },
+  },
 })

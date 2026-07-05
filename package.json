@@ -17,6 +17,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxtjs/seo": "^5.3.2",
     "echarts": "^5.6.0",
     "nuxt": "^4.4.6",
     "swiper": "^12.1.4",

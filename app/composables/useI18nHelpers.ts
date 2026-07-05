@@ -1,6 +1,6 @@
 /**
  * i18n 辅助 composables（保持稳定的对外 API）
- * 真正的实现位于 useI18n.ts，这里提供简洁别名
+ * 真正的实现位于 useSiteLocale.ts，这里提供简洁别名
  */
 export function useI18nHelpers() {
   return {

@@ -228,7 +228,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import { useProductCatalog } from '~/composables/useProducts'
-import { useTmObject } from '~/composables/useI18n'
+import { useTmObject } from '~/composables/useSiteLocale'
 import {
   formatSubcategoryLabel,
   normalizeSubcategoryKey,
