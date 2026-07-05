@@ -10,7 +10,7 @@
       <div class="products-grid">
         <div class="product-item">
           <div class="product-image">
-            <OptimImg src="/images/home/SaunaRooms.png" alt="Sauna Rooms" loading="lazy" />
+            <OptimImg src="/images/home/SaunaRooms.png" alt="Sauna Rooms" width="828" height="280" loading="lazy" />
           </div>
           <div class="product-content">
             <h3>{{ tm('banner2.products.saunaRooms.title') }}</h3>
@@ -20,7 +20,7 @@
 
         <div class="product-item">
           <div class="product-image">
-            <OptimImg src="/images/home/SaunaHeaters.png" alt="Sauna Heaters" loading="lazy" />
+            <OptimImg src="/images/home/SaunaHeaters.png" alt="Sauna Heaters" width="828" height="280" loading="lazy" />
           </div>
           <div class="product-content">
             <h3>{{ tm('banner2.products.saunaHeaters.title') }}</h3>
@@ -30,7 +30,7 @@
 
         <div class="product-item">
           <div class="product-image">
-            <OptimImg src="/images/home/SaunaAccessories.png" alt="Sauna Stones" loading="lazy" />
+            <OptimImg src="/images/home/SaunaAccessories.png" alt="Sauna Stones" width="828" height="280" loading="lazy" />
           </div>
           <div class="product-content">
             <h3>{{ tm('banner2.products.saunaAccessories.title') }}</h3>
@@ -40,7 +40,7 @@
 
         <div class="product-item">
           <div class="product-image">
-            <OptimImg src="/images/home/OutdoorWoodfiredHotTub.png" alt="Outdoor Wood-fired Hot Tub" loading="lazy" />
+            <OptimImg src="/images/home/OutdoorWoodfiredHotTub.png" alt="Outdoor Wood-fired Hot Tub" width="828" height="280" loading="lazy" />
           </div>
           <div class="product-content">
             <h3>{{ tm('banner2.products.outdoorHotTub.title') }}</h3>
@@ -50,7 +50,7 @@
 
         <div class="product-item">
           <div class="product-image">
-            <OptimImg src="/images/home/IndoorDry&SteamRoom.png" alt="Indoor Dry & Steam Room" loading="lazy" />
+            <OptimImg src="/images/home/IndoorDry&SteamRoom.png" alt="Indoor Dry & Steam Room" width="828" height="280" loading="lazy" />
           </div>
           <div class="product-content">
             <h3>{{ tm('banner2.products.indoorDrySteam.title') }}</h3>
@@ -60,7 +60,7 @@
 
         <div class="product-item">
           <div class="product-image">
-            <OptimImg src="/images/home/OutdoorTraditionalSauna.png" alt="Outdoor Traditional Sauna" loading="lazy" />
+            <OptimImg src="/images/home/OutdoorTraditionalSauna.png" alt="Outdoor Traditional Sauna" width="828" height="280" loading="lazy" />
           </div>
           <div class="product-content">
             <h3>{{ tm('banner2.products.outdoorTraditional.title') }}</h3>
@@ -131,7 +131,7 @@ const { tm, localePath } = useI18nHelpers()
   cursor: pointer;
 
   &:hover {
-    .product-image img {
+    .product-image :deep(.optim-img) {
       transform: scale(1.08);
     }
 
@@ -143,9 +143,9 @@ const { tm, localePath } = useI18nHelpers()
 
 .product-image {
   overflow: hidden;
-  height: 280px;
+  aspect-ratio: 828 / 280;
 
-  img {
+  :deep(.optim-img) {
     width: 100%;
     height: 100%;
     object-fit: cover;

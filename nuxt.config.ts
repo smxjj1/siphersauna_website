@@ -12,7 +12,6 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/seo', 'nuxt-gtag', 'nuxt-llms'],
 
   css: [
-    'swiper/css/bundle',
     '~/assets/css/main.less',
   ],
 
@@ -48,6 +47,8 @@ export default defineNuxtConfig({
   gtag: {
     enabled: process.env.NUXT_PUBLIC_ANALYTICS_DISABLED !== 'true',
     id: process.env.NUXT_PUBLIC_GTAG_ID || 'G-TLD63MYJC7',
+    initMode: 'manual',
+    loadingStrategy: 'defer',
   },
 
   llms: {
@@ -71,6 +72,9 @@ export default defineNuxtConfig({
     },
     routeRules: {
       '/images/**': {
+        headers: { 'cache-control': 'public, max-age=31536000, immutable' },
+      },
+      '/_nuxt/**': {
         headers: { 'cache-control': 'public, max-age=31536000, immutable' },
       },
     },

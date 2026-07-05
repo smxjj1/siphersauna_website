@@ -11,12 +11,15 @@ const imagesRoot = join(fileURLToPath(new URL('.', import.meta.url)), '..', 'pub
 const IMAGE_EXT = new Set(['.png', '.jpg', '.jpeg'])
 
 function maxWidthFor(filePath) {
-  if (filePath.includes(`${join('images', 'hero')}`) || filePath.includes('/hero/'))
-    return 1920
-  if (filePath.includes('logo'))
-    return 512
-  if (filePath.includes('about-us'))
+  const normalized = filePath.replace(/\\/g, '/')
+  if (normalized.includes('/hero/'))
+    return 828
+  if (normalized.includes('/logo') || normalized.includes('logo'))
+    return 256
+  if (normalized.includes('/about-us'))
     return 1600
+  if (normalized.includes('/home/'))
+    return 828
   return 1200
 }
 
@@ -38,7 +41,7 @@ async function walk(dir) {
 
     await sharp(fullPath)
       .resize({ width, withoutEnlargement: true })
-      .webp({ quality: 82, effort: 4 })
+      .webp({ quality: 75, effort: 4 })
       .toFile(outPath)
 
     const { size: originalSize } = await import('node:fs/promises').then(m => m.stat(fullPath))

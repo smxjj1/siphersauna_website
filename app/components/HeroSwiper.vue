@@ -8,9 +8,12 @@
           class="swiper-slide"
         >
           <OptimImg
+            v-if="shouldLoadSlideImage(index)"
             :src="slide.src"
             :alt="slide.alt"
             class="slide-image"
+            width="828"
+            height="552"
             :loading="index === 0 ? 'eager' : 'lazy'"
             :fetchpriority="index === 0 ? 'high' : 'auto'"
           />
@@ -26,17 +29,27 @@
 <script setup lang="ts">
 import Swiper from 'swiper'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
-import { onMounted } from 'vue'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import { onMounted, ref } from 'vue'
 import { useAnalytics } from '~/composables/useAnalytics'
 
 const { sendTrackEvent } = useAnalytics()
+const preloadAdjacentSlides = ref(false)
+
+function shouldLoadSlideImage(index: number) {
+  if (!preloadAdjacentSlides.value)
+    return index === 0
+  return index <= 2
+}
 
 const HERO_SLIDES = [
-  { file: 'LUXURY-SAUNA-SOLUTIONS.png', alt: 'Luxury Sauna Solutions' },
-  { file: 'SAUNA-WAY.png', alt: 'Sauna Way' },
-  { file: 'ULTIMATE-SAUNA-LIFESTYLE.png', alt: 'Ultimate Sauna Lifestyle' },
-  { file: 'WELLNESS.png', alt: 'Wellness' },
-  { file: 'Tailored-Luxury.png', alt: 'Tailored Luxury' },
+  { file: 'LUXURY-SAUNA-SOLUTIONS.webp', alt: 'Luxury Sauna Solutions' },
+  { file: 'SAUNA-WAY.webp', alt: 'Sauna Way' },
+  { file: 'ULTIMATE-SAUNA-LIFESTYLE.webp', alt: 'Ultimate Sauna Lifestyle' },
+  { file: 'WELLNESS.webp', alt: 'Wellness' },
+  { file: 'Tailored-Luxury.webp', alt: 'Tailored Luxury' },
 ].map(slide => ({
   ...slide,
   src: `/images/home/hero/${slide.file}`,
@@ -71,6 +84,14 @@ function trackBannerSlide(index: number) {
 }
 
 onMounted(() => {
+  const enableAdjacent = () => {
+    preloadAdjacentSlides.value = true
+  }
+  if ('requestIdleCallback' in window)
+    requestIdleCallback(enableAdjacent, { timeout: 4000 })
+  else
+    setTimeout(enableAdjacent, 2500)
+
   new Swiper('.hero-swiper-container', {
     modules: [Navigation, Pagination, Autoplay],
     autoplay: {
@@ -117,9 +138,10 @@ onMounted(() => {
     overflow: hidden;
 
     :deep(.slide-image),
-    :deep(.slide-image img) {
+    :deep(.optim-img) {
       width: 100%;
       height: 100%;
+      object-fit: cover;
       object-position: center;
       display: block;
     }

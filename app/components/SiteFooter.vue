@@ -44,7 +44,7 @@
         </div>
 
         <div class="footer-column">
-          <h4 class="footer-title">{{ tm('footer.products') }}</h4>
+          <h2 class="footer-title">{{ tm('footer.products') }}</h2>
           <ul class="footer-links">
             <li><NuxtLink :to="localePath('/products')">{{ tm('footer.saunaRooms') }}</NuxtLink></li>
             <li><NuxtLink :to="localePath('/products')">{{ tm('footer.heatersStones') }}</NuxtLink></li>
@@ -55,7 +55,7 @@
         </div>
 
         <div class="footer-column">
-          <h4 class="footer-title">{{ tm('footer.support') }}</h4>
+          <h2 class="footer-title">{{ tm('footer.support') }}</h2>
           <ul class="footer-links">
             <li><NuxtLink to="/installation">Installation Guide</NuxtLink></li>
             <li><NuxtLink to="/warranty">Warranty</NuxtLink></li>
@@ -68,18 +68,27 @@
         </div>
 
         <div class="footer-column footer-findus">
-          <h4 class="footer-title">{{ tm('footer.findUs') }}</h4>
-          <div class="map-wrapper">
+          <h2 class="footer-title">{{ tm('footer.findUs') }}</h2>
+          <div v-if="mapEmbedUrl" class="map-wrapper">
+            <button
+              v-if="!mapVisible"
+              type="button"
+              class="map-placeholder"
+              @click="mapVisible = true"
+            >
+              {{ tm('footer.viewMap') }}
+            </button>
             <iframe
-              src="https://www.google.com/maps?q=汇力丰工业园+前进中路2号+南海区+佛山市+广东省&output=embed&z=15&hl=en"
+              v-else
+              :src="mapEmbedUrl"
               width="100%"
               height="200"
               style="border:0;"
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              title="Find Us on Google Maps"
-            ></iframe>
+              :title="tm('footer.findUs')"
+            />
           </div>
         </div>
       </div>
@@ -96,8 +105,24 @@
 </template>
 
 <script setup>
-const { contactLinks, socialLinks, getLinkDisplayText, getLinkAriaLabel } = useContactLinks()
+const {
+  contactLinks,
+  socialLinks,
+  contactProfile,
+  getLinkDisplayText,
+  getLinkAriaLabel,
+  getMapEmbedQuery,
+  buildGoogleMapEmbedUrl,
+} = useContactLinks()
 const { tm, localePath } = useI18nHelpers()
+const currentLocale = useLocale()
+const mapVisible = ref(false)
+
+const mapEmbedUrl = computed(() => {
+  const query = getMapEmbedQuery(contactProfile.value)
+    || '汇力丰工业园 前进中路2号 南海区 佛山市 广东省'
+  return buildGoogleMapEmbedUrl(query, currentLocale.value)
+})
 </script>
 
 <style lang="less" scoped>
@@ -243,6 +268,28 @@ const { tm, localePath } = useI18nHelpers()
     iframe {
       display: block;
       border-radius: 8px;
+    }
+
+    .map-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 44px;
+      height: 200px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.14);
+      }
     }
   }
 }

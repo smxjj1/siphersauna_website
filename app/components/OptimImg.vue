@@ -14,22 +14,21 @@ const props = withDefaults(defineProps<{
   decoding: 'async',
 })
 
-const webpSrc = computed(() => props.src.replace(/\.(png|jpe?g)$/i, '.webp'))
+/** Prefer WebP-only delivery to avoid downloading large PNG/JPEG fallbacks. */
+const displaySrc = computed(() => props.src.replace(/\.(png|jpe?g)$/i, '.webp'))
 </script>
 
 <template>
-  <picture class="optim-img">
-    <source :srcset="webpSrc" type="image/webp">
-    <img
-      :src="src"
-      :alt="alt"
-      :loading="loading"
-      :fetchpriority="fetchpriority"
-      :decoding="decoding"
-      :width="width"
-      :height="height"
-    >
-  </picture>
+  <img
+    :src="displaySrc"
+    :alt="alt"
+    :loading="loading"
+    :fetchpriority="fetchpriority"
+    :decoding="decoding"
+    :width="width"
+    :height="height"
+    class="optim-img"
+  >
 </template>
 
 <style scoped>
@@ -37,11 +36,6 @@ const webpSrc = computed(() => props.src.replace(/\.(png|jpe?g)$/i, '.webp'))
   display: block;
   width: 100%;
   height: 100%;
-}
-
-.optim-img img {
-  display: block;
-  width: 100%;
-  height: 100%;
+  object-fit: cover;
 }
 </style>

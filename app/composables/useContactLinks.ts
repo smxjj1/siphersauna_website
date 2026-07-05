@@ -53,6 +53,23 @@ export function getLocalizedProfileText(
   return profile[field] || ''
 }
 
+export function getMapEmbedQuery(profile: ContactProfile | null | undefined): string {
+  if (!profile) return ''
+  const zhCn = profile.addressI18n?.['zh-CN']?.trim()
+  if (zhCn) return zhCn
+  const en = profile.addressI18n?.en?.trim()
+  if (en) return en
+  return (profile.address || '').replace(/[\r\n]+/g, ' ').trim()
+}
+
+export function buildGoogleMapEmbedUrl(query: string, locale?: string): string {
+  const normalized = query.replace(/[\r\n]+/g, ' ').replace(/\s+/g, ' ').trim()
+  if (!normalized) return ''
+  const hl = locale?.startsWith('zh') ? 'zh-CN' : 'en'
+  const q = encodeURIComponent(normalized).replace(/%20/g, '+')
+  return `https://www.google.com/maps?q=${q}&output=embed&z=15&hl=${hl}`
+}
+
 export function getLinkDisplayText(link: ContactLinkItem): string {
   const url = link.url || ''
   if (link.iconKey === 'email') {
@@ -79,6 +96,13 @@ export function getLinkAriaLabel(link: ContactLinkItem): string {
     tiktok: 'TikTok',
   }
   return link.label || labels[link.iconKey || ''] || link.iconKey || 'Link'
+}
+
+/** Accessible name for contact links (icon-only on small screens). */
+export function getContactLinkAriaLabel(link: ContactLinkItem): string {
+  const display = getLinkDisplayText(link)
+  const type = getLinkAriaLabel(link)
+  return display ? `${type}: ${display}` : type
 }
 
 export function useContactLinks() {
@@ -119,6 +143,9 @@ export function useContactLinks() {
     refresh,
     getLinkDisplayText,
     getLinkAriaLabel,
+    getContactLinkAriaLabel,
     getLocalizedProfileText,
+    getMapEmbedQuery,
+    buildGoogleMapEmbedUrl,
   }
 }

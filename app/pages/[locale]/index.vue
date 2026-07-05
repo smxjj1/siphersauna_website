@@ -1,14 +1,14 @@
 <template>
   <div class="home-page">
     <HeroSwiper />
-    <Banner2 />
-    <Banner3 />
-    <Banner4 />
-    <Banner5 />
-    <Banner6 />
-    <Banner7 />
-    <Banner8 />
-    <Banner9 />
+    <LazyBanner2 />
+    <LazyBanner3 />
+    <LazyBanner4 />
+    <LazyBanner5 />
+    <LazyBanner6 />
+    <LazyBanner7 />
+    <LazyBanner8 />
+    <LazyBanner9 />
     <SiteFooter />
   </div>
 </template>

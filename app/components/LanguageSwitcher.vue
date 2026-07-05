@@ -3,7 +3,8 @@
     <button
       type="button"
       class="lang-switcher__toggle"
-      :aria-label="tm('common.languageSwitcher')"
+      :aria-expanded="open"
+      aria-haspopup="listbox"
       @click="open = !open"
     >
       <span class="lang-switcher__current">{{ currentLocaleLabel }}</span>
@@ -83,7 +84,9 @@ onUnmounted(() => {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 6px 14px;
+    min-height: 44px;
+    min-width: 44px;
+    padding: 8px 14px;
     background: transparent;
     border: none;
     border-radius: 20px;

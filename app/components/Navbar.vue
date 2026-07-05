@@ -3,10 +3,20 @@
     <div v-if="contactLinks.length || socialLinks.length" class="top-info-bar">
       <div class="top-info-inner">
         <div v-if="contactLinks.length" class="contact-info">
-          <a v-for="link in contactLinks" :key="`${link.iconKey}-${link.url}`" :href="link.url" class="info-item">
-            <SocialIcon :icon-key="link.iconKey" :icon-source="link.iconSource" :icon-url="link.iconUrl"
-              variant="contact" />
-            <span class="info-text">{{ getLinkDisplayText(link) }}</span>
+          <a
+            v-for="link in contactLinks"
+            :key="`${link.iconKey}-${link.url}`"
+            :href="link.url"
+            class="info-item"
+            :aria-label="getContactLinkAriaLabel(link)"
+          >
+            <SocialIcon
+              :icon-key="link.iconKey"
+              :icon-source="link.iconSource"
+              :icon-url="link.iconUrl"
+              variant="contact"
+            />
+            <span class="info-text" aria-hidden="true">{{ getLinkDisplayText(link) }}</span>
           </a>
         </div>
         <div class="right-cluster">
@@ -26,7 +36,7 @@
     <nav class="navbar" :class="navbarClass">
       <div class="navbar-inner">
         <NuxtLink :to="localePath('/')" class="logo" @click="closeMenu">
-          <img src="/images/logo/logo.png" alt="Sipher Sauna" class="logo-img">
+          <img src="/images/logo/logo.png" alt="Sipher Sauna" class="logo-img" width="48" height="48">
           <span class="logo-text">Sipher Sauna</span>
         </NuxtLink>
 
@@ -62,7 +72,7 @@
 import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
 
 const emit = defineEmits(['scroll-state'])
-const { contactLinks, socialLinks, getLinkDisplayText, getLinkAriaLabel } = useContactLinks()
+const { contactLinks, socialLinks, getLinkDisplayText, getLinkAriaLabel, getContactLinkAriaLabel } = useContactLinks()
 
 const isScrolled = ref(false)
 const isMenuOpen = ref(false)
@@ -530,6 +540,11 @@ onUnmounted(() => {
         gap: 8px;
 
         .info-item {
+          min-width: 44px;
+          min-height: 44px;
+          padding: 8px;
+          justify-content: center;
+
           .info-text {
             display: none;
           }

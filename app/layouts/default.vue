@@ -1,9 +1,9 @@
 <template>
   <div class="layout-wrapper" :class="layoutClass">
     <Navbar @scroll-state="handleScrollState" />
-    <div class="page-content">
+    <main id="main-content" class="page-content">
       <NuxtPage />
-    </div>
+    </main>
     <InquiryListFab contact-path="/contact" />
   </div>
 </template>
