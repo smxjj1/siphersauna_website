@@ -8,7 +8,7 @@ const siteDescription = 'Experience the ultimate home sauna with Sipher Sauna. P
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/seo'],
+  modules: ['@nuxtjs/seo', 'nuxt-gtag'],
 
   css: [
     'swiper/css',
@@ -42,6 +42,12 @@ export default defineNuxtConfig({
       supportedLocales: ['en', 'zh-CN', 'zh-TW'],
       defaultLocale: 'en',
     },
+  },
+
+  /** Google Analytics 4（NUXT_PUBLIC_GTAG_ID 可覆盖 id） */
+  gtag: {
+    enabled: process.env.NUXT_PUBLIC_ANALYTICS_DISABLED !== 'true',
+    id: process.env.NUXT_PUBLIC_GTAG_ID || 'G-TLD63MYJC7',
   },
 
   /** Hybrid Rendering：首页 SSG，产品页 ISR 5 分钟，新闻页 ISR 30 分钟 */
