@@ -1,13 +1,12 @@
 <template>
   <header class="navbar-wrapper">
-    <!-- Top Info Bar -->
     <div v-if="contactLinks.length || socialLinks.length" class="top-info-bar">
       <div class="top-info-inner">
         <div v-if="contactLinks.length" class="contact-info">
           <a v-for="link in contactLinks" :key="`${link.iconKey}-${link.url}`" :href="link.url" class="info-item">
             <SocialIcon :icon-key="link.iconKey" :icon-source="link.iconSource" :icon-url="link.iconUrl"
               variant="contact" />
-            <span>{{ getLinkDisplayText(link) }}</span>
+            <span class="info-text">{{ getLinkDisplayText(link) }}</span>
           </a>
         </div>
         <div class="right-cluster">
@@ -23,30 +22,50 @@
         </div>
       </div>
     </div>
+
     <nav class="navbar" :class="navbarClass">
       <div class="navbar-inner">
-        <NuxtLink :to="localePath('/')" class="logo">
+        <NuxtLink :to="localePath('/')" class="logo" @click="closeMenu">
           <img src="/images/logo/logo.png" alt="Sipher Sauna" class="logo-img">
           <span class="logo-text">Sipher Sauna</span>
         </NuxtLink>
-        <nav class="nav-links">
-          <NuxtLink :to="localePath('/')" class="nav-link">{{ tm('nav.home') }}</NuxtLink>
-          <NuxtLink :to="localePath('/products')" class="nav-link">{{ tm('nav.products') }}</NuxtLink>
-          <NuxtLink :to="localePath('/about-us')" class="nav-link">{{ tm('nav.aboutUs') }}</NuxtLink>
-          <NuxtLink :to="localePath('/contact')" class="nav-link">{{ tm('nav.contact') }}</NuxtLink>
+
+        <nav class="nav-links" :class="{ 'nav-open': isMenuOpen }">
+          <NuxtLink :to="localePath('/')" class="nav-link" @click="closeMenu">{{ tm('nav.home') }}</NuxtLink>
+          <NuxtLink :to="localePath('/products')" class="nav-link" @click="closeMenu">{{ tm('nav.products') }}</NuxtLink>
+          <NuxtLink :to="localePath('/about-us')" class="nav-link" @click="closeMenu">{{ tm('nav.aboutUs') }}</NuxtLink>
+          <NuxtLink :to="localePath('/contact')" class="nav-link nav-link--contact" @click="closeMenu">{{ tm('nav.contact') }}</NuxtLink>
         </nav>
+
+        <button
+          type="button"
+          class="menu-toggle"
+          :aria-expanded="isMenuOpen"
+          aria-label="Toggle menu"
+          @click="toggleMenu"
+        >
+          <span class="menu-icon" :class="{ 'menu-icon-open': isMenuOpen }" />
+        </button>
       </div>
     </nav>
+
+    <div
+      v-if="isMenuOpen"
+      class="mobile-nav-backdrop"
+      aria-hidden="true"
+      @click="closeMenu"
+    />
   </header>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
 
 const emit = defineEmits(['scroll-state'])
 const { contactLinks, socialLinks, getLinkDisplayText, getLinkAriaLabel } = useContactLinks()
 
 const isScrolled = ref(false)
+const isMenuOpen = ref(false)
 const route = useRoute()
 const { tm, localePath } = useI18nHelpers()
 
@@ -59,10 +78,30 @@ const handleScroll = () => {
 }
 
 const navbarClass = computed(() => {
-  if (!isHomePage.value || isScrolled.value) {
-    return { 'navbar--scrolled': true }
+  const classes = {}
+  if (!isHomePage.value || isScrolled.value || isMenuOpen.value) {
+    classes['navbar--scrolled'] = true
   }
-  return {}
+  if (isMenuOpen.value) {
+    classes['navbar--menu-open'] = true
+  }
+  return classes
+})
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
+
+const closeMenu = () => {
+  isMenuOpen.value = false
+}
+
+watch(() => route.path, closeMenu)
+
+watch(isMenuOpen, (open) => {
+  if (import.meta.client) {
+    document.body.style.overflow = open ? 'hidden' : ''
+  }
 })
 
 onMounted(() => {
@@ -72,6 +111,9 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
+  if (import.meta.client) {
+    document.body.style.overflow = ''
+  }
 })
 </script>
 
@@ -86,7 +128,7 @@ onUnmounted(() => {
 
 .top-info-bar {
   width: 100%;
-  height: 36px;
+  min-height: 36px;
   box-sizing: border-box;
   background: #1A1510;
   color: rgba(255, 255, 255, 0.85);
@@ -108,12 +150,14 @@ onUnmounted(() => {
     display: flex;
     align-items: center;
     gap: 24px;
+    min-width: 0;
   }
 
   .right-cluster {
     display: flex;
     align-items: center;
     gap: 16px;
+    flex-shrink: 0;
   }
 
   .info-item {
@@ -123,11 +167,18 @@ onUnmounted(() => {
     color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
     transition: color 0.3s ease;
+    min-width: 0;
 
     svg {
       width: 14px;
       height: 14px;
       flex-shrink: 0;
+    }
+
+    .info-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     &:hover {
@@ -203,6 +254,8 @@ onUnmounted(() => {
   gap: 10px;
   text-decoration: none;
   white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 0;
 
   .logo-img {
     height: 36px;
@@ -240,6 +293,14 @@ onUnmounted(() => {
   }
 }
 
+.menu-toggle {
+  display: none;
+}
+
+.mobile-nav-backdrop {
+  display: none;
+}
+
 .navbar--scrolled {
   background: #2D2016;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -275,39 +336,167 @@ onUnmounted(() => {
 }
 
 @media (max-width: 992px) {
+  .top-info-inner {
+    padding: 4px 16px;
+  }
+
   .navbar {
+    margin-top: 0;
+    max-width: 100%;
+
     .navbar-inner {
-      gap: 16px;
-      padding: 12px 20px;
+      gap: 12px;
+      padding: 10px 16px;
+      border-radius: 0;
     }
 
     .logo .logo-img {
       height: 28px;
     }
 
-    .nav-links {
-      gap: 4px;
+    .logo .logo-text {
+      font-size: 18px;
+    }
+  }
 
-      .nav-link {
-        font-size: 12px;
-        padding: 6px 10px;
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    width: 30px;
+    height: 24px;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+
+  .menu-icon {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: @white;
+    transition: all 0.25s ease;
+    transform: translateY(-50%);
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: @white;
+      transition: all 0.25s ease;
+    }
+
+    &::before {
+      top: -8px;
+    }
+
+    &::after {
+      bottom: -8px;
+    }
+
+    &.menu-icon-open {
+      background: transparent;
+
+      &::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        bottom: 0;
+        transform: rotate(-45deg);
       }
     }
+  }
+
+  .nav-links {
+    position: fixed;
+    top: calc(36px + 52px);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 0 16px;
+    background: #2D2016;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+    z-index: 9998;
+    max-height: calc(100vh - 88px);
+    overflow-y: auto;
+
+    &.nav-open {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .nav-link {
+      display: block;
+      padding: 14px 20px;
+      border-radius: 0;
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      &.router-link-active {
+        color: @sauna-wood-light;
+        background: rgba(139, 90, 43, 0.15);
+      }
+    }
+
+    .nav-link--contact {
+      margin: 12px 16px 0;
+      border: none;
+      border-radius: 8px;
+      text-align: center;
+      background: @sauna-wood;
+      color: @white;
+
+      &:hover {
+        background: lighten(@sauna-wood, 6%);
+      }
+    }
+  }
+
+  .mobile-nav-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    top: calc(36px + 52px);
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 9997;
   }
 }
 
 @media (max-width: 768px) {
   .top-info-bar {
     .top-info-inner {
-      padding: 6px 16px;
+      padding: 6px 12px;
       font-size: 12px;
 
       .contact-info {
-        gap: 12px;
+        gap: 10px;
       }
 
       .social-links {
-        gap: 8px;
+        gap: 6px;
 
         .social-link {
           width: 20px;
@@ -323,15 +512,10 @@ onUnmounted(() => {
   }
 
   .navbar {
-    padding: 10px 4%;
+    padding: 0;
 
     .navbar-inner {
-      padding: 10px 16px;
-      gap: 10px;
-    }
-
-    .nav-links {
-      display: none;
+      padding: 10px 12px;
     }
   }
 }
@@ -339,39 +523,36 @@ onUnmounted(() => {
 @media (max-width: 480px) {
   .top-info-bar {
     .top-info-inner {
-      padding: 4px 12px;
-      flex-wrap: wrap;
-      gap: 8px;
+      padding: 4px 10px;
+      flex-wrap: nowrap;
 
       .contact-info {
         gap: 8px;
 
         .info-item {
-          font-size: 11px;
-          gap: 4px;
-
-          svg {
-            width: 12px;
-            height: 12px;
+          .info-text {
+            display: none;
           }
         }
       }
 
       .social-links {
-        gap: 6px;
+        display: none;
       }
     }
   }
 
   .navbar {
-    padding: 8px 3%;
-
     .navbar-inner {
-      padding: 8px 12px;
+      padding: 8px 10px;
     }
 
     .logo .logo-img {
       height: 24px;
+    }
+
+    .logo .logo-text {
+      font-size: 15px;
     }
   }
 }

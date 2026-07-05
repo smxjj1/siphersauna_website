@@ -205,9 +205,11 @@ onMounted(() => {
 @media (max-width: 1440px) {
   .hero-swiper {
     height: auto;
+    min-height: 420px;
 
     :deep(.slide-image img) {
-      object-fit: contain;
+      object-fit: cover;
+      min-height: 420px;
     }
 
     .swiper-pagination {
@@ -226,6 +228,31 @@ onMounted(() => {
 
     :deep(.swiper-button-next) {
       right: 20px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-swiper {
+    min-height: 280px;
+
+    :deep(.slide-image img) {
+      min-height: 280px;
+      max-height: 56vh;
+    }
+
+    .swiper-pagination {
+      bottom: 16px;
+
+      :deep(.swiper-pagination-bullet) {
+        width: 22px;
+        margin: 0 5px;
+      }
+    }
+
+    :deep(.swiper-button-prev),
+    :deep(.swiper-button-next) {
+      display: none;
     }
   }
 }

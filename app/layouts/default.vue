@@ -46,7 +46,7 @@ const layoutClass = computed(() => {
 
 @media (max-width: 768px) {
   .layout-wrapper {
-    padding-top: 50px;
+    padding-top: 88px;
   }
 
   .layout-wrapper.home-initial {
@@ -54,7 +54,7 @@ const layoutClass = computed(() => {
   }
 
   .layout-wrapper.not-home {
-    padding-top: 50px;
+    padding-top: 88px;
   }
 }
 </style>
