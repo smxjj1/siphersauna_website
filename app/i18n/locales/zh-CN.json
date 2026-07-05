@@ -357,5 +357,19 @@
       "outdoor sauna": "户外桑拿",
       "indoor sauna": "室内桑拿"
     }
+  },
+  "news": {
+    "title": "新闻中心",
+    "subtitle": "公司动态与行业洞察",
+    "metaTitle": "新闻中心 | Sipher Sauna",
+    "metaDescription": "Sipher Sauna 最新公司新闻与家用桑拿行业资讯。",
+    "tabs": {
+      "company": "公司新闻",
+      "industry": "行业洞察"
+    },
+    "loading": "加载中…",
+    "empty": "暂无新闻，请稍后再来查看。",
+    "views": "{count} 次浏览",
+    "download": "下载"
   }
 }

@@ -357,5 +357,19 @@
       "outdoor sauna": "Outdoor Sauna",
       "indoor sauna": "Indoor Sauna"
     }
+  },
+  "news": {
+    "title": "News",
+    "subtitle": "Company updates and industry insights",
+    "metaTitle": "News | Sipher Sauna",
+    "metaDescription": "Latest company news and home sauna industry updates from Sipher Sauna.",
+    "tabs": {
+      "company": "Company News",
+      "industry": "Industry Insights"
+    },
+    "loading": "Loading…",
+    "empty": "No news articles yet. Please check back soon.",
+    "views": "{count} views",
+    "download": "Download"
   }
 }

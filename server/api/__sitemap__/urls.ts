@@ -2,7 +2,6 @@ import type { SitemapUrlInput } from '#sitemap/types'
 import { defineSitemapEventHandler } from '#imports'
 import {
   buildHreflangAlternatives,
-  EN_ONLY_SITEMAP_PATHS,
   localePath,
   SITE_LOCALES,
   STATIC_SITEMAP_PATHS,
@@ -19,18 +18,10 @@ export default defineSitemapEventHandler(async () => {
       urls.push({
         loc: localePath(prefix, page),
         alternatives: buildHreflangAlternatives(page, siteUrl),
-        changefreq: 'monthly',
+        changefreq: page === '/news' ? 'weekly' : 'monthly',
         priority: page === '/' ? 1 : 0.8,
       })
     }
-  }
-
-  for (const page of EN_ONLY_SITEMAP_PATHS) {
-    urls.push({
-      loc: page,
-      changefreq: 'weekly',
-      priority: 0.7,
-    })
   }
 
   return urls

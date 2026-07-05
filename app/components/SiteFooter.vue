@@ -62,7 +62,7 @@
             <li><NuxtLink to="/faq">FAQ</NuxtLink></li>
             <li><NuxtLink to="/shipping">Shipping & Returns</NuxtLink></li>
             <li><NuxtLink to="/about-us">About Us</NuxtLink></li>
-            <li><NuxtLink to="/news">News</NuxtLink></li>
+            <li><NuxtLink :to="localePath('/news')">{{ tm('news.title') }}</NuxtLink></li>
             <li><NuxtLink to="/contact">Contact Us</NuxtLink></li>
           </ul>
         </div>

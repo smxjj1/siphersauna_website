@@ -11,10 +11,7 @@ export const SITE_LOCALES = [
 ] as const
 
 /** 三语均存在的静态页 */
-export const STATIC_SITEMAP_PATHS = ['/', '/about-us', '/contact', '/products'] as const
-
-/** 仅英文版存在的页面（无 [locale] 路由） */
-export const EN_ONLY_SITEMAP_PATHS = ['/news'] as const
+export const STATIC_SITEMAP_PATHS = ['/', '/about-us', '/contact', '/products', '/news'] as const
 
 export function localePath(prefix: string, path: string): string {
   const normalized = path.startsWith('/') ? path : `/${path}`
@@ -33,12 +30,12 @@ export function buildHybridRouteRules() {
     '/': { prerender: true },
     '/zh-CN': { prerender: true },
     '/zh-TW': { prerender: true },
-    '/news': { isr: BLOG_ISR_SECONDS },
     '/example/**': { index: false },
   }
 
   for (const { prefix } of SITE_LOCALES) {
     rules[localePath(prefix, '/products')] = { isr: PRODUCT_ISR_SECONDS }
+    rules[localePath(prefix, '/news')] = { isr: BLOG_ISR_SECONDS }
   }
 
   return rules

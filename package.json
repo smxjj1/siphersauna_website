@@ -29,5 +29,8 @@
     "exceljs": "^4.4.0",
     "less": "^4.2.2",
     "sharp": "^0.34.5"
+  },
+  "overrides": {
+    "crossws": "0.4.9"
   }
 }
