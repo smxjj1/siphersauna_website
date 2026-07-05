@@ -195,21 +195,22 @@ const { tm, localePath } = useI18nHelpers()
     gap: 48px;
   }
 
-  .advantage-cards {
+  .content-left .advantage-cards {
     grid-template-columns: 1fr;
   }
 
-  .title {
+  .content-right .title {
     font-size: 40px;
   }
 
-  .description {
+  .content-right .description {
     font-size: 18px;
   }
 }
 
 @media (max-width: 768px) {
   .advantage-card {
+    min-width: 0;
     padding: 20px;
   }
 
@@ -223,11 +224,24 @@ const { tm, localePath } = useI18nHelpers()
     }
   }
 
-  .title {
+  .advantage-card .card-text {
+    min-width: 0;
+    overflow-wrap: break-word;
+
+    h3 {
+      font-size: 16px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .content-right .title {
     font-size: 32px;
   }
 
-  .description {
+  .content-right .description {
     font-size: 16px;
   }
 }
