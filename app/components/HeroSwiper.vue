@@ -13,7 +13,7 @@
             :alt="slide.alt"
             class="slide-image"
             width="828"
-            height="552"
+            height="466"
             :loading="index === 0 ? 'eager' : 'lazy'"
             :fetchpriority="index === 0 ? 'high' : 'auto'"
           />
@@ -227,11 +227,23 @@ onMounted(() => {
 @media (max-width: 1440px) {
   .hero-swiper {
     height: auto;
-    min-height: 420px;
+    min-height: 0;
+    aspect-ratio: 828 / 466;
+    max-height: 72vh;
+    background: @sauna-dark;
 
-    :deep(.slide-image img) {
-      object-fit: cover;
-      min-height: 420px;
+    .hero-swiper-container {
+      height: 100%;
+    }
+
+    .swiper-slide {
+      background: @sauna-dark;
+    }
+
+    :deep(.slide-image),
+    :deep(.optim-img) {
+      object-fit: contain;
+      min-height: 0;
     }
 
     .swiper-pagination {
@@ -256,11 +268,15 @@ onMounted(() => {
 
 @media (max-width: 768px) {
   .hero-swiper {
-    min-height: 280px;
+    aspect-ratio: 828 / 466;
+    max-height: none;
 
-    :deep(.slide-image img) {
-      min-height: 280px;
-      max-height: 56vh;
+    :deep(.slide-image),
+    :deep(.optim-img) {
+      object-fit: contain;
+      object-position: center;
+      min-height: 0;
+      max-height: none;
     }
 
     .swiper-pagination {
