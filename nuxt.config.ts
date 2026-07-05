@@ -8,11 +8,10 @@ const siteDescription = 'Experience the ultimate home sauna with Sipher Sauna. P
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
+  devtools: { enabled: process.env.NODE_ENV === 'development' },
   modules: ['@nuxtjs/seo', 'nuxt-gtag', 'nuxt-llms'],
 
   css: [
-    'swiper/css',
     'swiper/css/bundle',
     '~/assets/css/main.less',
   ],
@@ -70,6 +69,11 @@ export default defineNuxtConfig({
     prerender: {
       routes: ['/', '/zh-CN', '/zh-TW', '/llms.txt', '/llms-full.txt'],
     },
+    routeRules: {
+      '/images/**': {
+        headers: { 'cache-control': 'public, max-age=31536000, immutable' },
+      },
+    },
   },
 
   sitemap: {
@@ -119,10 +123,6 @@ export default defineNuxtConfig({
       ],
       link: [
         {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap',
-        },
-        {
           rel: 'icon',
           type: 'image/png',
           href: '/images/logo/logo.png',
@@ -139,9 +139,6 @@ export default defineNuxtConfig({
           additionalData: '@import "~/assets/css/variables.less";',
         },
       },
-    },
-    optimizeDeps: {
-      include: ['echarts'],
     },
   },
 })

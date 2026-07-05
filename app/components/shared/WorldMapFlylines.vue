@@ -13,8 +13,14 @@
  *    - 或从阿里云 DataV: https://geo.datav.aliyun.com/areas_v3/bound/world.json
  */
 
-import * as echarts from 'echarts';
-import { onMounted, onUnmounted, ref } from 'vue';
+import * as echarts from 'echarts/core'
+import { EffectScatterChart, LinesChart } from 'echarts/charts'
+import { GeoComponent } from 'echarts/components'
+import { CanvasRenderer } from 'echarts/renderers'
+import type { EChartsOption } from 'echarts'
+import { onMounted, onUnmounted, ref } from 'vue'
+
+echarts.use([GeoComponent, LinesChart, EffectScatterChart, CanvasRenderer])
 
 // 定义组件选项
 defineOptions({
@@ -25,7 +31,7 @@ defineOptions({
 const chartRef = ref<HTMLDivElement | null>(null);
 
 // 图表实例
-let chartInstance: echarts.ECharts | null = null;
+let chartInstance: ReturnType<typeof echarts.init> | null = null
 
 // ==================== 城市经纬度坐标映射 ====================
 // 包含起点佛山及全球各大洲代表性城市
@@ -165,7 +171,7 @@ function generateRipplePointsData(origin: string, destinations: string[]) {
 }
 
 // ==================== ECharts 配置 ====================
-function getChartOption(): echarts.EChartsOption {
+function getChartOption(): EChartsOption {
   const flylinesData = generateFlylinesData('Foshan', destinationCities);
   const ripplePointsData = generateRipplePointsData('Foshan', destinationCities);
 

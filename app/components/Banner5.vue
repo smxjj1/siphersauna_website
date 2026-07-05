@@ -62,7 +62,7 @@
       <div class="factory-highlights">
         <div class="highlight-card">
           <div class="highlight-image">
-            <img src="/images/home/MODERN-PRODUCTION.png" alt="Production Workshop" loading="lazy" />
+            <OptimImg src="/images/home/MODERN-PRODUCTION.png" alt="Production Workshop" loading="lazy" />
           </div>
           <div class="highlight-content">
             <h3>{{ tm('banner5.highlights.production.title') }}</h3>
@@ -72,7 +72,7 @@
 
         <div class="highlight-card">
           <div class="highlight-image">
-            <img src="/images/home/QUALITY-TESTING.png" alt="Quality Control" loading="lazy" />
+            <OptimImg src="/images/home/QUALITY-TESTING.png" alt="Quality Control" loading="lazy" />
           </div>
           <div class="highlight-content">
             <h3>{{ tm('banner5.highlights.testing.title') }}</h3>
@@ -82,7 +82,7 @@
 
         <div class="highlight-card">
           <div class="highlight-image">
-            <img src="/images/home/WAREHOUSING&LOGISTICS.png" alt="Warehouse" loading="lazy" />
+            <OptimImg src="/images/home/WAREHOUSING&LOGISTICS.png" alt="Warehouse" loading="lazy" />
           </div>
           <div class="highlight-content">
             <h3>{{ tm('banner5.highlights.logistics.title') }}</h3>

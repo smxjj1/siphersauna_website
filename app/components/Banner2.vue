@@ -10,7 +10,7 @@
       <div class="products-grid">
         <div class="product-item">
           <div class="product-image">
-            <img src="/images/home/SaunaRooms.png" alt="Sauna Rooms" loading="lazy" />
+            <OptimImg src="/images/home/SaunaRooms.png" alt="Sauna Rooms" loading="lazy" />
           </div>
           <div class="product-content">
             <h3>{{ tm('banner2.products.saunaRooms.title') }}</h3>
@@ -20,7 +20,7 @@
 
         <div class="product-item">
           <div class="product-image">
-            <img src="/images/home/SaunaHeaters.png" alt="Sauna Heaters" loading="lazy" />
+            <OptimImg src="/images/home/SaunaHeaters.png" alt="Sauna Heaters" loading="lazy" />
           </div>
           <div class="product-content">
             <h3>{{ tm('banner2.products.saunaHeaters.title') }}</h3>
@@ -30,7 +30,7 @@
 
         <div class="product-item">
           <div class="product-image">
-            <img src="/images/home/SaunaAccessories.png" alt="Sauna Stones" loading="lazy" />
+            <OptimImg src="/images/home/SaunaAccessories.png" alt="Sauna Stones" loading="lazy" />
           </div>
           <div class="product-content">
             <h3>{{ tm('banner2.products.saunaAccessories.title') }}</h3>
@@ -40,7 +40,7 @@
 
         <div class="product-item">
           <div class="product-image">
-            <img src="/images/home/OutdoorWoodfiredHotTub.png" alt="Outdoor Wood-fired Hot Tub" loading="lazy" />
+            <OptimImg src="/images/home/OutdoorWoodfiredHotTub.png" alt="Outdoor Wood-fired Hot Tub" loading="lazy" />
           </div>
           <div class="product-content">
             <h3>{{ tm('banner2.products.outdoorHotTub.title') }}</h3>
@@ -50,7 +50,7 @@
 
         <div class="product-item">
           <div class="product-image">
-            <img src="/images/home/IndoorDry&SteamRoom.png" alt="Indoor Dry & Steam Room" loading="lazy" />
+            <OptimImg src="/images/home/IndoorDry&SteamRoom.png" alt="Indoor Dry & Steam Room" loading="lazy" />
           </div>
           <div class="product-content">
             <h3>{{ tm('banner2.products.indoorDrySteam.title') }}</h3>
@@ -60,7 +60,7 @@
 
         <div class="product-item">
           <div class="product-image">
-            <img src="/images/home/OutdoorTraditionalSauna.png" alt="Outdoor Traditional Sauna" loading="lazy" />
+            <OptimImg src="/images/home/OutdoorTraditionalSauna.png" alt="Outdoor Traditional Sauna" loading="lazy" />
           </div>
           <div class="product-content">
             <h3>{{ tm('banner2.products.outdoorTraditional.title') }}</h3>

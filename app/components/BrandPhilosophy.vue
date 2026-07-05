@@ -4,7 +4,7 @@
       <!-- 第一个：左图右文 -->
       <div class="philosophy-item">
         <div class="philosophy-image">
-          <img src="/images/home/SaunaAccessories.png" alt="Premium Wood Texture" loading="lazy" />
+          <OptimImg src="/images/home/SaunaAccessories.png" alt="Premium Wood Texture" loading="lazy" />
         </div>
         <div class="philosophy-content">
           <span class="subtitle">Our Philosophy</span>

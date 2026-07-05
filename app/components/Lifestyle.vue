@@ -14,7 +14,7 @@
           <div class="swiper-slide">
             <div class="lifestyle-card">
               <div class="lifestyle-image">
-                <img src="/images/home/SaunaRooms.png" alt="Sauna Room" loading="lazy" />
+                <OptimImg src="/images/home/SaunaRooms.png" alt="Sauna Room" loading="lazy" />
               </div>
               <div class="lifestyle-content">
                 <span class="tag">Indoor</span>
@@ -26,7 +26,7 @@
           <div class="swiper-slide">
             <div class="lifestyle-card">
               <div class="lifestyle-image">
-                <img src="/images/home/OutdoorTraditionalSauna.png" alt="Outdoor Sauna" loading="lazy" />
+                <OptimImg src="/images/home/OutdoorTraditionalSauna.png" alt="Outdoor Sauna" loading="lazy" />
               </div>
               <div class="lifestyle-content">
                 <span class="tag">Outdoor</span>
@@ -38,7 +38,7 @@
           <div class="swiper-slide">
             <div class="lifestyle-card">
               <div class="lifestyle-image">
-                <img src="/images/home/SaunaAccessories.png" alt="Aromatherapy" loading="lazy" />
+                <OptimImg src="/images/home/SaunaAccessories.png" alt="Aromatherapy" loading="lazy" />
               </div>
               <div class="lifestyle-content">
                 <span class="tag">Aromatherapy</span>
@@ -50,7 +50,7 @@
           <div class="swiper-slide">
             <div class="lifestyle-card">
               <div class="lifestyle-image">
-                <img src="/images/home/SaunaHeaters.png" alt="Wooden Accessories" loading="lazy" />
+                <OptimImg src="/images/home/SaunaHeaters.png" alt="Wooden Accessories" loading="lazy" />
               </div>
               <div class="lifestyle-content">
                 <span class="tag">Accessories</span>
@@ -62,7 +62,7 @@
           <div class="swiper-slide">
             <div class="lifestyle-card">
               <div class="lifestyle-image">
-                <img src="/images/home/OutdoorWoodfiredHotTub.png" alt="Wellness" loading="lazy" />
+                <OptimImg src="/images/home/OutdoorWoodfiredHotTub.png" alt="Wellness" loading="lazy" />
               </div>
               <div class="lifestyle-content">
                 <span class="tag">Wellness</span>

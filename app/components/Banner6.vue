@@ -10,7 +10,7 @@
       <div class="cases-grid">
         <div class="case-card large">
           <div class="case-image">
-            <img src="/images/home/LuxuryVillaSauna.png" alt="Luxury Villa Project" loading="lazy" />
+            <OptimImg src="/images/home/LuxuryVillaSauna.png" alt="Luxury Villa Project" loading="lazy" />
           </div>
           <div class="case-overlay">
             <span class="case-tag">{{ tm('banner6.cases.villa.tag') }}</span>
@@ -21,7 +21,7 @@
 
         <div class="case-card">
           <div class="case-image">
-            <img src="/images/home/Five-StarResort.png" alt="Hotel Spa" loading="lazy" />
+            <OptimImg src="/images/home/Five-StarResort.png" alt="Hotel Spa" loading="lazy" />
           </div>
           <div class="case-overlay">
             <span class="case-tag">{{ tm('banner6.cases.resort.tag') }}</span>
@@ -32,7 +32,7 @@
 
         <div class="case-card">
           <div class="case-image">
-            <img src="/images/home/PremiumFitnessClub.png" alt="Fitness Center" loading="lazy" />
+            <OptimImg src="/images/home/PremiumFitnessClub.png" alt="Fitness Center" loading="lazy" />
           </div>
           <div class="case-overlay">
             <span class="case-tag">{{ tm('banner6.cases.fitness.tag') }}</span>
@@ -43,7 +43,7 @@
 
         <div class="case-card">
           <div class="case-image">
-            <img src="/images/home/CommercialSpa.png" alt="Spa Center" loading="lazy" />
+            <OptimImg src="/images/home/CommercialSpa.png" alt="Spa Center" loading="lazy" />
           </div>
           <div class="case-overlay">
             <span class="case-tag">{{ tm('banner6.cases.spa.tag') }}</span>
@@ -54,7 +54,7 @@
 
         <div class="case-card large">
           <div class="case-image">
-            <img src="/images/home/MedicalWellnessCenter.png" alt="Wellness Center" loading="lazy" />
+            <OptimImg src="/images/home/MedicalWellnessCenter.png" alt="Wellness Center" loading="lazy" />
           </div>
           <div class="case-overlay">
             <span class="case-tag">{{ tm('banner6.cases.wellness.tag') }}</span>

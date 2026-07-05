@@ -2,27 +2,23 @@
   <section class="hero-swiper">
     <div class="swiper hero-swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="/images/home/hero/LUXURY-SAUNA-SOLUTIONS.png" alt="" class="slide-image" />
-        </div>
-        <div class="swiper-slide">
-          <img src="/images/home/hero/SAUNA-WAY.png" alt="" class="slide-image" />
-        </div>
-        <div class="swiper-slide">
-          <img src="/images/home/hero/ULTIMATE-SAUNA-LIFESTYLE.png" alt="" class="slide-image" />
-        </div>
-        <div class="swiper-slide">
-          <img src="/images/home/hero/WELLNESS.png" alt="" class="slide-image" />
-        </div>
-        <div class="swiper-slide">
-          <img src="/images/home/hero/Tailored-Luxury.png" alt="" class="slide-image" />
+        <div
+          v-for="(slide, index) in HERO_SLIDES"
+          :key="slide.file"
+          class="swiper-slide"
+        >
+          <OptimImg
+            :src="slide.src"
+            :alt="slide.alt"
+            class="slide-image"
+            :loading="index === 0 ? 'eager' : 'lazy'"
+            :fetchpriority="index === 0 ? 'high' : 'auto'"
+          />
         </div>
       </div>
-      <!-- Pagination -->
-      <div class="swiper-pagination"></div>
-      <!-- Navigation -->
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
+      <div class="swiper-pagination" />
+      <div class="swiper-button-prev" />
+      <div class="swiper-button-next" />
     </div>
   </section>
 </template>
@@ -34,6 +30,17 @@ import { onMounted } from 'vue'
 import { useAnalytics } from '~/composables/useAnalytics'
 
 const { sendTrackEvent } = useAnalytics()
+
+const HERO_SLIDES = [
+  { file: 'LUXURY-SAUNA-SOLUTIONS.png', alt: 'Luxury Sauna Solutions' },
+  { file: 'SAUNA-WAY.png', alt: 'Sauna Way' },
+  { file: 'ULTIMATE-SAUNA-LIFESTYLE.png', alt: 'Ultimate Sauna Lifestyle' },
+  { file: 'WELLNESS.png', alt: 'Wellness' },
+  { file: 'Tailored-Luxury.png', alt: 'Tailored Luxury' },
+].map(slide => ({
+  ...slide,
+  src: `/images/home/hero/${slide.file}`,
+}))
 
 const SLIDE_META = [
   { key: 'luxury-sauna-solutions', title: 'Luxury Sauna Solutions' },
@@ -109,14 +116,15 @@ onMounted(() => {
     height: 100%;
     overflow: hidden;
 
-    .slide-image {
+    :deep(.slide-image),
+    :deep(.slide-image img) {
       width: 100%;
       height: 100%;
       object-position: center;
+      display: block;
     }
   }
 
-  // 分页器样式 - 白色线段
   .swiper-pagination {
     position: absolute;
     bottom: 40px;
@@ -141,12 +149,10 @@ onMounted(() => {
     }
   }
 
-  // 隐藏默认导航图标
   :deep(.swiper-navigation-icon) {
     display: none;
   }
 
-  // 左右导航按钮样式
   :deep(.swiper-button-prev),
   :deep(.swiper-button-next) {
     width: 60px;
@@ -196,12 +202,11 @@ onMounted(() => {
   }
 }
 
-// 响应式适配
 @media (max-width: 1440px) {
   .hero-swiper {
     height: auto;
 
-    .slide-image {
+    :deep(.slide-image img) {
       object-fit: contain;
     }
 

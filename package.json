@@ -14,9 +14,11 @@
     "preview": "nuxt preview --dotenv .env.production",
     "preview:local": "nuxt preview --dotenv .env.local",
     "preview:dev": "nuxt preview --dotenv .env.development",
+    "optimize:images": "node scripts/optimize-images.mjs",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@fontsource/league-spartan": "^5.2.8",
     "@nuxtjs/seo": "^5.3.2",
     "echarts": "^5.6.0",
     "nuxt": "^4.4.6",

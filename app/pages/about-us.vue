@@ -8,11 +8,13 @@
           <p class="hero-text" v-html="tm('about.heroText')"></p>
         </div>
         <div class="hero-image">
-          <img
+          <OptimImg
             src="/images/about-us/factory.png"
             alt="Factory"
             class="factory-image"
-          >
+            loading="eager"
+            fetchpriority="high"
+          />
         </div>
       </div>
     </section>
@@ -222,9 +224,19 @@ useHead({
 .hero-image { @media (max-width: 992px) { order: 0; } }
 
 .factory-image {
-  width: 100%; height: auto; border-radius: 12px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); object-fit: cover;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
   transition: transform 0.4s ease;
+
+  :deep(img) {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+  }
+
   &:hover { transform: scale(1.02); }
 }
 

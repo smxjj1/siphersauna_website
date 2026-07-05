@@ -23,6 +23,15 @@ definePageMeta({
 useHead({
   title: computed(() => tm('home.seoTitle')),
   htmlAttrs: { lang: locale },
+  link: [
+    {
+      rel: 'preload',
+      as: 'image',
+      href: '/images/home/hero/LUXURY-SAUNA-SOLUTIONS.webp',
+      type: 'image/webp',
+      fetchpriority: 'high',
+    },
+  ],
   meta: [
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },

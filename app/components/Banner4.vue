@@ -28,7 +28,7 @@
         </div>
         <div class="content-right">
           <div class="showcase-image">
-            <img src="/images/home/THE-ULTIMATESAUNA-EXPERIENCE.png" alt="The Ultimate Sauna Experience" loading="lazy" />
+            <OptimImg src="/images/home/THE-ULTIMATESAUNA-EXPERIENCE.png" alt="The Ultimate Sauna Experience" loading="lazy" />
           </div>
         </div>
       </div>

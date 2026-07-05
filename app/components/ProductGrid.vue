@@ -10,7 +10,7 @@
         <!-- Home Sauna Rooms -->
         <div class="product-card">
           <div class="product-image">
-            <img src="/images/home/SaunaRooms.png" alt="Home Sauna Rooms" loading="lazy" />
+            <OptimImg src="/images/home/SaunaRooms.png" alt="Home Sauna Rooms" loading="lazy" />
             <div class="product-overlay">
               <button class="view-btn">View Details</button>
             </div>
@@ -24,7 +24,7 @@
         <!-- Heaters & Stones -->
         <div class="product-card">
           <div class="product-image">
-            <img src="/images/home/SaunaHeaters.png" alt="Heaters & Stones" loading="lazy" />
+            <OptimImg src="/images/home/SaunaHeaters.png" alt="Heaters & Stones" loading="lazy" />
             <div class="product-overlay">
               <button class="view-btn">View Details</button>
             </div>
@@ -38,7 +38,7 @@
         <!-- Essential Oils -->
         <div class="product-card">
           <div class="product-image">
-            <img src="/images/home/SaunaAccessories.png" alt="Essential Oils" loading="lazy" />
+            <OptimImg src="/images/home/SaunaAccessories.png" alt="Essential Oils" loading="lazy" />
             <div class="product-overlay">
               <button class="view-btn">View Details</button>
             </div>
@@ -52,7 +52,7 @@
         <!-- Wooden Accessories -->
         <div class="product-card">
           <div class="product-image">
-            <img src="/images/home/SaunaAccessories.png" alt="Wooden Accessories" loading="lazy" />
+            <OptimImg src="/images/home/SaunaAccessories.png" alt="Wooden Accessories" loading="lazy" />
             <div class="product-overlay">
               <button class="view-btn">View Details</button>
             </div>

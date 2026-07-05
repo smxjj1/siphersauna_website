@@ -1,6 +1,12 @@
 <template>
   <section class="banner-9">
     <div class="banner-9-bg">
+      <OptimImg
+        src="/images/home/SaunaRooms.png"
+        alt=""
+        class="banner-9-bg-image"
+        loading="lazy"
+      />
       <div class="container">
         <div class="banner-9-content" :class="{ 'zh-wide': isZh }">
           <span class="tag">{{ tm('banner9.tag') }}</span>
@@ -28,22 +34,26 @@ const isZh = computed(() => currentLocale.value.startsWith('zh'))
     background: linear-gradient(135deg, @sauna-dark 0%, #1a1410 100%);
     padding: 100px 0;
     position: relative;
+    overflow: hidden;
 
-    &::before {
-      content: '';
+    .banner-9-bg-image {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('/images/home/SaunaRooms.png') center/cover;
+      inset: 0;
+      z-index: 0;
       opacity: 0.15;
+
+      :deep(img) {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
 }
 
 .banner-9-content {
   position: relative;
+  z-index: 1;
   text-align: center;
   max-width: 800px;
   margin: 0 auto;

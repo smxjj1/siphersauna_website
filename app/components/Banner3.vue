@@ -9,7 +9,9 @@
 
       <div class="scenarios-grid">
         <div class="scenario-card home">
-          <div class="scenario-bg" style="background-image: url('/images/home/FAMILY& VILLA-SAUNA.png')"></div>
+          <div class="scenario-bg">
+            <OptimImg src="/images/home/FAMILY& VILLA-SAUNA.png" alt="" loading="lazy" />
+          </div>
           <div class="scenario-content">
             <span class="scenario-tag">{{ tm('banner3.scenarios.home.tag') }}</span>
             <h3>{{ tm('banner3.scenarios.home.title') }}</h3>
@@ -18,7 +20,9 @@
         </div>
 
         <div class="scenario-card hotel">
-          <div class="scenario-bg" style="background-image: url('/images/home/HOTEL&RESORT-SPA-CENTER.png')"></div>
+          <div class="scenario-bg">
+            <OptimImg src="/images/home/HOTEL&RESORT-SPA-CENTER.png" alt="" loading="lazy" />
+          </div>
           <div class="scenario-content">
             <span class="scenario-tag">{{ tm('banner3.scenarios.hotel.tag') }}</span>
             <h3>{{ tm('banner3.scenarios.hotel.title') }}</h3>
@@ -27,7 +31,9 @@
         </div>
 
         <div class="scenario-card fitness">
-          <div class="scenario-bg" style="background-image: url('/images/home/GYM&FITNESS-CLUBS.png')"></div>
+          <div class="scenario-bg">
+            <OptimImg src="/images/home/GYM&FITNESS-CLUBS.png" alt="" loading="lazy" />
+          </div>
           <div class="scenario-content">
             <span class="scenario-tag">{{ tm('banner3.scenarios.fitness.tag') }}</span>
             <h3>{{ tm('banner3.scenarios.fitness.title') }}</h3>
@@ -36,7 +42,9 @@
         </div>
 
         <div class="scenario-card spa">
-          <div class="scenario-bg" style="background-image: url('/images/home/IndoorDry&SteamRoom.png')"></div>
+          <div class="scenario-bg">
+            <OptimImg src="/images/home/IndoorDry&SteamRoom.png" alt="" loading="lazy" />
+          </div>
           <div class="scenario-content">
             <span class="scenario-tag">{{ tm('banner3.scenarios.spa.tag') }}</span>
             <h3>{{ tm('banner3.scenarios.spa.title') }}</h3>
@@ -107,19 +115,22 @@ const { tm, localePath } = useI18nHelpers()
   height: 380px;
   cursor: pointer;
 
-  &:hover {
-    .scenario-bg {
-      transform: scale(1.1);
-    }
+  &:hover .scenario-bg :deep(img) {
+    transform: scale(1.1);
   }
 }
 
 .scenario-bg {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.6s ease;
+  overflow: hidden;
+
+  :deep(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
 }
 
 .scenario-content {
