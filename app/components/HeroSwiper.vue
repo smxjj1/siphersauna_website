@@ -36,12 +36,20 @@ import { onMounted, ref } from 'vue'
 import { useAnalytics } from '~/composables/useAnalytics'
 
 const { sendTrackEvent } = useAnalytics()
+const currentIndex = ref(0)
 const preloadAdjacentSlides = ref(false)
 
 function shouldLoadSlideImage(index: number) {
   if (!preloadAdjacentSlides.value)
+    return index === currentIndex.value
+
+  const total = HERO_SLIDES.length
+  if (total <= 1)
     return index === 0
-  return index <= 2
+
+  const prev = (currentIndex.value - 1 + total) % total
+  const next = (currentIndex.value + 1) % total
+  return index === currentIndex.value || index === prev || index === next
 }
 
 const HERO_SLIDES = [
@@ -111,9 +119,11 @@ onMounted(() => {
     speed: 800,
     on: {
       init(sw) {
+        currentIndex.value = sw.realIndex
         trackBannerSlide(sw.realIndex)
       },
       slideChangeTransitionEnd(sw) {
+        currentIndex.value = sw.realIndex
         trackBannerSlide(sw.realIndex)
       },
     },
