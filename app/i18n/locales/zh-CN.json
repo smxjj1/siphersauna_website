@@ -3,6 +3,7 @@
     "home": "首页",
     "products": "产品",
     "aboutUs": "关于我们",
+    "blog": "博客",
     "contact": "联系我们"
   },
   "footer": {
@@ -372,5 +373,34 @@
     "empty": "暂无新闻，请稍后再来查看。",
     "views": "{count} 次浏览",
     "download": "下载"
+  },
+  "blogPage": {
+    "pageTitle": "博客",
+    "pageDesc": "家用桑拿选购指南、健康益处与养生技巧的专业解读。打造您的完美家庭SPA体验。",
+    "all": "全部",
+    "searchPlaceholder": "搜索文章...",
+    "loading": "加载中...",
+    "empty": "暂无文章。",
+    "categories": {
+      "saunaSelection": "桑拿选购",
+      "healthWellness": "健康养生"
+    }
+  },
+  "blogDetail": {
+    "articleNotFound": "文章未找到",
+    "loadingArticle": "加载文章中...",
+    "home": "首页",
+    "blog": "博客",
+    "readTime": "分钟阅读",
+    "tags": "标签",
+    "contents": "目录",
+    "needExpertConsultation": "需要专业咨询？",
+    "consultationDesc": "我们的桑拿专家随时为您打造完美的家庭养生空间。",
+    "getInTouch": "联系我们",
+    "relatedArticles": "相关文章",
+    "noRelated": "暂无相关文章。",
+    "backToBlog": "返回博客",
+    "downloadPdf": "下载PDF",
+    "contactNow": "立即咨询"
   }
 }

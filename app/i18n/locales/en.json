@@ -3,6 +3,7 @@
     "home": "Home",
     "products": "Products",
     "aboutUs": "About Us",
+    "blog": "Blog",
     "contact": "Contact"
   },
   "footer": {
@@ -372,5 +373,34 @@
     "empty": "No news articles yet. Please check back soon.",
     "views": "{count} views",
     "download": "Download"
+  },
+  "blogPage": {
+    "pageTitle": "Blog",
+    "pageDesc": "Expert insights on home sauna selection, health benefits, and wellness tips. Your guide to creating the perfect home spa experience.",
+    "all": "All",
+    "searchPlaceholder": "Search articles...",
+    "loading": "Loading...",
+    "empty": "No articles found.",
+    "categories": {
+      "saunaSelection": "Sauna Selection",
+      "healthWellness": "Health & Wellness"
+    }
+  },
+  "blogDetail": {
+    "articleNotFound": "Article not found",
+    "loadingArticle": "Loading article...",
+    "home": "Home",
+    "blog": "Blog",
+    "readTime": "min read",
+    "tags": "Tags",
+    "contents": "Contents",
+    "needExpertConsultation": "Need Expert Consultation?",
+    "consultationDesc": "Our sauna specialists are ready to help you design the perfect home wellness space.",
+    "getInTouch": "Get in Touch",
+    "relatedArticles": "Related Articles",
+    "noRelated": "No related articles.",
+    "backToBlog": "Back to Blog",
+    "downloadPdf": "Download PDF",
+    "contactNow": "Contact Now"
   }
 }

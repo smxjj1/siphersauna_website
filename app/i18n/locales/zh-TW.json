@@ -3,6 +3,7 @@
     "home": "首頁",
     "products": "產品",
     "aboutUs": "關於我們",
+    "blog": "部落格",
     "contact": "聯絡我們"
   },
   "footer": {
@@ -372,5 +373,34 @@
     "empty": "暫無新聞，請稍後再來查看。",
     "views": "{count} 次瀏覽",
     "download": "下載"
+  },
+  "blogPage": {
+    "pageTitle": "部落格",
+    "pageDesc": "家用桑拿選購指南、健康益處與養生技巧的專業解讀。打造您的完美家庭SPA體驗。",
+    "all": "全部",
+    "searchPlaceholder": "搜尋文章...",
+    "loading": "載入中...",
+    "empty": "暫無文章。",
+    "categories": {
+      "saunaSelection": "桑拿選購",
+      "healthWellness": "健康養生"
+    }
+  },
+  "blogDetail": {
+    "articleNotFound": "文章未找到",
+    "loadingArticle": "載入文章中...",
+    "home": "首頁",
+    "blog": "部落格",
+    "readTime": "分鐘閱讀",
+    "tags": "標籤",
+    "contents": "目錄",
+    "needExpertConsultation": "需要專業諮詢？",
+    "consultationDesc": "我們的桑拿專家隨時為您打造完美的家庭養生空間。",
+    "getInTouch": "聯絡我們",
+    "relatedArticles": "相關文章",
+    "noRelated": "暫無相關文章。",
+    "backToBlog": "返回部落格",
+    "downloadPdf": "下載PDF",
+    "contactNow": "立即諮詢"
   }
 }
