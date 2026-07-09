@@ -2,10 +2,8 @@
 /**
  * 博客列表页面
  *
- * 数据来源：app/data/blog/
+ * 数据来源：CMS 公开 API，失败时回退 app/data/blog/
  */
-
-import { getBlogData } from '~/data/blog';
 
 defineOptions({
   name: 'BlogListPage',
@@ -16,6 +14,7 @@ definePageMeta({
 });
 
 const { tm, t, locale, localePath } = useI18nHelpers();
+const { fetchBlogList } = useBlog();
 
 // ============================================================
 // SEO配置
@@ -37,16 +36,13 @@ const searchQuery = ref('');
 // ============================================================
 // 数据获取
 // ============================================================
-const blogListKey = computed(() => `blog-list-${locale.value}`);
-
 const { data: blogData, pending: isLoading } = await useAsyncData(
-  blogListKey.value,
-  async () => {
-    return getBlogData(locale.value);
-  },
+  () => `blog-list-${locale.value}`,
+  () => fetchBlogList(locale.value),
   {
     server: true,
     lazy: false,
+    watch: [locale],
   },
 );
 

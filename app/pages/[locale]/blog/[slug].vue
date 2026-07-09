@@ -1,13 +1,13 @@
 <script setup lang="ts">
 /**
  * 博客文章详情页
+ *
+ * 数据来源：CMS 公开 API，失败时回退 app/data/blog/
  */
 
 defineOptions({
   name: 'BlogDetailPage',
 });
-
-import { getBlogArticleBySlug, getRelatedArticles } from '~/data/blog';
 
 definePageMeta({
   layout: 'default',
@@ -15,26 +15,19 @@ definePageMeta({
 
 const route = useRoute();
 const { tm, t, locale, localePath } = useI18nHelpers();
-const slug = route.params.slug as string;
+const { fetchBlogDetail } = useBlog();
+const slug = computed(() => String(route.params.slug || ''));
 
 // ============================================================
 // 数据获取
 // ============================================================
-const blogDetailKey = computed(() => `blog-detail-${slug}-${locale.value}`);
-
 const { data: articleData, pending: isLoading } = await useAsyncData(
-  blogDetailKey.value,
-  async () => {
-    const currentArticle = getBlogArticleBySlug(slug, locale.value);
-    const related = currentArticle
-      ? getRelatedArticles(slug, currentArticle.category, locale.value, 3)
-      : [];
-
-    return { article: currentArticle, relatedArticles: related };
-  },
+  () => `blog-detail-${slug.value}-${locale.value}`,
+  () => fetchBlogDetail(slug.value, locale.value, 3),
   {
     server: true,
     lazy: false,
+    watch: [slug, locale],
   },
 );
 

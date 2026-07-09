@@ -45,6 +45,7 @@
           <NuxtLink :to="localePath('/products')" class="nav-link" @click="closeMenu">{{ tm('nav.products') }}</NuxtLink>
           <NuxtLink :to="localePath('/about-us')" class="nav-link" @click="closeMenu">{{ tm('nav.aboutUs') }}</NuxtLink>
           <NuxtLink :to="localePath('/blog')" class="nav-link" @click="closeMenu">{{ tm('nav.blog') }}</NuxtLink>
+          <NuxtLink :to="localePath('/news')" class="nav-link" @click="closeMenu">{{ tm('nav.news') }}</NuxtLink>
           <NuxtLink :to="localePath('/contact')" class="nav-link nav-link--contact" @click="closeMenu">{{ tm('nav.contact') }}</NuxtLink>
         </nav>
 
