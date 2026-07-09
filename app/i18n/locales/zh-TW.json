@@ -382,9 +382,19 @@
     "searchPlaceholder": "搜尋文章...",
     "loading": "載入中...",
     "empty": "暫無文章。",
+    "pillarSectionTitle": "從這裡開始：支柱指南",
+    "pillarSectionDesc": "涵蓋完整主題的樞紐頁面。先讀支柱，再探索下方相關專題。",
+    "clusterSectionTitle": "專題指南",
+    "readPillar": "閱讀完整指南",
     "categories": {
+      "pillar": "支柱指南",
       "saunaSelection": "桑拿選購",
-      "healthWellness": "健康養生"
+      "healthWellness": "健康養生",
+      "installationDiy": "安裝與 DIY",
+      "productReviews": "產品評測",
+      "commercialSolutions": "商業方案",
+      "materialsCraftsmanship": "材料與工藝",
+      "industryInsights": "行業洞察"
     }
   },
   "blogDetail": {
@@ -399,6 +409,7 @@
     "consultationDesc": "我們的桑拿專家隨時為您打造完美的家庭養生空間。",
     "getInTouch": "聯絡我們",
     "relatedArticles": "相關文章",
+    "clusterArticles": "本支柱下的專題文章",
     "noRelated": "暫無相關文章。",
     "backToBlog": "返回部落格",
     "downloadPdf": "下載PDF",

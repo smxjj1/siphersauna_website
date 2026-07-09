@@ -23,7 +23,7 @@ const slug = computed(() => String(route.params.slug || ''));
 // ============================================================
 const { data: articleData, pending: isLoading } = await useAsyncData(
   () => `blog-detail-${slug.value}-${locale.value}`,
-  () => fetchBlogDetail(slug.value, locale.value, 3),
+  () => fetchBlogDetail(slug.value, locale.value, 8),
   {
     server: true,
     lazy: false,
@@ -281,7 +281,9 @@ function scrollToAnchor(id: string) {
         <!-- 相关文章推荐 -->
         <section v-if="relatedArticles.length > 0" class="related-section" aria-labelledby="related-heading">
           <div class="related-container">
-            <h2 id="related-heading" class="related-title">{{ tm('blogDetail.relatedArticles') }}</h2>
+            <h2 id="related-heading" class="related-title">
+              {{ article?.category === 'pillar' ? tm('blogDetail.clusterArticles') : tm('blogDetail.relatedArticles') }}
+            </h2>
 
             <div class="related-grid">
               <article v-for="related in relatedArticles" :key="related.slug" class="related-card">

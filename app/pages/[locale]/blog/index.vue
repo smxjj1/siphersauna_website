@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * 博客列表页面
+ * 博客列表页面 — Pillar + Cluster 结构
  *
  * 数据来源：CMS 公开 API，失败时回退 app/data/blog/
  */
@@ -13,7 +13,7 @@ definePageMeta({
   layout: 'default',
 });
 
-const { tm, t, locale, localePath } = useI18nHelpers();
+const { tm, locale, localePath } = useI18nHelpers();
 const { fetchBlogList } = useBlog();
 
 // ============================================================
@@ -48,29 +48,62 @@ const { data: blogData, pending: isLoading } = await useAsyncData(
 
 const allArticles = computed(() => blogData.value || []);
 
-const categories = computed(() => {
-  const uniqueCategories = [...new Set(allArticles.value.map(a => a.category))];
-  return ['all', ...uniqueCategories];
+const pillarArticles = computed(() =>
+  allArticles.value.filter(a => a.category === 'pillar'),
+);
+
+const clusterArticles = computed(() =>
+  allArticles.value.filter(a => a.category !== 'pillar'),
+);
+
+const clusterTabs = computed(() => {
+  const order = [
+    'saunaSelection',
+    'healthWellness',
+    'installationDiy',
+    'productReviews',
+    'commercialSolutions',
+    'materialsCraftsmanship',
+    'industryInsights',
+  ];
+  const unique = [...new Set(clusterArticles.value.map(a => a.category).filter(Boolean))];
+  const sorted = [
+    ...order.filter(k => unique.includes(k)),
+    ...unique.filter(k => !order.includes(k)),
+  ];
+  return ['all', ...sorted];
 });
 
-const filteredArticles = computed(() => {
-  let filtered = [...allArticles.value];
+function matchesSearch(article: { title: string; summary: string; tags: string[] }, q: string) {
+  return (
+    article.title.toLowerCase().includes(q)
+    || article.summary.toLowerCase().includes(q)
+    || article.tags.some(tag => tag.toLowerCase().includes(q))
+  );
+}
+
+const filteredPillars = computed(() => {
+  const q = searchQuery.value.trim().toLowerCase();
+  if (!q)
+    return pillarArticles.value;
+  return pillarArticles.value.filter(a => matchesSearch(a, q));
+});
+
+const showPillarSection = computed(() => filteredPillars.value.length > 0);
+
+const filteredClusters = computed(() => {
+  let list = [...clusterArticles.value];
 
   if (activeCategory.value !== 'all') {
-    filtered = filtered.filter(article => article.category === activeCategory.value);
+    list = list.filter(a => a.category === activeCategory.value);
   }
 
-  if (searchQuery.value.trim()) {
-    const searchLower = searchQuery.value.toLowerCase();
-    filtered = filtered.filter(
-      article =>
-        article.title.toLowerCase().includes(searchLower)
-        || article.summary.toLowerCase().includes(searchLower)
-        || article.tags.some(tag => tag.toLowerCase().includes(searchLower)),
-    );
+  const q = searchQuery.value.trim().toLowerCase();
+  if (q) {
+    list = list.filter(a => matchesSearch(a, q));
   }
 
-  return filtered;
+  return list;
 });
 
 // ============================================================
@@ -93,18 +126,21 @@ function formatDate(dateStr: string) {
 const getArticleUrl = (slug: string) => localePath(`/blog/${slug}`);
 
 const getCategoryName = (category: string) => {
-  const categoryMap: Record<string, string> = {
-    'saunaSelection': 'blogPage.categories.saunaSelection',
-    'healthWellness': 'blogPage.categories.healthWellness',
-  };
-  const key = categoryMap[category];
-  return key ? tm(key) : category;
+  const key = `blogPage.categories.${category}`;
+  const label = tm(key);
+  return label === key ? category : String(label);
 };
 
 const getCategoryColor = (category: string) => {
   const colors: Record<string, string> = {
-    'saunaSelection': '#E67020',
-    'healthWellness': '#059669',
+    pillar: '#8B5A2B',
+    saunaSelection: '#E67020',
+    healthWellness: '#059669',
+    installationDiy: '#2563EB',
+    productReviews: '#7C3AED',
+    commercialSolutions: '#DC2626',
+    materialsCraftsmanship: '#B45309',
+    industryInsights: '#0D9488',
   };
   return colors[category] || '#E67020';
 };
@@ -121,75 +157,120 @@ const getCategoryColor = (category: string) => {
         </div>
       </section>
 
-      <!-- 分类Tab与搜索区 -->
-      <section class="filter-section">
-        <nav class="category-tabs" aria-label="Blog category navigation">
-          <button
-            v-for="category in categories"
-            :key="category"
-            class="tab-button"
-            :class="{ 'tab-active': activeCategory === category }"
-            :aria-selected="activeCategory === category"
-            @click="activeCategory = category"
-          >
-            {{ category === 'all' ? tm('blogPage.all') : getCategoryName(category) }}
-          </button>
-        </nav>
+      <div v-if="isLoading" class="loading-state">
+        <span class="loading-text">{{ tm('blogPage.loading') }}</span>
+      </div>
 
-        <div class="search-wrapper">
-          <input
-            v-model="searchQuery"
-            type="search"
-            class="search-input"
-            :placeholder="tm('blogPage.searchPlaceholder')"
-            aria-label="Search blog articles"
-          >
-          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-        </div>
-      </section>
-
-      <!-- 文章列表 -->
-      <section class="articles-grid" aria-label="Blog articles list">
-        <div v-if="isLoading" class="loading-state">
-          <span class="loading-text">{{ tm('blogPage.loading') }}</span>
-        </div>
-
-        <div v-else-if="filteredArticles.length === 0" class="empty-state">
-          <p class="empty-text">{{ tm('blogPage.empty') }}</p>
-        </div>
-
-        <article v-else v-for="article in filteredArticles" :key="article.slug" class="article-card">
-          <div v-if="article.coverImage" class="card-image">
-            <img :src="article.coverImage" :alt="article.title" loading="lazy" />
+      <template v-else>
+        <!-- Pillar Hub -->
+        <section v-if="showPillarSection" class="pillar-section" aria-label="Pillar guides">
+          <div class="section-header">
+            <h2 class="section-title">{{ tm('blogPage.pillarSectionTitle') }}</h2>
+            <p class="section-desc">{{ tm('blogPage.pillarSectionDesc') }}</p>
           </div>
-          <div class="card-content">
-            <span class="card-category" :style="{ color: getCategoryColor(article.category) }">
-              {{ getCategoryName(article.category) }}
-            </span>
 
-            <h2 class="card-title">
-              <NuxtLink :to="getArticleUrl(article.slug)" class="card-title-link">
-                {{ article.title }}
-              </NuxtLink>
-            </h2>
-
-            <time :datetime="article.publishDate" class="card-date">
-              {{ formatDate(article.publishDate) }}
-            </time>
-
-            <p class="card-abstract">{{ article.summary }}</p>
-
-            <ul class="card-tags" aria-label="Article tags">
-              <li v-for="tag in article.tags.slice(0, 3)" :key="tag" class="tag-item">
-                {{ tag }}
-              </li>
-            </ul>
+          <div class="pillar-grid">
+            <article
+              v-for="article in filteredPillars"
+              :key="article.slug"
+              class="pillar-card"
+            >
+              <div v-if="article.coverImage" class="pillar-card-image">
+                <img :src="article.coverImage" :alt="article.title" loading="lazy">
+              </div>
+              <div class="pillar-card-content">
+                <span class="pillar-badge">{{ getCategoryName('pillar') }}</span>
+                <h3 class="pillar-card-title">
+                  <NuxtLink :to="getArticleUrl(article.slug)" class="card-title-link">
+                    {{ article.title }}
+                  </NuxtLink>
+                </h3>
+                <p class="pillar-card-summary">{{ article.summary }}</p>
+                <NuxtLink :to="getArticleUrl(article.slug)" class="pillar-cta">
+                  {{ tm('blogPage.readPillar') }}
+                </NuxtLink>
+              </div>
+            </article>
           </div>
-        </article>
-      </section>
+        </section>
+
+        <!-- Cluster Section -->
+        <section class="cluster-section" aria-label="Topic guides">
+          <div class="section-header">
+            <h2 class="section-title">{{ tm('blogPage.clusterSectionTitle') }}</h2>
+          </div>
+
+          <div class="filter-section">
+            <nav class="category-tabs" aria-label="Blog category navigation">
+              <button
+                v-for="category in clusterTabs"
+                :key="category"
+                class="tab-button"
+                :class="{ 'tab-active': activeCategory === category }"
+                :aria-selected="activeCategory === category"
+                @click="activeCategory = category"
+              >
+                {{ category === 'all' ? tm('blogPage.all') : getCategoryName(category) }}
+              </button>
+            </nav>
+
+            <div class="search-wrapper">
+              <input
+                v-model="searchQuery"
+                type="search"
+                class="search-input"
+                :placeholder="tm('blogPage.searchPlaceholder')"
+                aria-label="Search blog articles"
+              >
+              <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </div>
+          </div>
+
+          <div v-if="filteredClusters.length === 0 && !showPillarSection" class="empty-state">
+            <p class="empty-text">{{ tm('blogPage.empty') }}</p>
+          </div>
+          <div v-else-if="filteredClusters.length === 0" class="empty-state empty-state--inline">
+            <p class="empty-text">{{ tm('blogPage.empty') }}</p>
+          </div>
+          <div v-else class="articles-grid" aria-label="Blog articles list">
+            <article
+              v-for="article in filteredClusters"
+              :key="article.slug"
+              class="article-card"
+            >
+              <div v-if="article.coverImage" class="card-image">
+                <img :src="article.coverImage" :alt="article.title" loading="lazy">
+              </div>
+              <div class="card-content">
+                <span class="card-category" :style="{ color: getCategoryColor(article.category) }">
+                  {{ getCategoryName(article.category) }}
+                </span>
+
+                <h3 class="card-title">
+                  <NuxtLink :to="getArticleUrl(article.slug)" class="card-title-link">
+                    {{ article.title }}
+                  </NuxtLink>
+                </h3>
+
+                <time :datetime="article.publishDate" class="card-date">
+                  {{ formatDate(article.publishDate) }}
+                </time>
+
+                <p class="card-abstract">{{ article.summary }}</p>
+
+                <ul class="card-tags" aria-label="Article tags">
+                  <li v-for="tag in article.tags.slice(0, 3)" :key="tag" class="tag-item">
+                    {{ tag }}
+                  </li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </section>
+      </template>
     </div>
   </main>
 </template>
@@ -254,12 +335,141 @@ const getCategoryColor = (category: string) => {
   }
 }
 
+.section-header {
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: @sauna-dark;
+  margin: 0 0 8px;
+  line-height: 1.3;
+}
+
+.section-desc {
+  font-size: 0.95rem;
+  color: @light-text;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.pillar-section {
+  padding: 16px 0 40px;
+  border-bottom: 1px solid rgba(@sauna-wood, 0.12);
+}
+
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+@media (max-width: 768px) {
+  .pillar-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.pillar-card {
+  display: flex;
+  flex-direction: column;
+  background: @white;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(@sauna-wood, 0.18);
+  transition: all 0.3s ease;
+}
+
+.pillar-card:hover {
+  border-color: @sauna-wood;
+  box-shadow: 0 10px 28px rgba(@sauna-dark, 0.12);
+}
+
+.pillar-card-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: rgba(@sauna-wood, 0.04);
+}
+
+.pillar-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.pillar-card:hover .pillar-card-image img {
+  transform: scale(1.03);
+}
+
+.pillar-card-content {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.pillar-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #8B5A2B;
+  background: rgba(139, 90, 43, 0.1);
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.pillar-card-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: @sauna-dark;
+  margin: 0 0 12px;
+  line-height: 1.3;
+}
+
+.pillar-card-summary {
+  font-size: 0.95rem;
+  color: @light-text;
+  line-height: 1.65;
+  margin: 0 0 20px;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pillar-cta {
+  display: inline-flex;
+  align-self: flex-start;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: @sauna-wood;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.pillar-cta:hover {
+  border-bottom-color: @sauna-wood;
+}
+
+.cluster-section {
+  padding: 40px 0 80px;
+}
+
 .filter-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 0;
-  border-bottom: 1px solid rgba(@sauna-wood, 0.15);
+  padding: 0 0 24px;
   gap: 24px;
 }
 
@@ -347,22 +557,23 @@ const getCategoryColor = (category: string) => {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
-  padding: 32px 0 80px;
 }
 
 @media (max-width: 768px) {
   .articles-grid {
     grid-template-columns: 1fr;
     gap: 24px;
-    padding: 24px 0 60px;
   }
 }
 
 .loading-state,
 .empty-state {
-  grid-column: 1 / -1;
   text-align: center;
   padding: 60px 0;
+}
+
+.empty-state--inline {
+  padding: 40px 0;
 }
 
 .loading-text,
@@ -425,6 +636,10 @@ const getCategoryColor = (category: string) => {
 @media (max-width: 768px) {
   .card-title {
     font-size: 1.1rem;
+  }
+
+  .pillar-card-title {
+    font-size: 1.2rem;
   }
 }
 

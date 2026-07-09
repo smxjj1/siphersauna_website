@@ -382,9 +382,19 @@
     "searchPlaceholder": "搜索文章...",
     "loading": "加载中...",
     "empty": "暂无文章。",
+    "pillarSectionTitle": "从这里开始：支柱指南",
+    "pillarSectionDesc": "覆盖完整主题的枢纽页面。先读支柱，再探索下方相关专题。",
+    "clusterSectionTitle": "专题指南",
+    "readPillar": "阅读完整指南",
     "categories": {
+      "pillar": "支柱指南",
       "saunaSelection": "桑拿选购",
-      "healthWellness": "健康养生"
+      "healthWellness": "健康养生",
+      "installationDiy": "安装与 DIY",
+      "productReviews": "产品评测",
+      "commercialSolutions": "商业方案",
+      "materialsCraftsmanship": "材料与工艺",
+      "industryInsights": "行业洞察"
     }
   },
   "blogDetail": {
@@ -399,6 +409,7 @@
     "consultationDesc": "我们的桑拿专家随时为您打造完美的家庭养生空间。",
     "getInTouch": "联系我们",
     "relatedArticles": "相关文章",
+    "clusterArticles": "本支柱下的专题文章",
     "noRelated": "暂无相关文章。",
     "backToBlog": "返回博客",
     "downloadPdf": "下载PDF",

@@ -382,9 +382,19 @@
     "searchPlaceholder": "Search articles...",
     "loading": "Loading...",
     "empty": "No articles found.",
+    "pillarSectionTitle": "Start Here: Pillar Guides",
+    "pillarSectionDesc": "Hub pages that map the full topic. Jump in, then explore related guides below.",
+    "clusterSectionTitle": "Topic Guides",
+    "readPillar": "Read the full guide",
     "categories": {
+      "pillar": "Pillar Guide",
       "saunaSelection": "Sauna Selection",
-      "healthWellness": "Health & Wellness"
+      "healthWellness": "Health & Wellness",
+      "installationDiy": "Installation & DIY",
+      "productReviews": "Product Reviews",
+      "commercialSolutions": "Commercial Solutions",
+      "materialsCraftsmanship": "Materials & Craftsmanship",
+      "industryInsights": "Industry Insights"
     }
   },
   "blogDetail": {
@@ -399,6 +409,7 @@
     "consultationDesc": "Our sauna specialists are ready to help you design the perfect home wellness space.",
     "getInTouch": "Get in Touch",
     "relatedArticles": "Related Articles",
+    "clusterArticles": "More Guides in This Hub",
     "noRelated": "No related articles.",
     "backToBlog": "Back to Blog",
     "downloadPdf": "Download PDF",

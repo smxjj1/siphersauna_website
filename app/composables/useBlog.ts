@@ -5,7 +5,6 @@ import type { BlogArticle } from '~/data/blog/types'
 import {
   getBlogData,
   getBlogArticleBySlug,
-  getRelatedArticles,
 } from '~/data/blog'
 
 export type { BlogArticle }
@@ -63,6 +62,41 @@ function normalizeArticle(raw: BlogArticle, mediaBase: string): BlogArticle {
   }
 }
 
+function pickRelatedArticles(
+  article: BlogArticle,
+  list: BlogArticle[],
+  limit = 6,
+): BlogArticle[] {
+  const others = list.filter(a => a.slug !== article.slug)
+  if (!others.length)
+    return []
+
+  const dedupe = (items: BlogArticle[]) => {
+    const seen = new Set<string>()
+    return items.filter((item) => {
+      if (seen.has(item.slug))
+        return false
+      seen.add(item.slug)
+      return true
+    })
+  }
+
+  // Pillar：自动列出各 Cluster（非 pillar），再补其他 Pillar
+  if (article.category === 'pillar') {
+    const clusters = others.filter(a => a.category !== 'pillar')
+    const otherPillars = others.filter(a => a.category === 'pillar')
+    return dedupe([...clusters, ...otherPillars]).slice(0, limit)
+  }
+
+  // Cluster / 普通文：同分类 → Pillar 回链 → 其他
+  const sameCategory = others.filter(a => a.category === article.category)
+  const pillars = others.filter(a => a.category === 'pillar')
+  const rest = others.filter(
+    a => a.category !== article.category && a.category !== 'pillar',
+  )
+  return dedupe([...sameCategory, ...pillars, ...rest]).slice(0, limit)
+}
+
 export function useBlog() {
   const config = useRuntimeConfig()
   const siteKey = (config.public.cmsSiteKey as string) || 'siphersauna.com'
@@ -72,6 +106,7 @@ export function useBlog() {
   async function fetchBlogList(locale: string, category?: string): Promise<BlogArticle[]> {
     const mappedLocale = normalizeLocale(locale)
 
+    // CMS 成功响应（含空列表）以 CMS 为准：后台隐藏/下架后前台应不显示，不再回退本地静态稿
     if (cmsApi && siteKey) {
       try {
         const params = new URLSearchParams({
@@ -82,8 +117,8 @@ export function useBlog() {
           params.set('category', category)
 
         const res = await $fetch<PublicBlogResponse>(`${cmsApi}/blog?${params.toString()}`)
-        const list = Array.isArray(res.data) ? res.data : []
-        if (res.success && list.length > 0) {
+        if (res.success) {
+          const list = Array.isArray(res.data) ? res.data : []
           return list.map(item => normalizeArticle(item, mediaBase))
         }
       }
@@ -114,11 +149,16 @@ export function useBlog() {
         if (res.success && res.data && !Array.isArray(res.data)) {
           return normalizeArticle(res.data, mediaBase)
         }
+        // CMS 明确无此文（或未发布）→ 不回退本地
+        return null
       }
       catch (err: unknown) {
         const status = (err as { statusCode?: number; status?: number })?.statusCode
           ?? (err as { status?: number })?.status
-        if (status !== 404 && import.meta.dev)
+        // 404 = 后台已隐藏/不存在，不回退本地
+        if (status === 404)
+          return null
+        if (import.meta.dev)
           console.error('[useBlog] fetchBlogBySlug failed, fallback to local', err)
       }
     }
@@ -129,7 +169,7 @@ export function useBlog() {
   async function fetchBlogDetail(
     slug: string,
     locale: string,
-    relatedLimit = 3,
+    relatedLimit = 6,
   ): Promise<{ article: BlogArticle | null; relatedArticles: BlogArticle[] }> {
     const mappedLocale = normalizeLocale(locale)
     const article = await fetchBlogBySlug(slug, mappedLocale)
@@ -138,18 +178,19 @@ export function useBlog() {
       return { article: null, relatedArticles: [] }
     }
 
-    // Prefer CMS list for related; fall back to local helper
     const list = await fetchBlogList(mappedLocale)
-    const fromCms = list.filter(
-      a => a.category === article.category && a.slug !== article.slug,
-    ).slice(0, relatedLimit)
+    const related = pickRelatedArticles(article, list, relatedLimit)
+    if (related.length > 0)
+      return { article, relatedArticles: related }
 
-    if (fromCms.length > 0)
-      return { article, relatedArticles: fromCms }
-
+    // API 列表为空时，用本地 helper（同样走增强逻辑）
     return {
       article,
-      relatedArticles: getRelatedArticles(slug, article.category, mappedLocale, relatedLimit),
+      relatedArticles: pickRelatedArticles(
+        article,
+        getBlogData(mappedLocale),
+        relatedLimit,
+      ),
     }
   }
 
@@ -157,5 +198,6 @@ export function useBlog() {
     fetchBlogList,
     fetchBlogBySlug,
     fetchBlogDetail,
+    pickRelatedArticles,
   }
 }
