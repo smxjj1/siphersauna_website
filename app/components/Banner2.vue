@@ -10,7 +10,7 @@
       <div class="products-grid">
         <div class="product-item">
           <div class="product-image">
-            <OptimImg src="/images/home/SaunaRooms.png" alt="Sauna Rooms" width="828" height="280" loading="lazy" />
+            <OptimImg src="/images/home/SaunaRooms.png" alt="Sauna Rooms" width="828" height="520" loading="lazy" />
           </div>
           <div class="product-content">
             <h3>{{ tm('banner2.products.saunaRooms.title') }}</h3>
@@ -20,7 +20,7 @@
 
         <div class="product-item">
           <div class="product-image">
-            <OptimImg src="/images/home/SaunaHeaters.png" alt="Sauna Heaters" width="828" height="280" loading="lazy" />
+            <OptimImg src="/images/home/SaunaHeaters.png" alt="Sauna Heaters" width="828" height="520" loading="lazy" />
           </div>
           <div class="product-content">
             <h3>{{ tm('banner2.products.saunaHeaters.title') }}</h3>
@@ -30,7 +30,7 @@
 
         <div class="product-item">
           <div class="product-image">
-            <OptimImg src="/images/home/SaunaAccessories.png" alt="Sauna Stones" width="828" height="280" loading="lazy" />
+            <OptimImg src="/images/home/SaunaAccessories.png" alt="Sauna Stones" width="828" height="520" loading="lazy" />
           </div>
           <div class="product-content">
             <h3>{{ tm('banner2.products.saunaAccessories.title') }}</h3>
@@ -40,7 +40,7 @@
 
         <div class="product-item">
           <div class="product-image">
-            <OptimImg src="/images/home/OutdoorWoodfiredHotTub.png" alt="Outdoor Wood-fired Hot Tub" width="828" height="280" loading="lazy" />
+            <OptimImg src="/images/home/OutdoorWoodfiredHotTub.png" alt="Outdoor Wood-fired Hot Tub" width="828" height="520" loading="lazy" />
           </div>
           <div class="product-content">
             <h3>{{ tm('banner2.products.outdoorHotTub.title') }}</h3>
@@ -50,7 +50,7 @@
 
         <div class="product-item">
           <div class="product-image">
-            <OptimImg src="/images/home/IndoorDry&SteamRoom.png" alt="Indoor Dry & Steam Room" width="828" height="280" loading="lazy" />
+            <OptimImg src="/images/home/IndoorDry&SteamRoom.png" alt="Indoor Dry & Steam Room" width="828" height="520" loading="lazy" />
           </div>
           <div class="product-content">
             <h3>{{ tm('banner2.products.indoorDrySteam.title') }}</h3>
@@ -60,7 +60,7 @@
 
         <div class="product-item">
           <div class="product-image">
-            <OptimImg src="/images/home/OutdoorTraditionalSauna.png" alt="Outdoor Traditional Sauna" width="828" height="280" loading="lazy" />
+            <OptimImg src="/images/home/OutdoorTraditionalSauna.png" alt="Outdoor Traditional Sauna" width="828" height="520" loading="lazy" />
           </div>
           <div class="product-content">
             <h3>{{ tm('banner2.products.outdoorTraditional.title') }}</h3>
@@ -136,14 +136,20 @@ const { tm, localePath } = useI18nHelpers()
     }
 
     .product-content {
-      background: @sauna-wood;
+      background: linear-gradient(
+        to top,
+        rgba(139, 90, 43, 0.95) 0%,
+        rgba(139, 90, 43, 0.75) 55%,
+        transparent 100%
+      );
     }
   }
 }
 
 .product-image {
   overflow: hidden;
-  aspect-ratio: 828 / 280;
+  height: 320px;
+  background: @sauna-dark;
 
   :deep(.optim-img) {
     width: 100%;
@@ -158,21 +164,32 @@ const { tm, localePath } = useI18nHelpers()
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 30px;
-  background: rgba(45, 32, 22, 0.9);
+  padding: 28px 24px 20px;
+  background: linear-gradient(
+    to top,
+    rgba(45, 32, 22, 0.88) 0%,
+    rgba(45, 32, 22, 0.65) 55%,
+    transparent 100%
+  );
   transition: background 0.4s ease;
 
   h3 {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
     color: @white;
-    margin: 0 0 8px;
+    margin: 0 0 6px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   }
 
   p {
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.85);
     margin: 0;
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 
@@ -213,6 +230,10 @@ const { tm, localePath } = useI18nHelpers()
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .product-image {
+    height: 280px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -230,7 +251,21 @@ const { tm, localePath } = useI18nHelpers()
   }
 
   .product-image {
-    height: 220px;
+    height: 260px;
+  }
+
+  .product-content {
+    padding: 20px 16px 14px;
+
+    h3 {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    p {
+      font-size: 13px;
+      -webkit-line-clamp: 1;
+    }
   }
 }
 </style>
