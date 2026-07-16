@@ -38,6 +38,15 @@ const EMPTY_PAYLOAD: ContactLinksPayload = {
   profile: EMPTY_PROFILE,
 }
 
+function normalizePayload(data: ContactLinksPayload): ContactLinksPayload {
+  return {
+    contact: Array.isArray(data.contact) ? data.contact : [],
+    social: Array.isArray(data.social) ? data.social : [],
+    links: Array.isArray(data.links) ? data.links : [],
+    profile: data.profile || EMPTY_PROFILE,
+  }
+}
+
 export function getLocalizedProfileText(
   profile: ContactProfile | null | undefined,
   field: 'address' | 'businessHours',
@@ -110,44 +119,67 @@ export function useContactLinks() {
   const siteKey = (config.public.cmsSiteKey as string) || 'siphersauna.com'
   const cmsApi = ((config.public.cmsApi as string) || 'https://analytics.oyababies.com/api/public').replace(/\/$/, '')
 
-  const { data, error, pending, refresh } = useFetch<{ success?: boolean; data?: ContactLinksPayload }>(
+  // 页面实际渲染读这个；客户端 $fetch 会直接覆盖，彻底绕开 Nuxt SSG/asyncData 缓存
+  const livePayload = useState<ContactLinksPayload>(
+    `contact-links-live-${siteKey}`,
+    () => ({ ...EMPTY_PAYLOAD }),
+  )
+
+  const { data, error, pending } = useFetch<{ success?: boolean; data?: ContactLinksPayload }>(
     () => `${cmsApi}/contact-links`,
     {
       query: { site_key: siteKey },
       key: `contact-links-${siteKey}`,
       cache: 'no-store',
-      // 水合阶段用 SSR/SSG 数据避免闪烁；之后（含 refresh）强制走网络，否则会一直复用构建时冻住的旧 payload
-      getCachedData(key, nuxtApp) {
-        if (nuxtApp.isHydrating) {
-          return nuxtApp.payload.data[key] ?? nuxtApp.static.data[key]
-        }
-      },
     },
   )
 
-  // 每次完整进入页面后，客户端再拉一次最新联系方式
+  watch(
+    data,
+    (value) => {
+      if (value?.success && value.data)
+        livePayload.value = normalizePayload(value.data)
+    },
+    { immediate: true },
+  )
+
   const didClientRefresh = useState(`contact-links-client-refresh-${siteKey}`, () => false)
+
+  async function fetchFreshContactLinks() {
+    const res = await $fetch<{ success?: boolean; data?: ContactLinksPayload }>(
+      `${cmsApi}/contact-links`,
+      {
+        query: {
+          site_key: siteKey,
+          // 防止中间层按 URL 缓存
+          _: String(Date.now()),
+        },
+        cache: 'no-store',
+        headers: {
+          'Cache-Control': 'no-cache',
+          Pragma: 'no-cache',
+        },
+      },
+    )
+    if (res?.success && res.data)
+      livePayload.value = normalizePayload(res.data)
+    return res
+  }
+
   onMounted(() => {
     if (didClientRefresh.value)
       return
     didClientRefresh.value = true
-    void refresh()
+    void fetchFreshContactLinks().catch((err) => {
+      if (import.meta.dev)
+        console.error('[useContactLinks] client refresh failed', err)
+    })
   })
 
-  const payload = computed<ContactLinksPayload>(() => {
-    if (error.value || !data.value?.success || !data.value.data) {
-      return EMPTY_PAYLOAD
-    }
-    return {
-      ...data.value.data,
-      profile: data.value.data.profile || EMPTY_PROFILE,
-    }
-  })
-
-  const contactLinks = computed(() => payload.value.contact)
-  const socialLinks = computed(() => payload.value.social)
-  const contactProfile = computed(() => payload.value.profile || EMPTY_PROFILE)
-  const hasLinks = computed(() => payload.value.links.length > 0)
+  const contactLinks = computed(() => livePayload.value.contact)
+  const socialLinks = computed(() => livePayload.value.social)
+  const contactProfile = computed(() => livePayload.value.profile || EMPTY_PROFILE)
+  const hasLinks = computed(() => livePayload.value.links.length > 0)
 
   return {
     contactLinks,
@@ -156,7 +188,7 @@ export function useContactLinks() {
     hasLinks,
     pending,
     error,
-    refresh,
+    refresh: fetchFreshContactLinks,
     getLinkDisplayText,
     getLinkAriaLabel,
     getContactLinkAriaLabel,
