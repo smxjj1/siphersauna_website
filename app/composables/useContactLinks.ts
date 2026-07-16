@@ -38,11 +38,6 @@ const EMPTY_PAYLOAD: ContactLinksPayload = {
   profile: EMPTY_PROFILE,
 }
 
-/** 模块级客户端覆盖：不受 Nuxt SSG/useState payload 水合回写影响 */
-const clientOverrides = new Map<string, ContactLinksPayload>()
-const clientOverrideTick = ref(0)
-const clientFetchStarted = new Set<string>()
-
 function normalizePayload(data: ContactLinksPayload): ContactLinksPayload {
   return {
     contact: Array.isArray(data.contact) ? data.contact : [],
@@ -86,25 +81,29 @@ export function buildGoogleMapEmbedUrl(query: string, locale?: string): string {
 
 export function getLinkDisplayText(link: ContactLinkItem): string {
   const url = link.url || ''
-  if (link.iconKey === 'email') {
+  if (/^mailto:/i.test(url))
     return url.replace(/^mailto:/i, '')
-  }
-  if (link.iconKey === 'phone' || link.iconKey === 'whatsapp') {
-    return url.replace(/^tel:/i, '')
-  }
-  // tel: / mailto: 即使用错了 iconKey，也尽量显示可读内容
   if (/^tel:/i.test(url))
     return url.replace(/^tel:/i, '')
-  if (/^mailto:/i.test(url))
+  if (link.iconKey === 'phone' || link.iconKey === 'whatsapp')
+    return url.replace(/^tel:/i, '')
+  if (link.iconKey === 'email')
     return url.replace(/^mailto:/i, '')
   return link.label || url
 }
 
 export function getLinkAriaLabel(link: ContactLinkItem): string {
+  const url = link.url || ''
+  if (link.label)
+    return link.label
+  if (/^tel:/i.test(url) || link.iconKey === 'phone')
+    return 'Phone'
+  if (/wa\.me|whatsapp/i.test(url) || link.iconKey === 'whatsapp')
+    return 'WhatsApp'
+  if (/^mailto:/i.test(url) || link.iconKey === 'email')
+    return 'Email'
+
   const labels: Record<string, string> = {
-    email: 'Email',
-    phone: 'Phone',
-    whatsapp: 'WhatsApp',
     instagram: 'Instagram',
     facebook: 'Facebook',
     xiaohongshu: 'Xiaohongshu',
@@ -114,7 +113,7 @@ export function getLinkAriaLabel(link: ContactLinkItem): string {
     youtube: 'YouTube',
     tiktok: 'TikTok',
   }
-  return link.label || labels[link.iconKey || ''] || link.iconKey || 'Link'
+  return labels[link.iconKey || ''] || link.iconKey || 'Link'
 }
 
 export function getContactLinkAriaLabel(link: ContactLinkItem): string {
@@ -123,79 +122,55 @@ export function getContactLinkAriaLabel(link: ContactLinkItem): string {
   return display ? `${type}: ${display}` : type
 }
 
+/**
+ * 联系方式只在浏览器端拉取，不参与 SSG/SSR payload。
+ * 这样后台改完刷新官网一定是最新值，也不会被预渲染旧数据盖住。
+ */
 export function useContactLinks() {
   const config = useRuntimeConfig()
   const siteKey = (config.public.cmsSiteKey as string) || 'siphersauna.com'
   const cmsApi = ((config.public.cmsApi as string) || 'https://analytics.oyababies.com/api/public').replace(/\/$/, '')
 
-  const { data, error, pending } = useFetch<{ success?: boolean; data?: ContactLinksPayload }>(
+  const { data, error, pending, refresh } = useFetch<{ success?: boolean; data?: ContactLinksPayload }>(
     () => `${cmsApi}/contact-links`,
     {
-      query: { site_key: siteKey },
-      key: `contact-links-${siteKey}`,
-      cache: 'no-store',
-    },
-  )
-
-  async function fetchFreshContactLinks() {
-    const res = await $fetch<{ success?: boolean; data?: ContactLinksPayload }>(
-      `${cmsApi}/contact-links`,
-      {
-        query: {
-          site_key: siteKey,
-          _: String(Date.now()),
-        },
+      query: {
+        site_key: siteKey,
+      },
+      key: `contact-links-client-${siteKey}`,
+      server: false,
+      lazy: false,
+      default: () => ({ success: true, data: { ...EMPTY_PAYLOAD } }),
+      getCachedData: () => undefined,
+      $fetch: $fetch.create({
         cache: 'no-store',
         headers: {
           'Cache-Control': 'no-cache',
           Pragma: 'no-cache',
         },
-      },
-    )
-    if (res?.success && res.data) {
-      clientOverrides.set(siteKey, normalizePayload(res.data))
-      clientOverrideTick.value++
-    }
-    return res
-  }
+      }),
+    },
+  )
 
+  // 每次组件挂载（含整页刷新）再强制拉一次
   onMounted(() => {
-    if (clientFetchStarted.has(siteKey))
-      return
-    clientFetchStarted.add(siteKey)
-    void fetchFreshContactLinks().catch((err) => {
-      clientFetchStarted.delete(siteKey)
-      if (import.meta.dev)
-        console.error('[useContactLinks] client refresh failed', err)
-    })
+    void refresh()
   })
 
   const payload = computed<ContactLinksPayload>(() => {
-    // 依赖 tick，确保客户端覆盖后触发更新
-    void clientOverrideTick.value
-    const override = clientOverrides.get(siteKey)
-    if (override)
-      return override
-
-    if (data.value?.success && data.value.data)
-      return normalizePayload(data.value.data)
-
-    return { ...EMPTY_PAYLOAD }
+    if (error.value || !data.value?.success || !data.value.data)
+      return { ...EMPTY_PAYLOAD }
+    return normalizePayload(data.value.data)
   })
 
-  const contactLinks = computed(() => payload.value.contact)
-  const socialLinks = computed(() => payload.value.social)
-  const contactProfile = computed(() => payload.value.profile || EMPTY_PROFILE)
-  const hasLinks = computed(() => payload.value.links.length > 0)
-
   return {
-    contactLinks,
-    socialLinks,
-    contactProfile,
-    hasLinks,
+    contactLinks: computed(() => payload.value.contact),
+    socialLinks: computed(() => payload.value.social),
+    contactProfile: computed(() => payload.value.profile || EMPTY_PROFILE),
+    hasLinks: computed(() => payload.value.links.length > 0),
     pending,
     error,
-    refresh: fetchFreshContactLinks,
+    refresh,
     getLinkDisplayText,
     getLinkAriaLabel,
     getContactLinkAriaLabel,
