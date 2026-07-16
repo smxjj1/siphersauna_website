@@ -115,12 +115,17 @@ export function useContactLinks() {
     {
       query: { site_key: siteKey },
       key: `contact-links-${siteKey}`,
-      // 绕过浏览器对公开 API 的 HTTP 缓存；仍保留 SSR/SSG payload 供首屏展示
       cache: 'no-store',
+      // 水合阶段用 SSR/SSG 数据避免闪烁；之后（含 refresh）强制走网络，否则会一直复用构建时冻住的旧 payload
+      getCachedData(key, nuxtApp) {
+        if (nuxtApp.isHydrating) {
+          return nuxtApp.payload.data[key] ?? nuxtApp.static.data[key]
+        }
+      },
     },
   )
 
-  // 每次完整进入页面后，在客户端再拉一次，避免 SSG 冻住旧数据
+  // 每次完整进入页面后，客户端再拉一次最新联系方式
   const didClientRefresh = useState(`contact-links-client-refresh-${siteKey}`, () => false)
   onMounted(() => {
     if (didClientRefresh.value)
