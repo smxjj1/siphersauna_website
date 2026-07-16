@@ -81,9 +81,6 @@ const isMenuOpen = ref(false)
 const route = useRoute()
 const { tm, localePath } = useI18nHelpers()
 
-const strippedPath = computed(() => route.path.replace(/^\/(zh-CN|zh-TW)/, '') || '/')
-const isHomePage = computed(() => strippedPath.value === '/')
-
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 50
   emit('scroll-state', { isScrolled: isScrolled.value })
