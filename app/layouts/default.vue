@@ -36,6 +36,7 @@ const layoutClass = computed(() => {
   padding-top: 84px;
 }
 
+/* 首页：桌面端仅预留顶栏，导航条半透明浮在轮播上（设计如此） */
 .layout-wrapper.home-initial {
   padding-top: 36px;
 }
@@ -44,13 +45,20 @@ const layoutClass = computed(() => {
   padding-top: 80px;
 }
 
+@media (max-width: 992px) {
+  /* 平板/手机导航变为全宽实底，不能再压在轮播上 */
+  .layout-wrapper.home-initial {
+    padding-top: 88px;
+  }
+}
+
 @media (max-width: 768px) {
   .layout-wrapper {
     padding-top: 88px;
   }
 
   .layout-wrapper.home-initial {
-    padding-top: 36px;
+    padding-top: 88px;
   }
 
   .layout-wrapper.not-home {

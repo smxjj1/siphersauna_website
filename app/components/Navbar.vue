@@ -140,29 +140,36 @@ onUnmounted(() => {
 
 .top-info-bar {
   width: 100%;
+  height: 36px;
   min-height: 36px;
+  max-height: 36px;
   box-sizing: border-box;
   background: #1A1510;
   color: rgba(255, 255, 255, 0.85);
   font-size: 12px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .top-info-inner {
   max-width: 1200px;
+  height: 100%;
   margin: 0 auto;
-  padding: 4px 40px;
+  padding: 0 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  flex-wrap: nowrap;
 
   .contact-info {
     display: flex;
     align-items: center;
     gap: 24px;
     min-width: 0;
+    flex: 1;
+    overflow: hidden;
   }
 
   .right-cluster {
@@ -349,7 +356,7 @@ onUnmounted(() => {
 
 @media (max-width: 992px) {
   .top-info-inner {
-    padding: 4px 16px;
+    padding: 0 16px;
   }
 
   .navbar {
@@ -500,7 +507,7 @@ onUnmounted(() => {
 @media (max-width: 768px) {
   .top-info-bar {
     .top-info-inner {
-      padding: 6px 12px;
+      padding: 0 12px;
       font-size: 12px;
 
       .contact-info {
