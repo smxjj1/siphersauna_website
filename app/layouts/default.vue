@@ -33,20 +33,20 @@ const layoutClass = computed(() => {
 
 <style lang="less">
 .layout-wrapper {
-  /* 顶栏 36 + 导航约 52–64，统一预留，避免 fixed 导航遮挡轮播 */
-  padding-top: 96px;
+  /* 顶栏 36 + 导航 50，与 Navbar 实际高度一致，避免白缝 */
+  padding-top: 86px;
 }
 
 .layout-wrapper.home-initial,
 .layout-wrapper.not-home {
-  padding-top: 96px;
+  padding-top: 86px;
 }
 
 @media (max-width: 992px) {
   .layout-wrapper,
   .layout-wrapper.home-initial,
   .layout-wrapper.not-home {
-    padding-top: 88px;
+    padding-top: 86px;
   }
 }
 
@@ -54,7 +54,7 @@ const layoutClass = computed(() => {
   .layout-wrapper,
   .layout-wrapper.home-initial,
   .layout-wrapper.not-home {
-    padding-top: 88px;
+    padding-top: 86px;
   }
 }
 </style>

@@ -132,6 +132,7 @@ onUnmounted(() => {
   left: 0;
   width: 100%;
   z-index: 9999;
+  background: #2D2016;
 }
 
 .top-info-bar {
@@ -327,7 +328,9 @@ onUnmounted(() => {
     max-width: 1200px;
     margin: 0 auto;
     border-radius: 0;
-    padding: 6px 40px;
+    height: 50px;
+    box-sizing: border-box;
+    padding: 0 40px;
     background: transparent;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
@@ -337,7 +340,7 @@ onUnmounted(() => {
 }
 
 @media (max-width: 1200px) {
-  .navbar {
+  .navbar:not(.navbar--scrolled) {
     .navbar-inner {
       gap: 24px;
       padding: 14px 28px;
@@ -347,6 +350,10 @@ onUnmounted(() => {
       padding: 6px 12px;
       font-size: 13px;
     }
+  }
+
+  .navbar--scrolled .navbar-inner {
+    padding: 0 28px;
   }
 }
 
@@ -361,7 +368,6 @@ onUnmounted(() => {
 
     .navbar-inner {
       gap: 12px;
-      padding: 10px 16px;
       border-radius: 0;
     }
 
@@ -372,6 +378,11 @@ onUnmounted(() => {
     .logo .logo-text {
       font-size: 18px;
     }
+  }
+
+  .navbar--scrolled .navbar-inner {
+    height: 50px;
+    padding: 0 16px;
   }
 
   .menu-toggle {
@@ -432,7 +443,7 @@ onUnmounted(() => {
 
   .nav-links {
     position: fixed;
-    top: calc(36px + 52px);
+    top: 86px;
     left: 0;
     right: 0;
     flex-direction: column;
@@ -448,7 +459,7 @@ onUnmounted(() => {
     pointer-events: none;
     transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
     z-index: 9998;
-    max-height: calc(100vh - 88px);
+    max-height: calc(100vh - 86px);
     overflow-y: auto;
 
     &.nav-open {
@@ -494,7 +505,7 @@ onUnmounted(() => {
     display: block;
     position: fixed;
     inset: 0;
-    top: calc(36px + 52px);
+    top: 86px;
     background: rgba(0, 0, 0, 0.35);
     z-index: 9997;
   }
