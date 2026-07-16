@@ -142,13 +142,6 @@ export function useContactLinks() {
       lazy: false,
       default: () => ({ success: true, data: { ...EMPTY_PAYLOAD } }),
       getCachedData: () => undefined,
-      $fetch: $fetch.create({
-        cache: 'no-store',
-        headers: {
-          'Cache-Control': 'no-cache',
-          Pragma: 'no-cache',
-        },
-      }),
     },
   )
 
