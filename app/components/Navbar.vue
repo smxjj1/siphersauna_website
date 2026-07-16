@@ -91,9 +91,8 @@ const handleScroll = () => {
 
 const navbarClass = computed(() => {
   const classes = {}
-  if (!isHomePage.value || isScrolled.value || isMenuOpen.value) {
-    classes['navbar--scrolled'] = true
-  }
+  // 导航在内容之上独立占位，不再半透明压在轮播上
+  classes['navbar--scrolled'] = true
   if (isMenuOpen.value) {
     classes['navbar--menu-open'] = true
   }

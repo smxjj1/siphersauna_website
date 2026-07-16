@@ -33,34 +33,26 @@ const layoutClass = computed(() => {
 
 <style lang="less">
 .layout-wrapper {
-  padding-top: 84px;
+  /* 顶栏 36 + 导航约 52–64，统一预留，避免 fixed 导航遮挡轮播 */
+  padding-top: 96px;
 }
 
-/* 首页：桌面端仅预留顶栏，导航条半透明浮在轮播上（设计如此） */
-.layout-wrapper.home-initial {
-  padding-top: 36px;
-}
-
+.layout-wrapper.home-initial,
 .layout-wrapper.not-home {
-  padding-top: 80px;
+  padding-top: 96px;
 }
 
 @media (max-width: 992px) {
-  /* 平板/手机导航变为全宽实底，不能再压在轮播上 */
-  .layout-wrapper.home-initial {
+  .layout-wrapper,
+  .layout-wrapper.home-initial,
+  .layout-wrapper.not-home {
     padding-top: 88px;
   }
 }
 
 @media (max-width: 768px) {
-  .layout-wrapper {
-    padding-top: 88px;
-  }
-
-  .layout-wrapper.home-initial {
-    padding-top: 88px;
-  }
-
+  .layout-wrapper,
+  .layout-wrapper.home-initial,
   .layout-wrapper.not-home {
     padding-top: 88px;
   }

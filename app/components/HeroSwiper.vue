@@ -60,7 +60,7 @@ const HERO_SLIDES = [
   { file: 'Tailored-Luxury.webp', alt: 'Tailored Luxury' },
 ].map(slide => ({
   ...slide,
-  src: `/images/home/hero/${slide.file}`,
+  src: `/images/home/hero/${slide.file}?v=1672`,
 }))
 
 const SLIDE_META = [
@@ -133,9 +133,12 @@ onMounted(() => {
 
 <style lang="less" scoped>
 .hero-swiper {
-  height: calc(100vh - 36px);
+  /* 按原图比例限制高度，避免 100vh 全屏拉伸导致发糊 */
   width: 100%;
   position: relative;
+  height: min(64vh, 680px, calc(100vw * 940 / 1672));
+  background: @sauna-dark;
+  overflow: hidden;
 
   .hero-swiper-container {
     width: 100%;
@@ -146,6 +149,7 @@ onMounted(() => {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    background: @sauna-dark;
 
     :deep(.slide-image),
     :deep(.optim-img) {
@@ -159,7 +163,7 @@ onMounted(() => {
 
   .swiper-pagination {
     position: absolute;
-    bottom: 40px;
+    bottom: 28px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
@@ -187,8 +191,8 @@ onMounted(() => {
 
   :deep(.swiper-button-prev),
   :deep(.swiper-button-next) {
-    width: 60px;
-    height: 60px;
+    width: 52px;
+    height: 52px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, 0.4);
     border-radius: 50%;
@@ -218,7 +222,7 @@ onMounted(() => {
   }
 
   :deep(.swiper-button-prev) {
-    left: 50px;
+    left: 28px;
 
     &::before {
       transform: translate(-55%, -50%) rotate(-135deg);
@@ -226,7 +230,7 @@ onMounted(() => {
   }
 
   :deep(.swiper-button-next) {
-    right: 50px;
+    right: 28px;
 
     &::before {
       transform: translate(-45%, -50%) rotate(45deg);
@@ -234,63 +238,36 @@ onMounted(() => {
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 992px) {
   .hero-swiper {
-    height: auto;
-    min-height: 0;
-    aspect-ratio: 828 / 466;
-    max-height: 72vh;
-    background: @sauna-dark;
-
-    .hero-swiper-container {
-      height: 100%;
-    }
-
-    .swiper-slide {
-      background: @sauna-dark;
-    }
-
-    :deep(.slide-image),
-    :deep(.optim-img) {
-      object-fit: contain;
-      min-height: 0;
-    }
+    height: min(52vh, 480px, calc(100vw * 940 / 1672));
 
     .swiper-pagination {
-      bottom: 30px;
+      bottom: 20px;
     }
 
     :deep(.swiper-button-prev),
     :deep(.swiper-button-next) {
-      width: 45px;
-      height: 45px;
+      width: 42px;
+      height: 42px;
     }
 
     :deep(.swiper-button-prev) {
-      left: 20px;
+      left: 12px;
     }
 
     :deep(.swiper-button-next) {
-      right: 20px;
+      right: 12px;
     }
   }
 }
 
 @media (max-width: 768px) {
   .hero-swiper {
-    aspect-ratio: 828 / 466;
-    max-height: none;
-
-    :deep(.slide-image),
-    :deep(.optim-img) {
-      object-fit: contain;
-      object-position: center;
-      min-height: 0;
-      max-height: none;
-    }
+    height: calc(100vw * 940 / 1672);
 
     .swiper-pagination {
-      bottom: 16px;
+      bottom: 14px;
 
       :deep(.swiper-pagination-bullet) {
         width: 22px;
