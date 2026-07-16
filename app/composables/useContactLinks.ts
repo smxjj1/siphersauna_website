@@ -38,6 +38,11 @@ const EMPTY_PAYLOAD: ContactLinksPayload = {
   profile: EMPTY_PROFILE,
 }
 
+/** 模块级客户端覆盖：不受 Nuxt SSG/useState payload 水合回写影响 */
+const clientOverrides = new Map<string, ContactLinksPayload>()
+const clientOverrideTick = ref(0)
+const clientFetchStarted = new Set<string>()
+
 function normalizePayload(data: ContactLinksPayload): ContactLinksPayload {
   return {
     contact: Array.isArray(data.contact) ? data.contact : [],
@@ -87,6 +92,11 @@ export function getLinkDisplayText(link: ContactLinkItem): string {
   if (link.iconKey === 'phone' || link.iconKey === 'whatsapp') {
     return url.replace(/^tel:/i, '')
   }
+  // tel: / mailto: 即使用错了 iconKey，也尽量显示可读内容
+  if (/^tel:/i.test(url))
+    return url.replace(/^tel:/i, '')
+  if (/^mailto:/i.test(url))
+    return url.replace(/^mailto:/i, '')
   return link.label || url
 }
 
@@ -107,7 +117,6 @@ export function getLinkAriaLabel(link: ContactLinkItem): string {
   return link.label || labels[link.iconKey || ''] || link.iconKey || 'Link'
 }
 
-/** Accessible name for contact links (icon-only on small screens). */
 export function getContactLinkAriaLabel(link: ContactLinkItem): string {
   const display = getLinkDisplayText(link)
   const type = getLinkAriaLabel(link)
@@ -119,12 +128,6 @@ export function useContactLinks() {
   const siteKey = (config.public.cmsSiteKey as string) || 'siphersauna.com'
   const cmsApi = ((config.public.cmsApi as string) || 'https://analytics.oyababies.com/api/public').replace(/\/$/, '')
 
-  // 页面实际渲染读这个；客户端 $fetch 会直接覆盖，彻底绕开 Nuxt SSG/asyncData 缓存
-  const livePayload = useState<ContactLinksPayload>(
-    `contact-links-live-${siteKey}`,
-    () => ({ ...EMPTY_PAYLOAD }),
-  )
-
   const { data, error, pending } = useFetch<{ success?: boolean; data?: ContactLinksPayload }>(
     () => `${cmsApi}/contact-links`,
     {
@@ -134,24 +137,12 @@ export function useContactLinks() {
     },
   )
 
-  watch(
-    data,
-    (value) => {
-      if (value?.success && value.data)
-        livePayload.value = normalizePayload(value.data)
-    },
-    { immediate: true },
-  )
-
-  const didClientRefresh = useState(`contact-links-client-refresh-${siteKey}`, () => false)
-
   async function fetchFreshContactLinks() {
     const res = await $fetch<{ success?: boolean; data?: ContactLinksPayload }>(
       `${cmsApi}/contact-links`,
       {
         query: {
           site_key: siteKey,
-          // 防止中间层按 URL 缓存
           _: String(Date.now()),
         },
         cache: 'no-store',
@@ -161,25 +152,41 @@ export function useContactLinks() {
         },
       },
     )
-    if (res?.success && res.data)
-      livePayload.value = normalizePayload(res.data)
+    if (res?.success && res.data) {
+      clientOverrides.set(siteKey, normalizePayload(res.data))
+      clientOverrideTick.value++
+    }
     return res
   }
 
   onMounted(() => {
-    if (didClientRefresh.value)
+    if (clientFetchStarted.has(siteKey))
       return
-    didClientRefresh.value = true
+    clientFetchStarted.add(siteKey)
     void fetchFreshContactLinks().catch((err) => {
+      clientFetchStarted.delete(siteKey)
       if (import.meta.dev)
         console.error('[useContactLinks] client refresh failed', err)
     })
   })
 
-  const contactLinks = computed(() => livePayload.value.contact)
-  const socialLinks = computed(() => livePayload.value.social)
-  const contactProfile = computed(() => livePayload.value.profile || EMPTY_PROFILE)
-  const hasLinks = computed(() => livePayload.value.links.length > 0)
+  const payload = computed<ContactLinksPayload>(() => {
+    // 依赖 tick，确保客户端覆盖后触发更新
+    void clientOverrideTick.value
+    const override = clientOverrides.get(siteKey)
+    if (override)
+      return override
+
+    if (data.value?.success && data.value.data)
+      return normalizePayload(data.value.data)
+
+    return { ...EMPTY_PAYLOAD }
+  })
+
+  const contactLinks = computed(() => payload.value.contact)
+  const socialLinks = computed(() => payload.value.social)
+  const contactProfile = computed(() => payload.value.profile || EMPTY_PROFILE)
+  const hasLinks = computed(() => payload.value.links.length > 0)
 
   return {
     contactLinks,
