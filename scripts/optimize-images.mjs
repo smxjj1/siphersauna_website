@@ -12,14 +12,15 @@ const IMAGE_EXT = new Set(['.png', '.jpg', '.jpeg'])
 
 function maxWidthFor(filePath) {
   const normalized = filePath.replace(/\\/g, '/')
+  // 首页 Hero 全屏展示，需接近原图宽度，避免大屏拉伸发糊
   if (normalized.includes('/hero/'))
-    return 828
+    return 1920
   if (normalized.includes('/logo') || normalized.includes('logo'))
     return 256
   if (normalized.includes('/about-us'))
     return 1600
   if (normalized.includes('/home/'))
-    return 828
+    return 1200
   return 1200
 }
 
@@ -38,10 +39,11 @@ async function walk(dir) {
     const outPath = fullPath.replace(/\.(png|jpe?g)$/i, '.webp')
     const meta = await sharp(fullPath).metadata()
     const width = maxWidthFor(fullPath)
+    const isHero = fullPath.replace(/\\/g, '/').includes('/hero/')
 
     await sharp(fullPath)
       .resize({ width, withoutEnlargement: true })
-      .webp({ quality: 75, effort: 4 })
+      .webp({ quality: isHero ? 82 : 75, effort: 4 })
       .toFile(outPath)
 
     const { size: originalSize } = await import('node:fs/promises').then(m => m.stat(fullPath))

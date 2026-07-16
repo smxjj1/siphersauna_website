@@ -115,8 +115,19 @@ export function useContactLinks() {
     {
       query: { site_key: siteKey },
       key: `contact-links-${siteKey}`,
+      // 绕过浏览器对公开 API 的 HTTP 缓存；仍保留 SSR/SSG payload 供首屏展示
+      cache: 'no-store',
     },
   )
+
+  // 每次完整进入页面后，在客户端再拉一次，避免 SSG 冻住旧数据
+  const didClientRefresh = useState(`contact-links-client-refresh-${siteKey}`, () => false)
+  onMounted(() => {
+    if (didClientRefresh.value)
+      return
+    didClientRefresh.value = true
+    void refresh()
+  })
 
   const payload = computed<ContactLinksPayload>(() => {
     if (error.value || !data.value?.success || !data.value.data) {

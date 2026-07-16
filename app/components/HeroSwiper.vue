@@ -12,8 +12,8 @@
             :src="slide.src"
             :alt="slide.alt"
             class="slide-image"
-            width="828"
-            height="466"
+            width="1672"
+            height="940"
             :loading="index === 0 ? 'eager' : 'lazy'"
             :fetchpriority="index === 0 ? 'high' : 'auto'"
           />
