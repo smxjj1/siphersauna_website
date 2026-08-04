@@ -61,6 +61,11 @@
     "moq": "起訂量",
     "hsCode": "海關編碼",
     "contactInquiry": "聯絡我們諮詢",
+    "backToProducts": "返回產品列表",
+    "addToList": "加入詢盤清單",
+    "addedToList": "已加入詢盤清單",
+    "alreadyInList": "已在清單中",
+    "listLimitReached": "最多可添加 20 個產品",
     "subcategory": {
       "Far": "遠紅外桑拿房",
       "Dry": "乾濕蒸組合桑拿",

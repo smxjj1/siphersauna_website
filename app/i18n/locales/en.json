@@ -61,6 +61,11 @@
     "moq": "MOQ",
     "hsCode": "H.S. Code",
     "contactInquiry": "Contact for Inquiry",
+    "backToProducts": "Back to products",
+    "addToList": "Add to List",
+    "addedToList": "Added to inquiry list",
+    "alreadyInList": "Already in your list",
+    "listLimitReached": "Maximum 20 products",
     "subcategory": {
       "Far": "Far-Infrared Sauna Room",
       "Dry": "Dry-Wet Steam Combination",

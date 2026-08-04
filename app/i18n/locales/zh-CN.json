@@ -61,6 +61,11 @@
     "moq": "起订量",
     "hsCode": "海关编码",
     "contactInquiry": "联系我们咨询",
+    "backToProducts": "返回产品列表",
+    "addToList": "加入询盘清单",
+    "addedToList": "已加入询盘清单",
+    "alreadyInList": "已在清单中",
+    "listLimitReached": "最多可添加 20 个产品",
     "subcategory": {
       "Far": "远红外桑拿房",
       "Dry": "干湿蒸组合桑拿",

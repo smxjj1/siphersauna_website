@@ -27,7 +27,7 @@
           :class="{ active: activeCategory === category.slug }"
           @click="activeCategory = category.slug"
         >
-          {{ category.name }}
+          {{ getCategoryName(category) }}
         </button>
       </div>
     </section>
@@ -60,11 +60,11 @@
                 <span class="subcategory-count">{{ t('products.itemsCount', { count: group.products.length }) }}</span>
               </div>
               <div class="product-grid">
-                <div
+                <NuxtLink
                   v-for="product in group.products"
                   :key="product.id"
+                  :to="localePath(buildProductPath(product.itemNo, product.name))"
                   class="product-card"
-                  @click="openDetail(product)"
                 >
                   <div class="card-image">
                     <img
@@ -85,7 +85,7 @@
                     </div>
                     <p class="card-item-no">{{ product.itemNo }}</p>
                   </div>
-                </div>
+                </NuxtLink>
               </div>
             </div>
           </template>
@@ -119,109 +119,6 @@
         </svg>
       </button>
     </Transition>
-
-    <Teleport to="body">
-      <Transition name="modal">
-        <div v-if="detailOpen" class="modal-overlay" @click.self="closeDetail">
-          <div class="modal-content">
-            <button class="modal-close" @click="closeDetail" aria-label="Close">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-              </svg>
-            </button>
-
-            <div class="modal-body">
-              <div class="detail-gallery">
-                <div class="gallery-main">
-                  <img
-                    v-if="currentProduct?.gallery.length"
-                    :src="currentProduct.gallery[galleryIndex]"
-                    :alt="currentProduct.name"
-                  >
-                  <div v-else class="gallery-placeholder">
-                    <span>{{ currentProduct?.itemNo?.charAt(0) }}</span>
-                  </div>
-                </div>
-                <div v-if="currentProduct?.gallery.length > 1" class="gallery-thumbs">
-                  <button
-                    v-for="(img, i) in currentProduct.gallery"
-                    :key="i"
-                    class="thumb"
-                    :class="{ active: galleryIndex === i }"
-                    @click="galleryIndex = i"
-                  >
-                    <img :src="img" :alt="`View ${i + 1}`" loading="lazy">
-                  </button>
-                </div>
-              </div>
-
-              <div class="detail-info">
-                <h2 class="detail-name">{{ currentProduct?.name }}</h2>
-                <p class="detail-item-no">{{ tm('products.itemNo') }}: {{ currentProduct?.itemNo }}</p>
-
-                <div v-if="currentProduct?.description" class="detail-desc">
-                  <h4>{{ tm('products.description') }}</h4>
-                  <p>{{ currentProduct.description }}</p>
-                </div>
-
-                <div class="detail-specs">
-                  <h4>{{ tm('products.specifications') }}</h4>
-                  <table class="specs-table">
-                    <tbody>
-                      <tr v-if="currentProduct?.material">
-                        <td>{{ tm('products.woodType') }}</td>
-                        <td>{{ formatMaterial(currentProduct.material) }}</td>
-                      </tr>
-                      <tr v-if="currentProduct?.specs.ctnSize">
-                        <td>{{ tm('products.size') }}</td>
-                        <td>{{ currentProduct.specs.ctnSize }}</td>
-                      </tr>
-                      <tr v-if="currentProduct?.specs.nw">
-                        <td>{{ tm('products.netWeight') }}</td>
-                        <td>{{ currentProduct.specs.nw }}</td>
-                      </tr>
-                      <tr v-if="currentProduct?.specs.gw">
-                        <td>{{ tm('products.grossWeight') }}</td>
-                        <td>{{ currentProduct.specs.gw }}</td>
-                      </tr>
-                      <tr v-if="currentProduct?.specs.pcs20gp">
-                        <td>{{ tm('products.pcs20gp') }}</td>
-                        <td>{{ currentProduct.specs.pcs20gp }}</td>
-                      </tr>
-                      <tr v-if="currentProduct?.specs.pcs40hq">
-                        <td>{{ tm('products.pcs40hq') }}</td>
-                        <td>{{ currentProduct.specs.pcs40hq }}</td>
-                      </tr>
-                      <tr v-if="currentProduct?.specs.moq">
-                        <td>{{ tm('products.moq') }}</td>
-                        <td>{{ currentProduct.specs.moq }}</td>
-                      </tr>
-                      <tr v-if="currentProduct?.specs.hsCode">
-                        <td>{{ tm('products.hsCode') }}</td>
-                        <td>{{ currentProduct.specs.hsCode }}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <div class="detail-actions">
-                  <button type="button" class="detail-add-list" @click="handleAddToList">
-                    Add to List
-                  </button>
-                  <NuxtLink
-                    v-if="currentProduct"
-                    :to="{ path: '/contact', query: { products: currentProduct.itemNo } }"
-                    class="detail-cta"
-                  >
-                    {{ tm('products.contactInquiry') }}
-                  </NuxtLink>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Transition>
-    </Teleport>
   </div>
 </template>
 
@@ -229,19 +126,12 @@
 import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import { useProductCatalog } from '~/composables/useProducts'
 import { useTmObject } from '~/composables/useSiteLocale'
-import {
-  formatSubcategoryLabel,
-  normalizeSubcategoryKey,
-  sortSubcategoryKeys,
-} from '~/utils/productCategory'
+import { buildProductPath } from '~/utils/productSlug'
 
 definePageMeta({
   layout: 'default',
 })
 
-const { add, showFeedback } = useInquiryList()
-
-// 产品接口定义
 interface ProductSpecs {
   pcsPerCtn?: number | null
   nw?: number | null
@@ -278,6 +168,12 @@ interface Product {
 
 const { tm, t, localePath, locale } = useI18nHelpers()
 
+const getCategoryName = (category: { name: string; slug: string }) => {
+  const translated = tm(`categories.productCategory.${category.name}`)
+  if (translated !== `categories.productCategory.${category.name}`) return translated
+  return category.name
+}
+
 useHead({
   title: computed(() => `${tm('products.title')} | Sipher Sauna`),
   htmlAttrs: { lang: locale },
@@ -289,11 +185,7 @@ useHead({
 const { products: allProducts, categories, totalProducts } = useProductCatalog()
 
 const activeCategory = ref<string>('all')
-const detailOpen = ref(false)
-const currentProduct = ref<Product | null>(null)
-const galleryIndex = ref(0)
 const activeAnchor = ref(0)
-const scrollBarWidth = ref(0)
 const showBackToTop = ref(false)
 let scrollObserver: IntersectionObserver | null = null
 
@@ -304,46 +196,48 @@ const filteredProducts = computed(() => {
   return allProducts.value.filter((p: Product) => p.categorySlug === activeCategory.value)
 })
 
-// 按子分类分组（顺序来自 CMS 白名单）
 const groupedProducts = computed(() => {
+  const groups: { subcategory: string; products: Product[] }[] = []
   const groupMap = new Map<string, Product[]>()
 
   for (const product of filteredProducts.value) {
-    const subcat = normalizeSubcategoryKey(product.subcategory)
+    const subcat = product.subcategory || 'General'
     if (!groupMap.has(subcat)) {
       groupMap.set(subcat, [])
     }
     groupMap.get(subcat)!.push(product)
   }
 
-  const activeCategoryMeta = categories.value.find(c => c.slug === activeCategory.value)
-  const preferredOrder = activeCategory.value === 'all'
-    ? categories.value.flatMap(c => (c as { subcategories?: string[] }).subcategories || [])
-    : ((activeCategoryMeta as { subcategories?: string[] } | undefined)?.subcategories || [])
+  const order = ['Traditional sauna room', 'Far', 'Dry', 'General']
+  for (const orderedSubcat of order) {
+    if (groupMap.has(orderedSubcat)) {
+      groups.push({ subcategory: formatSubcategory(orderedSubcat), products: groupMap.get(orderedSubcat)! })
+    }
+  }
 
-  const orderedKeys = sortSubcategoryKeys([...groupMap.keys()], preferredOrder)
+  for (const [subcategory, products] of groupMap) {
+    if (!order.includes(subcategory)) {
+      groups.push({ subcategory: formatSubcategory(subcategory), products })
+    }
+  }
 
-  return orderedKeys.map(subcategory => ({
-    subcategory: getSubcategoryDisplay(subcategory),
-    products: groupMap.get(subcategory)!,
-  }))
+  return groups
 })
 
-const getSubcategoryDisplay = (subcategory: string): string => {
+const formatSubcategory = (subcategory: string): string => {
   const translated = useTmObject(`products.subcategory.${subcategory}`)
   if (translated !== `products.subcategory.${subcategory}`) return translated
-  return formatSubcategoryLabel(subcategory)
+  if (subcategory === 'Far') return 'Far-Infrared Sauna Room'
+  if (subcategory === 'Dry') return 'Dry-Wet Steam Combination'
+  return subcategory
 }
 
-// 格式化材质
 const formatMaterial = (material: string): string => {
   const woods = material.split('/').filter(w => w.trim())
   if (woods.length === 0) return ''
   if (woods.length === 1) return woods[0]
   return woods.slice(0, 2).join('/') + '...'
 }
-
-const getScrollBarWidth = () => window.innerWidth - document.documentElement.clientWidth
 
 const scrollToAnchor = (index: number) => {
   activeAnchor.value = index
@@ -393,54 +287,8 @@ const setupScrollObserver = () => {
   })
 }
 
-const openDetail = (product: Product) => {
-  currentProduct.value = product
-  galleryIndex.value = 0
-  detailOpen.value = true
-  scrollBarWidth.value = getScrollBarWidth()
-  document.body.style.marginLeft = `${scrollBarWidth.value}px`
-  document.body.style.overflow = 'hidden'
-}
-
-const closeDetail = () => {
-  detailOpen.value = false
-  document.body.style.marginLeft = ''
-  document.body.style.overflow = ''
-}
-
-const handleAddToList = () => {
-  const product = currentProduct.value
-  if (!product) return
-
-  const result = add({
-    itemNo: product.itemNo,
-    name: product.name,
-    categorySlug: product.categorySlug,
-    mainImage: product.mainImage,
-  })
-
-  if (result.ok) {
-    showFeedback('Added to inquiry list')
-    return
-  }
-  if (result.reason === 'duplicate') {
-    showFeedback('Already in your list')
-    return
-  }
-  if (result.reason === 'limit') {
-    showFeedback('Maximum 20 products')
-  }
-}
-
-// 键盘事件处理
-const handleKeydown = (e: KeyboardEvent) => {
-  if (e.key === 'Escape' && detailOpen.value) {
-    closeDetail()
-  }
-}
 
 onMounted(() => {
-  window.addEventListener('keydown', handleKeydown)
   window.addEventListener('scroll', handleScroll, { passive: true })
   nextTick(() => {
     setupScrollObserver()
@@ -448,10 +296,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  window.removeEventListener('keydown', handleKeydown)
   window.removeEventListener('scroll', handleScroll)
-  document.body.style.marginLeft = ''
-  document.body.style.overflow = ''
   if (scrollObserver) {
     scrollObserver.disconnect()
   }
@@ -554,6 +399,9 @@ onUnmounted(() => {
 }
 
 .product-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
   background: @white; border-radius: 12px; overflow: hidden;
   cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid rgba(@sauna-wood, 0.1);
@@ -607,111 +455,5 @@ onUnmounted(() => {
 .fade-enter-active, .fade-leave-active { transition: opacity 0.3s ease; }
 .fade-enter-from, .fade-leave-to { opacity: 0; }
 
-.modal-overlay {
-  position: fixed; inset: 0; background: rgba(@sauna-dark, 0.85); z-index: 1000;
-  display: flex; align-items: center; justify-content: center; padding: 20px;
-}
 
-.modal-content {
-  background: @white; border-radius: 16px; max-width: 900px; width: 100%;
-  max-height: 90vh; overflow: hidden; position: relative;
-}
-
-.modal-close {
-  position: absolute; top: 20px; right: 20px; background: @sauna-cream;
-  border: none; color: @sauna-dark; width: 44px; height: 44px;
-  border-radius: 50%; cursor: pointer; display: flex; align-items: center;
-  justify-content: center; z-index: 10; transition: background 0.3s ease;
-  &:hover { background: @sauna-wood-light; }
-}
-
-.modal-body {
-  display: flex; gap: 30px; padding: 30px; max-height: 90vh; overflow-y: auto;
-  @media (max-width: 768px) { flex-direction: column; padding: 20px; }
-}
-
-.detail-gallery { flex: 1; min-width: 300px; @media (max-width: 768px) { min-width: auto; } }
-
-.gallery-main {
-  aspect-ratio: 1; border-radius: 12px; overflow: hidden; background: @sauna-cream;
-  img { width: 100%; height: 100%; object-fit: contain; }
-}
-
-.gallery-placeholder {
-  width: 100%; height: 100%; display: flex; align-items: center;
-  justify-content: center; background: linear-gradient(135deg, @sauna-wood-light, @sauna-cream);
-  span { font-size: 5rem; font-weight: 700; color: @sauna-wood; opacity: 0.3; }
-}
-
-.gallery-thumbs { display: flex; gap: 10px; margin-top: 20px; justify-content: center; }
-
-.thumb {
-  width: 60px; height: 60px; border-radius: 8px; overflow: hidden;
-  cursor: pointer; border: 2px solid transparent; background: @sauna-cream;
-  padding: 0; transition: border-color 0.3s ease;
-  &.active { border-color: @sauna-wood; }
-  img { width: 100%; height: 100%; object-fit: cover; }
-}
-
-.detail-info { flex: 1.2; display: flex; flex-direction: column; }
-
-.detail-name {
-  font-size: 1.5rem; font-weight: 700; color: @sauna-dark;
-  margin: 0 0 10px; line-height: 1.3;
-}
-
-.detail-item-no { font-size: 0.9rem; color: @sauna-wood; margin: 0 0 20px; }
-
-.detail-desc { margin-bottom: 20px;
-  h4 { font-size: 0.9rem; font-weight: 600; color: @sauna-dark; margin: 0 0 10px; }
-  p { font-size: 0.85rem; color: @light-text; line-height: 1.6; margin: 0; white-space: pre-line; }
-}
-
-.detail-specs { margin-bottom: 30px;
-  h4 { font-size: 0.9rem; font-weight: 600; color: @sauna-dark; margin: 0 0 15px; }
-}
-
-.specs-table { width: 100%; border-collapse: collapse;
-  td { padding: 12px 15px; font-size: 0.85rem; border-bottom: 1px solid rgba(@sauna-wood, 0.15);
-    &:first-child { color: @light-text; width: 140px; }
-    &:last-child { color: @sauna-dark; }
-  }
-}
-
-.detail-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 16px;
-}
-
-.detail-add-list {
-  padding: 14px 30px;
-  background: transparent;
-  border: 2px solid @sauna-wood;
-  color: @sauna-wood;
-  font-weight: 600;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
-
-  &:hover {
-    background: @sauna-wood;
-    color: @white;
-  }
-}
-
-.detail-cta {
-  display: inline-block; padding: 14px 30px; background: @sauna-wood;
-  color: @white; font-weight: 600; text-decoration: none;
-  border-radius: 8px; transition: background 0.3s ease;
-  &:hover { background: @sauna-gold; }
-}
-
-.modal-enter-active, .modal-leave-active { transition: opacity 0.3s ease;
-  .modal-content { transition: transform 0.3s ease; }
-}
-.modal-enter-from, .modal-leave-to { opacity: 0;
-  .modal-content { transform: scale(0.95); }
-}
 </style>

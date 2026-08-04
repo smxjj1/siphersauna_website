@@ -35,6 +35,7 @@ export function buildHybridRouteRules() {
 
   for (const { prefix } of SITE_LOCALES) {
     rules[localePath(prefix, '/products')] = { isr: PRODUCT_ISR_SECONDS }
+    rules[localePath(prefix, '/products/**')] = { isr: PRODUCT_ISR_SECONDS }
     rules[localePath(prefix, '/news')] = { isr: BLOG_ISR_SECONDS }
   }
 
