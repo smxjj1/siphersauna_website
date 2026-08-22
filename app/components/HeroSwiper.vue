@@ -12,8 +12,8 @@
             :src="slide.src"
             :alt="slide.alt"
             class="slide-image"
-            width="1672"
-            height="940"
+            width="1899"
+            height="828"
             :loading="index === 0 ? 'eager' : 'lazy'"
             :fetchpriority="index === 0 ? 'high' : 'auto'"
           />
@@ -58,7 +58,7 @@ const HERO_SLIDES = [
   { file: 'ULTIMATE-SAUNA-LIFESTYLE.webp', alt: 'Ultimate Sauna Lifestyle' },
 ].map(slide => ({
   ...slide,
-  src: `/images/home/hero/${slide.file}?v=1672`,
+  src: `/images/home/hero/${slide.file}?v=1899`,
 }))
 
 const SLIDE_META = [
@@ -132,7 +132,7 @@ onMounted(() => {
   /* 按原图比例限制高度，避免 100vh 全屏拉伸导致发糊 */
   width: 100%;
   position: relative;
-  height: min(64vh, 680px, calc(100vw * 940 / 1672));
+  height: min(64vh, 680px, calc(100vw * 828 / 1899));
   background: @sauna-dark;
   overflow: hidden;
 
@@ -236,7 +236,7 @@ onMounted(() => {
 
 @media (max-width: 992px) {
   .hero-swiper {
-    height: min(52vh, 480px, calc(100vw * 940 / 1672));
+    height: min(52vh, 480px, calc(100vw * 828 / 1899));
 
     .swiper-pagination {
       bottom: 20px;
@@ -260,7 +260,7 @@ onMounted(() => {
 
 @media (max-width: 768px) {
   .hero-swiper {
-    height: calc(100vw * 940 / 1672);
+    height: calc(100vw * 828 / 1899);
 
     .swiper-pagination {
       bottom: 14px;

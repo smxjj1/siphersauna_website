@@ -33,28 +33,12 @@ const layoutClass = computed(() => {
 
 <style lang="less">
 .layout-wrapper {
-  /* 顶栏 36 + 导航 50，与 Navbar 实际高度一致，避免白缝 */
+  /* 无顶栏联系条时仅导航 50px */
+  padding-top: 50px;
+}
+
+/* 顶栏 36 + 导航 50，与 Navbar 实际高度一致 */
+.layout-wrapper:has(.top-info-bar) {
   padding-top: 86px;
-}
-
-.layout-wrapper.home-initial,
-.layout-wrapper.not-home {
-  padding-top: 86px;
-}
-
-@media (max-width: 992px) {
-  .layout-wrapper,
-  .layout-wrapper.home-initial,
-  .layout-wrapper.not-home {
-    padding-top: 86px;
-  }
-}
-
-@media (max-width: 768px) {
-  .layout-wrapper,
-  .layout-wrapper.home-initial,
-  .layout-wrapper.not-home {
-    padding-top: 86px;
-  }
 }
 </style>
