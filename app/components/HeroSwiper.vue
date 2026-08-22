@@ -56,8 +56,6 @@ const HERO_SLIDES = [
   { file: 'LUXURY-SAUNA-SOLUTIONS.webp', alt: 'Luxury Sauna Solutions' },
   { file: 'SAUNA-WAY.webp', alt: 'Sauna Way' },
   { file: 'ULTIMATE-SAUNA-LIFESTYLE.webp', alt: 'Ultimate Sauna Lifestyle' },
-  { file: 'WELLNESS.webp', alt: 'Wellness' },
-  { file: 'Tailored-Luxury.webp', alt: 'Tailored Luxury' },
 ].map(slide => ({
   ...slide,
   src: `/images/home/hero/${slide.file}?v=1672`,
@@ -67,8 +65,6 @@ const SLIDE_META = [
   { key: 'luxury-sauna-solutions', title: 'Luxury Sauna Solutions' },
   { key: 'sauna-way', title: 'Sauna Way' },
   { key: 'ultimate-sauna-lifestyle', title: 'Ultimate Sauna Lifestyle' },
-  { key: 'wellness', title: 'Wellness' },
-  { key: 'tailored-luxury', title: 'Tailored Luxury' },
 ]
 
 const bannerSlidesViewed = ref(new Set<number>())
