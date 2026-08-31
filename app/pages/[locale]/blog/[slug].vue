@@ -586,6 +586,16 @@ function scrollToAnchor(id: string) {
   margin: 0 0 20px;
 }
 
+.article-content :deep(a) {
+  color: #1d4ed8;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.article-content :deep(a:hover) {
+  color: #1e40af;
+}
+
 .article-content :deep(ul),
 .article-content :deep(ol) {
   margin: 0 0 20px;
