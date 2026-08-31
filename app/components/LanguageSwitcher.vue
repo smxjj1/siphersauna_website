@@ -84,9 +84,10 @@ onUnmounted(() => {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    min-height: 44px;
+    height: 36px;
+    min-height: 36px;
     min-width: 44px;
-    padding: 8px 14px;
+    padding: 0 10px;
     background: transparent;
     border: none;
     border-radius: 20px;
@@ -124,7 +125,7 @@ onUnmounted(() => {
     border-radius: 8px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
     min-width: 140px;
-    z-index: 50;
+    z-index: 10001;
   }
 
   &__option {

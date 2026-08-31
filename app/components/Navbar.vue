@@ -1,6 +1,6 @@
 <template>
   <header class="navbar-wrapper">
-    <div v-if="contactLinks.length || socialLinks.length" class="top-info-bar">
+    <div class="top-info-bar">
       <div class="top-info-inner">
         <div v-if="contactLinks.length" class="contact-info">
           <a
@@ -145,7 +145,9 @@ onUnmounted(() => {
   color: rgba(255, 255, 255, 0.85);
   font-size: 12px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
+  z-index: 10000;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
