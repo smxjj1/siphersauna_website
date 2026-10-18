@@ -41,7 +41,7 @@
                 <polyline points="9 22 9 12 15 12 15 22"/>
               </svg>
             </div>
-            <div class="strength-number">15K+</div>
+            <div class="strength-number">10K+</div>
             <h3 class="strength-title">{{ tm('about.strength2Title') }}</h3>
             <p class="strength-desc">{{ tm('about.strength2Desc') }}</p>
           </div>
